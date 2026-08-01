@@ -1,14 +1,108 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+}
+
 const AppBar = () => {
+    const navRef = useRef<HTMLElement>(null);
+    const wordmarkRef = useRef<HTMLHeadingElement>(null);
+
+    const navLinks = [
+        { label: "Work", href: "#work" },
+        { label: "Contact", href: "#contact" },
+        { label: "Resume", href: "/resume" },
+    ];
+
+    useEffect(() => {
+        if (!wordmarkRef.current || !navRef.current) return;
+
+        let ctx: gsap.Context;
+        const getOffsetY = () => {
+            const navHeight = navRef.current?.offsetHeight ?? 64;
+            const restingCenter = navHeight / 2;
+            const viewportMid = window.innerHeight / 2;
+            return viewportMid - restingCenter;
+        };
+
+        const init = () => {
+            ctx = gsap.context(() => {
+                gsap.set(wordmarkRef.current, {
+                    scale: 1,
+                    y: getOffsetY(),
+                    transformOrigin: "50% 0%",
+                });
+
+                gsap.to(wordmarkRef.current, {
+                    scale: 0.25,
+                    y: 0,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: document.body,
+                        start: "top top",
+                        end: "+=200",
+                        scrub: 0.6,
+                    },
+                });
+            }, navRef);
+        };
+
+        init();
+
+        let resizeTimer: ReturnType<typeof setTimeout>;
+        const handleResize = () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                ctx.revert();
+                init();
+                ScrollTrigger.refresh();
+            }, 150);
+        };
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            clearTimeout(resizeTimer);
+            ctx.revert();
+        };
+    }, []);
+
     return (
-        <header className="w-full bg-white shadow-md"> 
+        <nav
+            ref={navRef}
+            className="fixed inset-x-0 top-0 z-10 w-full bg-transparent shadow-none mix-blend-difference"
+        >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-center items-center h-16">
-                    <div className="flex-shrink-0 flex items-center">
-                        <h1 className="text-2xl font-bold text-gray-800 text-center">Rise Like Sun</h1>
+                <div className="grid grid-cols-2 items-center p-4">
+
+                    <div />
+
+                    <h1
+                        ref={wordmarkRef}
+                        className="text-8xl font-bold text-white text-center will-change-transform fixed left-1/2 -translate-x-1/2 top-4"
+                    >
+                        Rise Like Sun
+                    </h1>
+
+                    <div className="flex items-center justify-end gap-8">
+                        {navLinks.map((link) => (
+                            <a
+                                key={link.label}
+                                href={link.href}
+                                className="text-sm font-mono tracking-wide text-white hover:opacity-70 transition-opacity"
+                            >
+                                {link.label}
+                            </a>
+                        ))}
                     </div>
+
                 </div>
             </div>
-        </header>
+        </nav>
     );
 };
 
