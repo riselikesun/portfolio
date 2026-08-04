@@ -11,11 +11,22 @@ type HeroClientProps = {
 
 export default function HeroClient({ src, alt }: HeroClientProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const heroContentRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.25 });
 
   const titleContainer = {
     hidden: {},
     visible: {
+      transition: { staggerChildren: 0.12, delayChildren: 0.9 },
+    },
+  };
+
+  const titleContainer1 = {
+    hidden: {
+      background: "radial-gradient(#00000000, #000000, #000000a6)"
+    },
+    visible: {
+      background: "none",
       transition: { staggerChildren: 0.12, delayChildren: 0.9 },
     },
   };
@@ -28,7 +39,7 @@ export default function HeroClient({ src, alt }: HeroClientProps) {
   return (
     <div ref={containerRef} className="relative w-full h-screen overflow-hidden bg-black">
       <motion.div
-        initial={{ opacity: 0, scale: 1.03 }}
+        initial={{ opacity: 0, scale: 1.03, }}
         animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.03 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="absolute inset-0"
@@ -40,7 +51,11 @@ export default function HeroClient({ src, alt }: HeroClientProps) {
           priority
           className="object-cover w-full h-full"
         />
-        <div className="h-screen grid content-stretch relative p-2">
+        <motion.div
+          ref={heroContentRef}
+          variants={titleContainer1}
+          initial="hidden"
+          className="h-screen grid content-stretch relative p-2">
           <motion.div
             className="text-center grid content-end pt-8 pb-8"
             variants={titleContainer}
@@ -53,14 +68,14 @@ export default function HeroClient({ src, alt }: HeroClientProps) {
             <h1 className="text-5xl md:text-9xl font-sans-serif text-white">
               <motion.span
                 variants={item}
-              >SURAJ </motion.span>
+              >Suraj </motion.span>
               <motion.span
                 variants={{
                   hidden: { opacity: 0, y: 8 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
                 }}
 
-              >SHARMA</motion.span>
+              >Sharma</motion.span>
 
             </h1>
           </motion.div>
@@ -68,7 +83,7 @@ export default function HeroClient({ src, alt }: HeroClientProps) {
           <div className="h-50" />
 
           <motion.div
-            className="text-white text-center content-end pt-8 pb-8"
+            className="text-white text-center content-center pt-8 pb-8"
             variants={titleContainer}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -80,7 +95,7 @@ export default function HeroClient({ src, alt }: HeroClientProps) {
               Engineer products beyond the screen
             </motion.p>
           </motion.div>
-        </div>
+        </motion.div>
       </motion.div>
     </div>
   );
