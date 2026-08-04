@@ -107,7 +107,7 @@ const AppBar = () => {
 
                     <h1
                         ref={wordmarkRef}
-                        className="text-4xl md:text-7xl font-bold text-white text-center fixed left-1/2 -translate-x-1/2 top-4 w-max z-50 font-mono"
+                        className="text-3xl md:text-7xl font-bold text-white text-center fixed left-1/2 -translate-x-1/2 top-4 w-max z-50 font-mono tracking-widest"
                     >
                          <a
                                 key='/'
