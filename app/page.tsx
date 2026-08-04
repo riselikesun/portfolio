@@ -1,93 +1,45 @@
-import Image from "next/image";
+import HeroClient from "./components/HeroClient";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          <code className="font-mono font-bold">
-            Hello There, looking for insights?
-          </code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <p className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0">
-            Rise like Sun{" "}
-            <Image
-              src="/sundark.png"
-              alt="Sun"
-              className="light:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </p>
-        </div>
+    <main className="flex min-h-screen flex-col items-center justify-between">
+      <HeroClient src="/risingsun.png" alt="Rising Sun" />
+      <div className="w-full bg-cover bg-center bg-no-repeat flex justify-center">
       </div>
+      <div>
+        <h2 className="text-4xl font-semibold mt-20">Every sunrise marks a new beginning.</h2>
+        <p className="m-12 text-lg text-gray-600">For me, engineering doesn't stop at the keyboard.<br />
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <p className="text-4xl font-semibold">Suraj Sharma</p>
-      </div>
+          Whether it's designing scalable software, <br />
+          building a 3D printed aircraft,<br />
+          constructing a swimming pool,<br />
+          or creating a product from scratch.</p>
+        <p className="m-12 text-lg text-gray-600">
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="#interests"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Interests{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information Suraj&apos;s interests and hobbies.
-          </p>
-        </a>
+          the process is always the same.</p>
+        <p className="m-12 text-lg text-gray-600">
 
-        <a
-          href="#skills"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Skills{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about skillset in possion
-          </p>
-        </a>
-
-        <a
-          href="#projects"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Projects{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore awesome projects.
-          </p>
-        </a>
-
-        <a
-          href="#contact"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Contant{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly connect in linked in or other social media platform.
-          </p>
-        </a>
+          Understand.
+          Design.
+          Build.
+          Improve.
+          Repeat.</p>
+        <p className="m-12 text-lg text-gray-600">Building software.</p>
+        <p className="m-12 text-lg text-gray-600">Engineering products used by millions.</p>
+        <p className="m-12 text-lg text-gray-600">Building doesn't end <br />when I close VS Code.</p>
+        <p className="m-12 text-lg text-gray-600">Building machines.</p>
+        <p className="m-12 text-lg text-gray-600">Building adventures.</p>
+        <p className="m-12 text-lg text-gray-600">Different material, Same mindset</p>
+        <p className="m-12 text-lg text-gray-600">Ideas that took shape</p>
+        <p className="m-12 text-lg text-gray-600">I like to get my hands dirty trying new tools, I meant litrely as well</p>
+        <p className="m-12 text-lg text-gray-600">I explore to stay curious</p>
+        <p className="m-12 text-lg text-gray-600">never stop building.</p>
+        <p className="m-12 text-lg text-gray-600">Every sunrise
+          is another opportunity<br />
+          to build something remarkable.<br />
+          <br />
+          Let's build together.</p>
+        <p className="m-12 text-lg text-gray-600">Let's Build something worth remembering</p>
       </div>
     </main>
   );
