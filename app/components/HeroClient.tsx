@@ -1,8 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import gsap from "gsap";
+import { useEffect, useRef } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, useInView } from "framer-motion";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 
 type HeroClientProps = {
   src: string;
@@ -21,20 +28,45 @@ export default function HeroClient({ src, alt }: HeroClientProps) {
     },
   };
 
-  const titleContainer1 = {
-    hidden: {
-      background: "radial-gradient(#00000000, #000000, #000000a6)"
-    },
-    visible: {
-      background: "none",
-      transition: { staggerChildren: 0.12, delayChildren: 0.9 },
-    },
-  };
 
   const item: any = {
     hidden: { opacity: 0, y: 8 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
   };
+
+  useEffect(() => {
+    if (!heroContentRef.current) return;
+
+    let ctx: gsap.Context;
+
+    const init = () => {
+      ctx = gsap.context(() => {
+        gsap.set(heroContentRef.current, {
+          background: "radial-gradient(#00000000, #000000, #000000a6)"
+        });
+
+        gsap.to(heroContentRef.current, {
+          ease: "power3.out",
+          background: "radial-gradient(#00000000, #00000000, #00000000)",
+          scrollTrigger: {
+            trigger: document.body,
+            start: "top top",
+            end: "+=500",
+            scrub: 0.6,
+          },
+        }
+        );
+      }, heroContentRef);
+    };
+
+    init();
+    return () => {
+      ctx?.revert();
+    };
+  }, []);
+
+
+
 
   return (
     <div ref={containerRef} className="relative w-full h-screen overflow-hidden bg-black">
@@ -51,10 +83,8 @@ export default function HeroClient({ src, alt }: HeroClientProps) {
           priority
           className="object-cover w-full h-full"
         />
-        <motion.div
+        <div
           ref={heroContentRef}
-          variants={titleContainer1}
-          initial="hidden"
           className="h-screen grid content-stretch relative p-2">
           <motion.div
             className="text-center grid content-end pt-8 pb-8"
@@ -95,7 +125,7 @@ export default function HeroClient({ src, alt }: HeroClientProps) {
               Engineer products beyond the screen
             </motion.p>
           </motion.div>
-        </motion.div>
+        </div>
       </motion.div>
     </div>
   );
