@@ -5,6 +5,8 @@ import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, useInView } from "framer-motion";
+import { Button } from "@ui/button";
+import Link from "next/link";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -118,6 +120,11 @@ export default function HeroClient({ src, alt }: HeroClientProps) {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
+            <Button asChild variant="outline" size="lg">
+              <Link href="#coffee">
+                ☕ Let's Grab a Coffee
+              </Link>
+            </Button>
             <motion.p variants={item} className="md:text-2xl p-2">
               Building Software that scale
             </motion.p>
