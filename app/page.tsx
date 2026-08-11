@@ -1,4 +1,4 @@
-import HeroClient from "./components/HeroClient";
+import HeroClient from "./components/hero-client";
 
 export default function Home() {
   return (

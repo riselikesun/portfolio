@@ -60,7 +60,7 @@ const AppBar = () => {
                 });
 
                 gsap.to(wordmarkRef.current, {
-                    scale: 0.25,
+                    scale: 0.267,
                     y: 0,
                     ease: "none",
                     scrollTrigger: {
