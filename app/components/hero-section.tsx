@@ -9,6 +9,7 @@ import { Button } from "@ui/button";
 import Link from "next/link";
 import { ArrowDown } from "lucide-react";
 import { AnimatedWord } from "./animated-word";
+import { CoffeeDialog } from "./coffee-dialog";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -124,11 +125,7 @@ export default function HeroSection({ src, alt }: HeroSectionProps) {
           >
             <div>
               <motion.p variants={item} className="p-4">
-                <Button asChild size="lg">
-                  <Link href="#coffee">
-                    ☕ Let's Grab a Coffee
-                  </Link>
-                </Button>
+                <CoffeeDialog />
               </motion.p>
               <motion.p variants={item} className="md:text-2xl p-2">
                 Building software that&nbsp;
