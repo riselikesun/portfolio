@@ -134,7 +134,7 @@ export default function HeroClient({ src, alt }: HeroClientProps) {
                 Building software that&nbsp;
                 <AnimatedWord
                   words={["scales.", "performs.", "delights.", "matters."]}
-                  minWidth="112px"
+                  className="w-30"
                   interval={3000}
                 />
               </motion.p>
