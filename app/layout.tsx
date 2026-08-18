@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Figtree } from "next/font/google";
 import "./globals.css";
-import { AppBar } from "./components";
 import { cn } from "@/lib/utils";
 import config from './config';
 import { GoogleTagManager } from '@next/third-parties/google'
@@ -24,7 +23,6 @@ export default function RootLayout({
     <html lang="en" className={cn("font-sans", figtree.variable)}>
       <GoogleTagManager gtmId={config.googleTagID} />
       <body className={inter.className}>
-        <AppBar />
         {children}
       </body>
     </html>
