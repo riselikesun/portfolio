@@ -1,7 +1,6 @@
 // app/resume/page.tsx
 import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
-import { Navbar } from "../components";
 import Link from "next/link";
 
 export const metadata: Metadata = {
