@@ -144,9 +144,7 @@ export default function HeroSection({ src, alt }: HeroSectionProps) {
                 Scroll to rise
               </motion.p>
               <motion.p variants={item} className="flex justify-center p-2">
-                {/* <Button variant="ghost" size="icon"> */}
                 <ArrowDown className="animate-bounce" />
-                {/* </Button> */}
               </motion.p>
             </div>
           </motion.div>
