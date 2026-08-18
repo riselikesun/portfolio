@@ -15,12 +15,12 @@ if (typeof window !== "undefined") {
 }
 
 
-type HeroClientProps = {
+type HeroSectionProps = {
   src: string;
   alt: string;
 };
 
-export default function HeroClient({ src, alt }: HeroClientProps) {
+export default function HeroSection({ src, alt }: HeroSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.25 });

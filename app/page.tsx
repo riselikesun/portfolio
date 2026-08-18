@@ -1,9 +1,9 @@
-import HeroClient from "./components/hero-client";
+import {HeroSection} from "./components";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
-      <HeroClient src="/risingsun.png" alt="Rising Sun" />
+      <HeroSection src="/risingsun.png" alt="Rising Sun" />
       <div>
         <h2 className="text-4xl font-semibold mt-20">Every sunrise marks a new beginning.</h2>
         <p className="m-12 text-lg text-gray-600">For me, engineering doesn't stop at the keyboard.<br />
