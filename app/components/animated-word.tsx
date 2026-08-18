@@ -7,14 +7,12 @@ interface AnimatedWordProps {
   words: string[];
   interval?: number;
   className?: string;
-   minWidth?: string | number;
 }
 
 export function AnimatedWord({
   words,
   interval = 2500,
   className = "",
-  minWidth,
 }: AnimatedWordProps) {
   const [index, setIndex] = useState(0);
 
@@ -30,7 +28,7 @@ export function AnimatedWord({
 
   return (
     <span
-      className={`relative inline-block align-bottom text-left ${className}`} style={{ minWidth }}
+      className={`relative inline-block align-bottom text-left ${className}`}
     >
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.span
