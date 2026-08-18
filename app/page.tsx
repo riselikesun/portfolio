@@ -1,9 +1,9 @@
-import { HomeAppBar, HeroSection } from "./components";
+import { HomeNavBar, HeroSection } from "./components";
 
 export default function Home() {
   return (
     <>
-      <HomeAppBar />
+      <HomeNavBar />
 
       <main className="flex min-h-screen flex-col items-center justify-between">
         <HeroSection src="/risingsun.png" alt="Rising Sun" />

@@ -8,7 +8,7 @@ if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
 }
 
-const HomeAppBar = () => {
+const HomeNavBar = () => {
     const navRef = useRef<HTMLElement>(null);
     const wordmarkRef = useRef<HTMLHeadingElement>(null);
     const didAnimateRef = useRef(false);
@@ -137,4 +137,4 @@ const HomeAppBar = () => {
     );
 };
 
-export default HomeAppBar;
+export default HomeNavBar;
