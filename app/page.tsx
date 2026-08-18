@@ -4,8 +4,6 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       <HeroClient src="/risingsun.png" alt="Rising Sun" />
-      <div className="w-full bg-cover bg-center bg-no-repeat flex justify-center">
-      </div>
       <div>
         <h2 className="text-4xl font-semibold mt-20">Every sunrise marks a new beginning.</h2>
         <p className="m-12 text-lg text-gray-600">For me, engineering doesn't stop at the keyboard.<br />
