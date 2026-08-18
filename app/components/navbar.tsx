@@ -30,9 +30,6 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Button asChild variant="outline" size="sm">
-            <Link href="/resume">Resume</Link>
-          </Button>
         </nav>
 
       </div>

@@ -134,7 +134,7 @@ export default function HeroSection({ src, alt }: HeroSectionProps) {
                 Building software that&nbsp;
                 <AnimatedWord
                   words={["scales.", "performs.", "delights.", "matters."]}
-                  className="w-30"
+                  className="w-30 text-amber-300"
                   interval={3000}
                 />
               </motion.p>
