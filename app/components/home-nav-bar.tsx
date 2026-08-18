@@ -8,7 +8,7 @@ if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
 }
 
-const AppBar = () => {
+const HomeAppBar = () => {
     const navRef = useRef<HTMLElement>(null);
     const wordmarkRef = useRef<HTMLHeadingElement>(null);
     const didAnimateRef = useRef(false);
@@ -16,7 +16,7 @@ const AppBar = () => {
     const navLinks = [
         { label: "Work", href: "#work" },
         { label: "Contact", href: "#contact" },
-        { label: "Resume", href: "/resume" },
+        { label: "Resume", href: "/resume", target: "_blank", rel: "noopener noreferrer" },
     ];
 
     useEffect(() => {
@@ -27,7 +27,7 @@ const AppBar = () => {
             const navHeight = navRef.current?.offsetHeight ?? 64;
             const restingCenter = navHeight / 2;
             const viewportMid = window.innerHeight / 2;
-            return viewportMid - restingCenter ;
+            return viewportMid - restingCenter;
         };
 
         const init = () => {
@@ -109,12 +109,12 @@ const AppBar = () => {
                         ref={wordmarkRef}
                         className="text-3xl md:text-6xl font-bold text-white text-center fixed left-1/2 -translate-x-1/2 top-5 w-max z-50 font-mono tracking-widest"
                     >
-                         <a
-                                key='/'
-                                href='#'
-                            >
-                                Rise Like Sun
-                            </a>
+                        <a
+                            key='/'
+                            href='#'
+                        >
+                            Rise Like Sun
+                        </a>
                     </h1>
 
                     <div className="flex items-center justify-end gap-8">
@@ -122,6 +122,8 @@ const AppBar = () => {
                             <a
                                 key={link.label}
                                 href={link.href}
+                                target={link.target}
+                                rel={link.rel}
                                 className="text-m font-mono tracking-wide text-white hover:opacity-70 transition-opacity"
                             >
                                 {link.label}
@@ -135,4 +137,4 @@ const AppBar = () => {
     );
 };
 
-export default AppBar;
+export default HomeAppBar;

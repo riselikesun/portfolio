@@ -1,2 +1,4 @@
-export { default as AppBar } from './app-bar';
-export { default as HeroClient } from './hero-client';
+export { default as HomeAppBar } from './home-nav-bar';
+export { default as HeroSection } from './hero-section';
+export { default as Navbar } from './navbar';
+export { default as CoffeeDialog } from './coffee-dialog';

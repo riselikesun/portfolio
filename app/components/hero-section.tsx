@@ -9,18 +9,19 @@ import { Button } from "@ui/button";
 import Link from "next/link";
 import { ArrowDown } from "lucide-react";
 import { AnimatedWord } from "./animated-word";
+import { CoffeeDialog } from "./coffee-dialog";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
 
-type HeroClientProps = {
+type HeroSectionProps = {
   src: string;
   alt: string;
 };
 
-export default function HeroClient({ src, alt }: HeroClientProps) {
+export default function HeroSection({ src, alt }: HeroSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.25 });
@@ -124,17 +125,13 @@ export default function HeroClient({ src, alt }: HeroClientProps) {
           >
             <div>
               <motion.p variants={item} className="p-4">
-                <Button asChild size="lg">
-                  <Link href="#coffee">
-                    ☕ Let's Grab a Coffee
-                  </Link>
-                </Button>
+                <CoffeeDialog />
               </motion.p>
               <motion.p variants={item} className="md:text-2xl p-2">
                 Building software that&nbsp;
                 <AnimatedWord
                   words={["scales.", "performs.", "delights.", "matters."]}
-                  className="w-30"
+                  className="w-30 text-amber-300"
                   interval={3000}
                 />
               </motion.p>
@@ -144,9 +141,7 @@ export default function HeroClient({ src, alt }: HeroClientProps) {
                 Scroll to rise
               </motion.p>
               <motion.p variants={item} className="flex justify-center p-2">
-                {/* <Button variant="ghost" size="icon"> */}
                 <ArrowDown className="animate-bounce" />
-                {/* </Button> */}
               </motion.p>
             </div>
           </motion.div>
