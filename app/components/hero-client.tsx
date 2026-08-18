@@ -7,6 +7,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, useInView } from "framer-motion";
 import { Button } from "@ui/button";
 import Link from "next/link";
+import { ArrowDown } from "lucide-react";
+import { AnimatedWord } from "./animated-word";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -87,7 +89,7 @@ export default function HeroClient({ src, alt }: HeroClientProps) {
         />
         <div
           ref={heroContentRef}
-          className="h-screen grid content-stretch relative p-2">
+          className="h-screen grid relative p-2">
           <motion.div
             className="text-center grid content-end pt-8 pb-8"
             variants={titleContainer}
@@ -112,28 +114,44 @@ export default function HeroClient({ src, alt }: HeroClientProps) {
             </h1>
           </motion.div>
 
-          <div className="h-50" />
+          <div className="h-8" />
 
           <motion.div
-            className="text-white text-center content-center pt-8 pb-8"
+            className="text-white text-center content-center pt-8 pb-8 flex flex-col justify-between"
             variants={titleContainer}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
-            <Button asChild variant="outline" size="lg">
-              <Link href="#coffee">
-                ☕ Let's Grab a Coffee
-              </Link>
-            </Button>
-            <motion.p variants={item} className="md:text-2xl p-2">
-              Building Software that scale
-            </motion.p>
-            <motion.p variants={item} className="md:text-2xl p-2">
-              Engineer products beyond the screen
-            </motion.p>
+            <div>
+              <motion.p variants={item} className="p-4">
+                <Button asChild size="lg">
+                  <Link href="#coffee">
+                    ☕ Let's Grab a Coffee
+                  </Link>
+                </Button>
+              </motion.p>
+              <motion.p variants={item} className="md:text-2xl p-2">
+                Building software that&nbsp;
+                <AnimatedWord
+                  words={["scales.", "performs.", "delights.", "matters."]}
+                  minWidth="112px"
+                  interval={3000}
+                />
+              </motion.p>
+            </div>
+            <div>
+              <motion.p variants={item}>
+                Scroll to rise
+              </motion.p>
+              <motion.p variants={item} className="flex justify-center p-2">
+                {/* <Button variant="ghost" size="icon"> */}
+                <ArrowDown className="animate-bounce" />
+                {/* </Button> */}
+              </motion.p>
+            </div>
           </motion.div>
         </div>
-      </motion.div>
-    </div>
+      </motion.div >
+    </div >
   );
 }
