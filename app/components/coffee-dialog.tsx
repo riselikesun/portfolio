@@ -18,6 +18,8 @@ export function CoffeeDialog() {
       <DialogTrigger asChild>
         <Button
           size="default"
+          cursor="pointer"
+          className="bg-amber-300 text-slate-950 hover:bg-amber-200"
         >
           ☕ Let's Grab a Coffee
         </Button>
@@ -32,7 +34,7 @@ export function CoffeeDialog() {
         </DialogHeader>
 
         <div className="flex flex-col gap-2">
-          <Button asChild variant="outline">
+          <Button asChild variant="outline" cursor="pointer">
             <a
               href={config.linkedin}
               target="_blank"
@@ -42,12 +44,13 @@ export function CoffeeDialog() {
             </a>
           </Button>
 
-          <Button asChild variant="outline">
+          <Button asChild variant="outline" cursor="pointer">
             <a href={`mailto:${config.email}`}>Email me</a>
           </Button>
 
           <Button
             asChild
+            cursor="pointer"
           >
             <a
               href={config.calendarURL}

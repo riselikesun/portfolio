@@ -1,4 +1,4 @@
-import { HomeAppBar, HeroSection } from "./components";
+import { HomeAppBar, HeroSection, DirtyHandsSection, Introduction, SkillsSolarSystem, ProfessionalExperience, Hobbies, Footer, ContactMe } from "./components";
 
 export default function Home() {
   return (
@@ -7,7 +7,13 @@ export default function Home() {
 
       <main className="flex min-h-screen flex-col items-center justify-between">
         <HeroSection src="/risingsun.png" alt="Rising Sun" />
-        <div>
+        {/* <Introduction /> */}
+        {/* <ProfessionalExperience /> */}
+        <SkillsSolarSystem />
+        {/* <DirtyHandsSection /> */}
+        {/* <Hobbies /> */}
+
+        {/* <div>
           <h2 className="text-4xl font-semibold mt-20">Every sunrise marks a new beginning.</h2>
           <p className="m-12 text-lg text-gray-600">For me, engineering doesn't stop at the keyboard.<br />
 
@@ -32,7 +38,6 @@ export default function Home() {
           <p className="m-12 text-lg text-gray-600">Building adventures.</p>
           <p className="m-12 text-lg text-gray-600">Different material, Same mindset</p>
           <p className="m-12 text-lg text-gray-600">Ideas that took shape</p>
-          <p className="m-12 text-lg text-gray-600">I like to get my hands dirty trying new tools, I meant litrely as well</p>
           <p className="m-12 text-lg text-gray-600">I explore to stay curious</p>
           <p className="m-12 text-lg text-gray-600">never stop building.</p>
           <p className="m-12 text-lg text-gray-600">Every sunrise
@@ -41,8 +46,11 @@ export default function Home() {
             <br />
             Let's build together.</p>
           <p className="m-12 text-lg text-gray-600">Let's Build something worth remembering</p>
-        </div>
+        </div> */}
+        
+        <ContactMe />
       </main>
+      <Footer />
     </>
   );
 }
