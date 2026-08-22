@@ -47,12 +47,12 @@ export default function HeroSection({ src, alt }: HeroSectionProps) {
     const init = () => {
       ctx = gsap.context(() => {
         gsap.set(heroContentRef.current, {
-          background: "radial-gradient(#00000000, #000000, #000000a6)"
+          background: "radial-gradient(circle, #00000000, #000000, #000000a6)"
         });
 
         gsap.to(heroContentRef.current, {
           ease: "power3.out",
-          background: "radial-gradient(#00000000, #00000000, #00000000)",
+          background: "radial-gradient(circle, #00000000, #00000000, #00000000)",
           scrollTrigger: {
             trigger: document.body,
             start: "top top",
