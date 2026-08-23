@@ -1,8 +1,7 @@
 // components/shared/RevealText.tsx + RevealGroup.tsx
 "use client";
 
-import { motion, useReducedMotion } from "motion/react"; // note: "motion/react",
-// not "framer-motion" — see AGENTS.md re: the Motion rebrand
+import { motion, useReducedMotion } from "motion/react";
 import { ReactNode } from "react";
 import {
   fadeUp,
@@ -12,21 +11,10 @@ import {
 } from "@/lib/motion-variants";
 import type { Variants } from "motion/react";
 
-/**
- * Both components now import their animation shape from lib/motion-
- * variants.ts instead of defining `initial`/`animate` objects inline.
- * This is the actual point of a motion token system: change the site's
- * "feel" (ease curve, duration) in ONE file, every RevealText/RevealGroup
- * instance updates together, instead of hunting through every component
- * that copy-pasted its own version of "opacity 0, y 16, 0.6s."
- */
 
 interface RevealTextProps {
   children: ReactNode;
   className?: string;
-  /** Defaults to the standard fadeUp token. Pass "large" for hero-weight
-   *  moments (bigger elements, e.g. a large image) — uses fadeUpLarge
-   *  instead, still a shared token, not a one-off custom value. */
   variant?: "default" | "large";
 }
 
@@ -50,9 +38,6 @@ export function RevealText({ children, className, variant = "default" }: RevealT
 
 export function RevealGroup({ children, className }: RevealTextProps) {
   const shouldReduceMotion = useReducedMotion();
-  // when reduced motion is on, drop the stagger entirely — a fast,
-  // simultaneous fade reads as "respecting the setting," a staggered
-  // sequence (even a quick one) still reads as motion-heavy
   const containerVariants = shouldReduceMotion
     ? { hidden: {}, visible: { transition: { staggerChildren: 0 } } }
     : staggerContainer;
