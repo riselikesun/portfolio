@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export function GithubIcon({
+export function Github({
   size = 24,
   color = "currentColor",
   strokeWidth = 2,

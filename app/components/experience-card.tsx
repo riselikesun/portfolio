@@ -11,7 +11,7 @@ type Experience = {
 
 export default function ExperienceCard({ exp }: { exp: Experience }) {
   return (
-    <article className="bg-white/5 border border-white/6 rounded-lg p-6 shadow-sm">
+    <article id="work" className="bg-white/5 border border-white/6 rounded-lg p-6 shadow-sm">
       <header className="mb-3">
         <h3 className="text-lg font-semibold">{exp.role}</h3>
         <p className="text-sm text-slate-300">{exp.company} • {exp.location ?? 'Remote'}</p>
