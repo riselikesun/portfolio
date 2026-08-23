@@ -14,7 +14,7 @@ export default function Navbar() {
   return (
     <>
     <header className="fixed inset-x-0 top-0 z-50 h-16 bg-void/70 backdrop-blur-md border-b border-line-dark">
-      <div className="max-w-7xl mx-auto h-full px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto h-full flex items-center justify-between">
 
         <Link href="/" className="text-base font-bold text-fg">
           Rise Like Sun

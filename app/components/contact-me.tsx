@@ -1,6 +1,5 @@
-import { ArrowUpRight, BriefcaseBusiness, CalendarDays, Globe, Mail } from "lucide-react";
-import { LinkedinIcon } from "@/components/icons/lucide-linkedin"
-import { GithubIcon } from "@/components/icons/lucide-github"
+import { ArrowUpRight, CalendarDays, Mail, Linkedin, Github } from "@/components/icons"
+import {  } from "@/components/icons/lucide-github"
 import { Button } from "@/components/ui/button";
 import config from "@/app/config";
 
@@ -16,22 +15,23 @@ const contactMethods = [
         label: "GitHub",
         value: "github.com/riselikesun",
         href: config.github,
-        icon: GithubIcon,
+        icon: Github,
         accent: "text-emerald-300",
     },
     {
         label: "LinkedIn",
         value: "linkedin.com/in/riselikesun",
         href: config.linkedin,
-        icon: LinkedinIcon,
+        icon: Linkedin,
         accent: "text-blue-300",
     },
 ];
 
 export default function ContactMe() {
+    //  Todo: ⚠️ hardcoded colors
     return (
         <section id="contact" className="w-full bg-[#050816] px-6 py-20 text-white md:px-10 md:py-28">
-            <div className="mx-auto flex max-w-6xl flex-col">
+            <div className="mx-auto flex max-w-7xl flex-col">
                 <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
                     <div>
                         <p className="mb-4 text-xs font-medium uppercase tracking-[0.28em] text-amber-300">

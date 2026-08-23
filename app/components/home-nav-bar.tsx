@@ -100,7 +100,7 @@ const HomeAppBar = () => {
             ref={navRef}
             className="fixed inset-x-0 top-0 z-10 w-full bg-transparent shadow-none mix-blend-difference opacity-0"
         >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-2 items-center p-4">
 
                     <div />
