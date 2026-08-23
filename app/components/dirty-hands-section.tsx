@@ -28,10 +28,10 @@ const highlights = [
 
 export default function DirtyHandsSection() {
     return (
-        <section className="relative overflow-hidden bg-[#070706] text-[#F7F1E7] w-full">
+        <section className="relative overflow-hidden bg-[#070706] text-[#F7F1E7] w-full px-5 lg:px-12 sm:px-8 py-24 lg:py-32">
             {/* Todo: ⚠️ hardcoded #070706/#F7F1E7 instead of --void/--fg tokens */}
 
-            <div className="absolute flex justify-center w-full">
+            <div className="absolute flex justify-center w-full right-[-250px]">
                 <RevealText variant="large" className="max-w-7xl w-full">
                     <div className="relative aspect-[1/1] w-full">
                         <Image
@@ -41,12 +41,12 @@ export default function DirtyHandsSection() {
                             priority={false}
                             className="object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#070706] via-transparent to-black/5" />
+                        <div className="absolute shadow-[inset_0px_0px_24px_36px_#070706] inset-0 bg-[linear-gradient(100deg,#00000000_0%,#0000_81%,#070706_83%)]" />
                     </div>
                 </RevealText>
             </div>
 
-            <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12 pb-24 lg:pb-32 bg-[linear-gradient(90deg,#070706_0%,#070706_20%,transparent_100%)]">
+            <div className="relative mx-auto max-w-7xl bg-[linear-gradient(90deg,#070706_23%,transparent_100%)]">
 
                 <RevealText className="pb-14 max-w-4xl pt-24 lg:pt-32 bg-[radial-gradient(circle,rgba(0,0,0,1)_0%,rgba(0,0,0,.8)_30%,rgba(0,0,0,0)_70%)]">
                     <div className="mb-6 flex items-center gap-4">
