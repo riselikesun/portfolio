@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export function LinkedinIcon({
+export function Linkedin({
   size = 24,
   color = "currentColor",
   strokeWidth = 2,
