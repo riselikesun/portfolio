@@ -34,7 +34,7 @@ export default function ContactMe() {
             <div className="mx-auto flex max-w-7xl flex-col">
                 <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
                     <div>
-                        <p className="mb-4 text-xs font-medium uppercase tracking-[0.28em] text-amber-300">
+                        <p className="mb-4 text-xs font-medium uppercase tracking-[0.28em] text-[#D89432]">
                             Let&apos;s build something meaningful
                         </p>
                         <h2 className="max-w-xl text-4xl font-semibold tracking-tight text-white md:text-6xl">
@@ -46,7 +46,7 @@ export default function ContactMe() {
                     </div>
 
                     <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
-                        <Button asChild size="lg" className="bg-amber-300 text-slate-950 hover:bg-amber-200">
+                        <Button asChild size="lg" className="bg-[#D89432] text-slate-950 hover:bg-amber-400">
                             <a href={config.calendarURL} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-2">
                                 <CalendarDays className="h-4 w-4" />
                                 Book a coffee chat
@@ -83,7 +83,7 @@ export default function ContactMe() {
                 </div>
 
                 <div className="mt-16 rounded-3xl border border-amber-300/20 bg-gradient-to-br from-amber-300/8 via-slate-900 to-slate-900 p-8 md:p-10">
-                    <p className="text-sm uppercase tracking-[0.24em] text-amber-300">Response time</p>
+                    <p className="text-sm uppercase tracking-[0.24em] text-[#D89432]">Response time</p>
                     <div className="mt-6 grid gap-6 md:grid-cols-3">
                         <div>
                             <p className="text-3xl font-semibold text-white">24h</p>

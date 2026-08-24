@@ -5,8 +5,6 @@ import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, useInView } from "framer-motion";
-import { Button } from "@ui/button";
-import Link from "next/link";
 import { ArrowDown } from "lucide-react";
 import { AnimatedWord } from "./animated-word";
 import { CoffeeDialog } from "./coffee-dialog";
@@ -15,13 +13,7 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-
-type HeroSectionProps = {
-  src: string;
-  alt: string;
-};
-
-export default function HeroSection({ src, alt }: HeroSectionProps) {
+export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.25 });
@@ -82,8 +74,8 @@ export default function HeroSection({ src, alt }: HeroSectionProps) {
         className="absolute inset-0"
       >
         <Image
-          src={src}
-          alt={alt}
+          src="/risingsun.png"
+          alt="Rising Sun"
           fill
           priority
           className="object-cover w-full h-full"
@@ -137,9 +129,9 @@ export default function HeroSection({ src, alt }: HeroSectionProps) {
               </motion.p>
             </div>
             <div>
-              <motion.p variants={item}>
+              <motion.a href="#intro" className="cursor-default" variants={item}>
                 Scroll to rise
-              </motion.p>
+              </motion.a>
               <motion.p variants={item} className="flex justify-center p-2">
                 <ArrowDown className="animate-bounce" />
               </motion.p>

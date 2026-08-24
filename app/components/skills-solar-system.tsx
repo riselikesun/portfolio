@@ -358,7 +358,7 @@ export default function SkillsSolarSystem() {
         <div
           className="
             absolute left-1/2 top-1/2 z-20 flex h-28 w-28
-            -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#ff9800] text-[#21170B] 
+            -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#D89432] text-[#21170B] 
             shadow-[0_0_55px_rgba(255,190,90,0.24),0_0_140px_rgba(255,170,50,0.10)] sm:h-36 sm:w-36 md:h-44 md:w-44
           "
         >
@@ -377,7 +377,7 @@ export default function SkillsSolarSystem() {
             }}
             name={planet.name}
             size={planet.size}
-            color="#ffb445"
+            color="amber-400"
           />
         ))}
       </div>

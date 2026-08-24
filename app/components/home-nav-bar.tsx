@@ -102,17 +102,13 @@ const HomeAppBar = () => {
         >
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-2 items-center p-4">
-
                     <div />
 
                     <h1
                         ref={wordmarkRef}
-                        className="text-3xl md:text-6xl font-bold text-white text-center fixed left-1/2 -translate-x-1/2 top-5 w-max z-50 font-mono tracking-widest"
+                        className="2xl sm:text-3xl md:text-6xl font-bold text-white text-center fixed left-1/2 -translate-x-1/2 top-5 w-max z-50 font-mono tracking-widest"
                     >
-                        <a
-                            key='/'
-                            href='#'
-                        >
+                        <a key='/' href='#' >
                             Rise Like Sun
                         </a>
                     </h1>

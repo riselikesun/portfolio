@@ -28,27 +28,13 @@ const highlights = [
 
 export default function DirtyHandsSection() {
     return (
-        <section className="relative overflow-hidden bg-[#070706] text-[#F7F1E7] w-full px-5 lg:px-12 sm:px-8 py-24 lg:py-32">
+        <section className="relative overflow-hidden bg-[#070706] text-[#F7F1E7] w-full px-5 lg:px-12 sm:px-8 py-24 lg:py-32 z-0">
             {/* Todo: ⚠️ hardcoded #070706/#F7F1E7 instead of --void/--fg tokens */}
 
-            <div className="absolute flex justify-center w-full right-[-250px]">
-                <RevealText variant="large" className="max-w-7xl w-full">
-                    <div className="relative aspect-[1/1] w-full">
-                        <Image
-                            src="/dirty-hands.jpeg"
-                            alt="Working the soil in the garden"
-                            fill
-                            priority={false}
-                            className="object-cover"
-                        />
-                        <div className="absolute shadow-[inset_0px_0px_24px_36px_#070706] inset-0 bg-[linear-gradient(100deg,#00000000_0%,#0000_81%,#070706_83%)]" />
-                    </div>
-                </RevealText>
-            </div>
 
-            <div className="relative mx-auto max-w-7xl bg-[linear-gradient(90deg,#070706_23%,transparent_100%)]">
+            <div className="relative mx-auto max-w-7xl bg-[linear-gradient(90deg,#070706_23%,transparent_100%)] z-50">
 
-                <RevealText className="pb-14 max-w-4xl pt-24 lg:pt-32 bg-[radial-gradient(circle,rgba(0,0,0,1)_0%,rgba(0,0,0,.8)_30%,rgba(0,0,0,0)_70%)]">
+                <RevealText className="pb-4 md:pb-14 max-w-4xl md:pt-24 lg:pt-32 bg-[radial-gradient(circle,rgba(0,0,0,1)_0%,rgba(0,0,0,.8)_30%,rgba(0,0,0,0)_70%)]">
                     <div className="mb-6 flex items-center gap-4">
                         <span className="h-px w-10 bg-[#D89432]" />
                         <span className="text-xs font-medium uppercase tracking-[0.32em] text-[#D89432]">
@@ -76,7 +62,25 @@ export default function DirtyHandsSection() {
                         and do it all over again. That's how I grow as a developer.
                     </p>
                 </RevealText>
-                <RevealGroup className="mt-5 grid gap-5 md:grid-cols-3">
+            </div>
+
+            <div className="md:absolute flex justify-center w-full right-0 md:right-[-250px] top-24 lg:top-32 z-10">
+                <RevealText variant="large" className="max-w-7xl w-full">
+                    <div className="relative aspect-[1/1] w-full">
+                        <Image
+                            src="/dirty-hands.jpeg"
+                            alt="Working the soil in the garden"
+                            fill
+                            priority={false}
+                            className="object-cover"
+                        />
+                        <div className="absolute shadow-[inset_0px_0px_24px_36px_#070706] inset-0 md:bg-[linear-gradient(100deg,#00000000_0%,#0000_81%,#070706_83%)]" />
+                    </div>
+                </RevealText>
+            </div>
+
+            <div className="relative mx-auto max-w-7xl bg-[linear-gradient(90deg,#070706_23%,transparent_100%)] z-50">
+                <RevealGroup className="pt-5 grid gap-5 md:grid-cols-3">
                     {highlights.map((item) => {
                         const Icon = item.icon;
                         return (
@@ -99,7 +103,7 @@ export default function DirtyHandsSection() {
                         );
                     })}
                 </RevealGroup>
-                <RevealText className="mt-24 overflow-hidden rounded-[2rem] border border-white/[0.08] bg-[#0C0B09]">
+                <RevealText className="mt-48 overflow-hidden rounded-[2rem] border border-white/[0.08] bg-[#0C0B09] hidden md:block">
                     <div className="grid md:grid-cols-5">
                         {principles.map((item, index) => {
                             const Icon = item.icon;
@@ -121,6 +125,7 @@ export default function DirtyHandsSection() {
                     </div>
                 </RevealText>
             </div>
+
         </section>
     );
 }
