@@ -350,7 +350,6 @@ export default function SkillsSolarSystem() {
               stroke="#ffe9c3"
               strokeOpacity="0.075"
               strokeWidth="1"
-              
             />
           ))}
         </svg>
