@@ -377,7 +377,7 @@ export default function SkillsSolarSystem() {
             }}
             name={planet.name}
             size={planet.size}
-            color="amber-400"
+            color="#ffc876ff"
           />
         ))}
       </div>
