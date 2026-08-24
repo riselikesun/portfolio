@@ -19,7 +19,7 @@ export function CoffeeDialog() {
         <Button
           size="default"
           cursor="pointer"
-          className="bg-amber-300 text-slate-950 hover:bg-amber-200"
+          className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#D89432] text-black text-sm font-bold rounded-full tracking-wide hover:bg-amber-400 transition-colors duration-200 group"
         >
           ☕ Let's Grab a Coffee
         </Button>

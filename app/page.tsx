@@ -6,8 +6,8 @@ export default function Home() {
       <HomeAppBar />
 
       <main className="flex min-h-screen flex-col items-center justify-between">
-        <HeroSection src="/risingsun.png" alt="Rising Sun" />
-        {/* <Introduction /> */}
+        <HeroSection />
+        <Introduction />
         {/* <ProfessionalExperience /> */}
         <SkillsSolarSystem />
         <DirtyHandsSection />
