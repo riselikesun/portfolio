@@ -2,6 +2,7 @@
 
 import { TechItem } from "@/app/types/types";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { TechPill } from "./tech-pill";
 
 interface TechStackDialogProps {
   tech: TechItem[];
@@ -26,12 +27,7 @@ export function TechStackDialog({ tech, hiddenCount }: TechStackDialogProps) {
 
         <div className="flex flex-wrap gap-2 mt-4">
           {tech.map((t, i) => (
-            <div 
-              key={i} 
-              className="px-4 py-2 text-sm font-medium bg-white/[0.03] text-slate-300 border border-white/10 rounded-xl hover:bg-white/[0.06] hover:border-[#D89432]/50 transition-colors"
-            >
-              {t.name}
-            </div>
+            <TechPill key={i} tech={t} className="px-4 py-2 text-sm" />
           ))}
         </div>
       </DialogContent>

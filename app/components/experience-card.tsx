@@ -2,6 +2,7 @@ import { Experience } from '../types/types'
 import { ProjectDialog } from './experience/project-dialog'
 import { TechStackDialog } from './experience/tech-stack-dialog'
 import { ExperienceDialog } from './experience/experience-dialog'
+import { TechPill } from './experience/tech-pill'
 import { ExternalLink } from 'lucide-react'
 
 interface ExperienceCardProps {
@@ -124,13 +125,7 @@ export default function ExperienceCard({ exp, isFeatured = false }: ExperienceCa
         {visibleTech.length > 0 && (
           <div className="flex flex-wrap gap-2 items-center flex-grow">
             {visibleTech.map((tech, i) => (
-              <span
-                key={i}
-                className="inline-flex items-center px-2.5 py-1.5 rounded-md bg-white/[0.03] border border-white/[0.08] text-xs font-medium text-slate-300 hover:text-white hover:border-[#D89432]/40 transition-colors cursor-default"
-                title={tech.tags ? `Tags: ${tech.tags.join(', ')} (${tech.proficiency}%)` : undefined}
-              >
-                {tech.name}
-              </span>
+              <TechPill key={i} tech={tech} className="px-2.5 py-1.5 text-xs" />
             ))}
             {hasMoreTech && (
               <TechStackDialog tech={uniqueTech} hiddenCount={uniqueTech.length - maxTech} />
