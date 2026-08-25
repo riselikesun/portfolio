@@ -1,13 +1,4 @@
-import React from 'react'
-
-type Experience = {
-  company: string
-  role: string
-  period: string
-  location?: string
-  responsibilities: string[]
-  tech?: string[]
-}
+import { Experience } from '../types/types'
 
 export default function ExperienceCard({ exp }: { exp: Experience }) {
   return (
@@ -19,7 +10,7 @@ export default function ExperienceCard({ exp }: { exp: Experience }) {
       </header>
 
       <ul className="list-disc list-inside space-y-2 text-sm text-slate-200">
-        {exp.responsibilities.map((r, i) => (
+        {exp.responsibilities?.map((r, i) => (
           <li key={i}>{r}</li>
         ))}
       </ul>

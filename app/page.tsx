@@ -8,7 +8,7 @@ export default function Home() {
       <main className="flex min-h-screen flex-col items-center justify-between">
         <HeroSection />
         <Introduction />
-        {/* <ProfessionalExperience /> */}
+        <ProfessionalExperience />
         <SkillsSolarSystem />
         <DirtyHandsSection />
         {/* <Hobbies /> */}
@@ -19,13 +19,10 @@ export default function Home() {
 
             Whether it's designing scalable software, <br />
             building a 3D printed aircraft,<br />
-            constructing a swimming pool,<br />
             or creating a product from scratch.</p>
           <p className="m-12 text-lg text-gray-600">
-
             the process is always the same.</p>
           <p className="m-12 text-lg text-gray-600">
-
             Understand.
             Design.
             Build.
