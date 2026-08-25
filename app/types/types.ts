@@ -64,4 +64,5 @@ export type Experience = {
   tech?: TechItem[];
   concepts?: ConceptItem[];
   achievements?: string[];
+  priority?: number;
 };
