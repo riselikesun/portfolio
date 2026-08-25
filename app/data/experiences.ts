@@ -43,6 +43,7 @@ export const experiences: Experience[] = [
 		role: 'Full stack engineer II | Lead Engineer',
 		period: '12/2021–09/2024',
 		location: 'Remote',
+		priority: 1,
 		projects: [
 			{
 				name: 'Paraphrasing Tool',

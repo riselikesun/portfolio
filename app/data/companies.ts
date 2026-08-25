@@ -21,7 +21,7 @@ export const companies = {
   },
   dataGrokr: {
     name: 'DataGrokr',
-    website: 'https://www.datagrokr.com',
+    website: 'https://datagrokr.co/',
     domain: 'Software and Services',
     description: 'DataGrokr is a specialized data engineering and cloud consulting firm providing enterprise digital transformation services.',
   },

@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="en" className={cn("font-sans", figtree.variable)}>
+    <html lang="en" className={cn("font-sans dark", figtree.variable)}>
       <GoogleTagManager gtmId={config.googleTagID} />
       <body className={inter.className}>
         {children}
