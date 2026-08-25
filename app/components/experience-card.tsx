@@ -1,4 +1,8 @@
 import { Experience } from '../types/types'
+import { ProjectDialog } from './experience/project-dialog'
+import { TechStackDialog } from './experience/tech-stack-dialog'
+import { ExperienceDialog } from './experience/experience-dialog'
+import { ExternalLink } from 'lucide-react'
 
 interface ExperienceCardProps {
   exp: Experience
@@ -58,9 +62,10 @@ export default function ExperienceCard({ exp, isFeatured = false }: ExperienceCa
                   href={exp.company.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold text-[#D89432] hover:text-amber-300 transition-colors"
+                  className="font-semibold text-[#D89432] hover:text-amber-300 transition-colors flex items-center gap-1 group"
                 >
                   {exp.company.name}
+                  <ExternalLink size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
               ) : (
                 <span className="font-semibold text-[#D89432]">{exp.company.name}</span>
@@ -89,10 +94,7 @@ export default function ExperienceCard({ exp, isFeatured = false }: ExperienceCa
                 <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Key Projects</h4>
                 <div className="flex flex-col gap-3">
                   {exp.projects.slice(0, 2).map((proj, i) => (
-                    <div key={i} className="bg-white/[0.02] rounded-xl p-4 border border-white/[0.05]">
-                      <div className="font-medium text-white mb-1">{proj.name}</div>
-                      <p className="text-sm text-slate-400 leading-relaxed line-clamp-2">{proj.description}</p>
-                    </div>
+                    <ProjectDialog key={i} project={proj} isFeatured={false} />
                   ))}
                 </div>
               </div>
@@ -108,10 +110,7 @@ export default function ExperienceCard({ exp, isFeatured = false }: ExperienceCa
                 <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">Key Projects</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4">
                   {exp.projects.slice(0, 4).map((proj, i) => (
-                    <div key={i} className="bg-white/[0.02] rounded-2xl p-5 border border-white/[0.05] hover:bg-white/[0.04] transition-colors flex flex-col min-h-[120px]">
-                      <div className="font-medium text-white mb-2">{proj.name}</div>
-                      <p className="text-sm text-slate-400 leading-relaxed line-clamp-3">{proj.description}</p>
-                    </div>
+                    <ProjectDialog key={i} project={proj} companyTech={exp.tech} isFeatured={true} />
                   ))}
                 </div>
               </div>
@@ -121,9 +120,9 @@ export default function ExperienceCard({ exp, isFeatured = false }: ExperienceCa
       </div>
 
       {/* Tech Stack spans full width at the bottom */}
-      {visibleTech.length > 0 && (
-        <div className="mt-auto pt-6 border-t border-white/[0.06] w-full">
-          <div className="flex flex-wrap gap-2">
+      <div className="mt-auto pt-6 border-t border-white/[0.06] w-full flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        {visibleTech.length > 0 && (
+          <div className="flex flex-wrap gap-2 items-center flex-grow">
             {visibleTech.map((tech, i) => (
               <span
                 key={i}
@@ -134,13 +133,15 @@ export default function ExperienceCard({ exp, isFeatured = false }: ExperienceCa
               </span>
             ))}
             {hasMoreTech && (
-              <span className="inline-flex items-center px-2.5 py-1.5 rounded-md bg-transparent border border-dashed border-white/20 text-xs text-slate-500">
-                +{(exp.tech?.length || 0) - maxTech} more
-              </span>
+              <TechStackDialog tech={uniqueTech} hiddenCount={uniqueTech.length - maxTech} />
             )}
           </div>
+        )}
+        
+        <div className="flex-shrink-0 self-start sm:self-auto">
+          <ExperienceDialog exp={exp} />
         </div>
-      )}
+      </div>
     </article>
   )
 }
