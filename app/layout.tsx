@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   description: "Suraj Sharma — Staff Full Stack Engineer & Team Lead. Experienced in scaling web applications to 50M+ users, building Agentic AI workflows, and modern cloud architectures.",
 };
 
+import { TooltipProvider } from "@/components/ui/tooltip";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -23,7 +25,9 @@ export default function RootLayout({
     <html lang="en" className={cn("font-sans dark", figtree.variable)}>
       <GoogleTagManager gtmId={config.googleTagID} />
       <body className={inter.className}>
-        {children}
+        <TooltipProvider delayDuration={200}>
+          {children}
+        </TooltipProvider>
       </body>
     </html>
   );

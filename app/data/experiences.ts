@@ -171,6 +171,10 @@ export const experiences: Experience[] = [
 		role: 'Full stack engineer',
 		period: '06/2021–11/2021',
 		location: 'Remote',
+		achievements: [
+			'Designed and built a robust data ingestion module capable of handling both structured and unstructured data from diverse sources.',
+			'Integrated Google Colab and Jupyter Notebook directly into the dashboard, enabling seamless data analysis and model training in a single platform.',
+		],
 		projects: [
 			{
 				name: 'DataPipes',
@@ -181,8 +185,6 @@ export const experiences: Experience[] = [
 				responsibilities: [
 					'Created intuitive UI designs enabling rapid data center configuration and seamless multi-cloud data orchestration.',
 					'Developed a real-time data streaming interface featuring live pipeline monitoring, error highlighting, and intuitive data flow visualization.',
-					'Integrated Google Colab and Jupyter Notebook directly into the dashboard, enabling seamless data analysis and model training in a single platform.',
-					'Designed and built a robust data ingestion module capable of handling both structured and unstructured data from diverse sources.',
 				],
 				tech: [
 					techCatalog.typescript,
@@ -229,6 +231,7 @@ export const experiences: Experience[] = [
 		projects: [
 			{
 				client: 'Verisk Insurance',
+				clientWebsite: 'https://www.verisk.com/insurance/',
 				name: 'QPC Migration',
 				domain: 'Insurance',
 				teamSize: 6,
@@ -280,6 +283,11 @@ export const experiences: Experience[] = [
 		role: 'Full stack engineer',
 		period: '04/2018–01/2020',
 		location: 'Bangalore, India',
+		achievements: [
+			'Engineered a unified, multifunctional platform that consolidated 100+ disparate tools into a single, cohesive application, significantly reducing manual data transfer and errors.',
+			'Architected and implemented secure RESTful APIs and optimized CI/CD pipelines to streamline deployments and reduce build times.',
+			'Led end-to-end development of client features, ensuring high reliability and comprehensive test coverage.',
+		],
 		projects: [
 			{
 				client: 'Wood Mackenzie',

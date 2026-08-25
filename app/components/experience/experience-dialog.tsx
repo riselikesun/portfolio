@@ -3,6 +3,7 @@
 import { Experience } from "@/app/types/types";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ArrowRight, ExternalLink } from "lucide-react";
+import { TechPill } from "./tech-pill";
 
 interface ExperienceDialogProps {
   exp: Experience;
@@ -34,9 +35,9 @@ export function ExperienceDialog({ exp }: ExperienceDialogProps) {
               </DialogTitle>
               <div className="flex items-center gap-2 text-lg text-[#D89432] font-medium">
                 {exp.company.website ? (
-                  <a 
-                    href={exp.company.website} 
-                    target="_blank" 
+                  <a
+                    href={exp.company.website}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 hover:text-amber-300 transition-colors group/link"
                   >
@@ -68,18 +69,30 @@ export function ExperienceDialog({ exp }: ExperienceDialogProps) {
             </section>
           )}
 
+          {/* All Tech */}
+          {uniqueTech.length > 0 && (
+            <section>
+              <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4 border-b border-white/10 pb-2">Comprehensive Tech Stack</h4>
+              <div className="flex flex-wrap gap-2">
+                {uniqueTech.map((t, i) => (
+                  <TechPill key={i} tech={t} className="px-3 py-1.5 text-xs" />
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* Projects */}
           {exp.projects && exp.projects.length > 0 && (
             <section>
               <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4 border-b border-white/10 pb-2">Key Projects</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4">
                 {exp.projects.map((proj, i) => (
                   <div key={i} className="bg-white/[0.02] rounded-xl p-5 border border-white/[0.05]">
                     <div className="font-medium text-white mb-2">
                       {proj.projectWebsite ? (
-                        <a 
-                          href={proj.projectWebsite} 
-                          target="_blank" 
+                        <a
+                          href={proj.projectWebsite}
+                          target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 hover:text-[#D89432] transition-colors group/link"
                         >
@@ -90,6 +103,24 @@ export function ExperienceDialog({ exp }: ExperienceDialogProps) {
                         <span>{proj.name}</span>
                       )}
                     </div>
+                    {proj.client && (
+                      <div className="flex items-center gap-1.5 text-xs font-medium mb-3">
+                        <span className="text-slate-500">Client:</span>
+                        {proj.clientWebsite ? (
+                          <a
+                            href={proj.clientWebsite}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-[#D89432] hover:text-amber-300 transition-colors group/client"
+                          >
+                            {proj.client}
+                            <ExternalLink size={10} className="text-[#D89432] group-hover/client:text-amber-300 transition-colors" />
+                          </a>
+                        ) : (
+                          <span className="text-slate-300">{proj.client}</span>
+                        )}
+                      </div>
+                    )}
                     <p className="text-sm text-slate-400 leading-relaxed mb-4">
                       {proj.description}
                     </p>
@@ -104,23 +135,6 @@ export function ExperienceDialog({ exp }: ExperienceDialogProps) {
                       </ul>
                     )}
                   </div>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {/* All Tech */}
-          {uniqueTech.length > 0 && (
-            <section>
-              <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4 border-b border-white/10 pb-2">Comprehensive Tech Stack</h4>
-              <div className="flex flex-wrap gap-2">
-                {uniqueTech.map((t, i) => (
-                  <span 
-                    key={i} 
-                    className="px-3 py-1.5 text-xs font-medium bg-white/[0.03] text-slate-300 border border-white/10 rounded-full"
-                  >
-                    {t.name}
-                  </span>
                 ))}
               </div>
             </section>
