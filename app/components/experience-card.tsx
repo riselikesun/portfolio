@@ -4,6 +4,19 @@ import { TechStackDialog } from './experience/tech-stack-dialog'
 import { ExperienceDialog } from './experience/experience-dialog'
 import { TechPill } from './experience/tech-pill'
 import { ExternalLink } from 'lucide-react'
+import { motion, Variants } from 'motion/react'
+
+const textVariants: Variants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  },
+};
 
 interface ExperienceCardProps {
   exp: Experience
@@ -45,13 +58,13 @@ export default function ExperienceCard({ exp, isFeatured = false }: ExperienceCa
       <div className={isFeatured ? "grid grid-cols-1 lg:grid-cols-2 gap-8 flex-grow mb-6" : "flex flex-col flex-grow mb-6"}>
         {/* Left Column (or full width if not featured) */}
         <div className="flex flex-col">
-          <header className="mb-5 flex flex-col gap-1">
+          <motion.header variants={textVariants} className="mb-5 flex flex-col gap-1">
             <div className="flex justify-between items-start flex-wrap gap-4">
               <h3 className={`font-bold tracking-tight text-white ${isFeatured ? 'text-2xl md:text-3xl' : 'text-xl'}`}>
                 {exp.role}
               </h3>
               {isFeatured && (
-                <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#D89432]/10 border border-[#D89432]/20 text-xs font-medium text-[#D89432] whitespace-nowrap">
+                <span className="inline-flex items-center px-3 py-1 mb-3 rounded-full bg-[#D89432]/10 border border-[#D89432]/20 text-xs font-medium text-[#D89432] whitespace-nowrap">
                   Featured Role
                 </span>
               )}
@@ -75,9 +88,9 @@ export default function ExperienceCard({ exp, isFeatured = false }: ExperienceCa
               <span className="text-slate-400">{exp.location ?? exp.company.location ?? 'Remote'}</span>
             </p>
             <p className="text-sm font-mono text-slate-500 mt-1">{exp.period}</p>
-          </header>
+          </motion.header>
 
-          <div className="flex-grow">
+          <motion.div variants={textVariants} className="flex-grow">
             {highlights.length > 0 && (
               <ul className="space-y-3">
                 {highlights.map((r, i) => (
@@ -100,12 +113,12 @@ export default function ExperienceCard({ exp, isFeatured = false }: ExperienceCa
                 </div>
               </div>
             )}
-          </div>
+          </motion.div>
         </div>
 
         {/* Right Column (only if featured) */}
         {isFeatured && (
-          <div className="flex flex-col">
+          <motion.div variants={textVariants} className="flex flex-col">
             {exp.projects && exp.projects.length > 0 && (
               <div className="flex-grow">
                 <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">Key Projects</h4>
@@ -116,12 +129,12 @@ export default function ExperienceCard({ exp, isFeatured = false }: ExperienceCa
                 </div>
               </div>
             )}
-          </div>
+          </motion.div>
         )}
       </div>
 
       {/* Tech Stack spans full width at the bottom */}
-      <div className="mt-auto pt-6 border-t border-white/[0.06] w-full flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <motion.div variants={textVariants} className="mt-auto pt-6 border-t border-white/[0.06] w-full flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         {visibleTech.length > 0 && (
           <div className="flex flex-wrap gap-2 items-center flex-grow">
             {visibleTech.map((tech, i) => (
@@ -136,8 +149,7 @@ export default function ExperienceCard({ exp, isFeatured = false }: ExperienceCa
         <div className="flex-shrink-0 self-start sm:self-auto">
           <ExperienceDialog exp={exp} />
         </div>
-      </div>
+      </motion.div>
     </article>
   )
 }
-
