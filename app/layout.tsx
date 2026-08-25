@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Suraj Sharma | Software engineer",
-  description: "A innovative person who uses his creativity to do a lot with very little he has",
+  description: "Suraj Sharma — Staff Full Stack Engineer & Team Lead. Experienced in scaling web applications to 50M+ users, building Agentic AI workflows, and modern cloud architectures.",
 };
 
 export default function RootLayout({
