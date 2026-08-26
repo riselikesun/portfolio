@@ -104,14 +104,14 @@ const HomeAppBar = () => {
                 <div className="grid grid-cols-2 items-center p-4">
                     <div />
 
-                    <h1
+                    <p
                         ref={wordmarkRef}
                         className="2xl sm:text-3xl md:text-6xl font-bold text-white text-center fixed left-1/2 -translate-x-1/2 top-5 w-max z-50 font-mono tracking-widest"
                     >
                         <a key='/' href='#' >
                             Rise Like Sun
                         </a>
-                    </h1>
+                    </p>
 
                     <div className="flex items-center justify-end gap-8">
                         {navLinks.map((link) => (

@@ -10,8 +10,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Suraj Sharma | Software engineer",
-  description: "A innovative person who uses his creativity to do a lot with very little he has",
+  description: "Suraj Sharma — Staff Full Stack Engineer & Team Lead. Experienced in scaling web applications to 50M+ users, building Agentic AI workflows, and modern cloud architectures.",
 };
+
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 export default function RootLayout({
   children,
@@ -20,10 +22,12 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="en" className={cn("font-sans", figtree.variable)}>
+    <html lang="en" className={cn("font-sans dark", figtree.variable)}>
       <GoogleTagManager gtmId={config.googleTagID} />
       <body className={inter.className}>
-        {children}
+        <TooltipProvider delayDuration={200}>
+          {children}
+        </TooltipProvider>
       </body>
     </html>
   );
