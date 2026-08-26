@@ -2,6 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
+import { SmoothScrollLink } from "./ui/smooth-scroll-link";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -142,7 +143,7 @@ export default function IntroSection() {
             variants={itemVariants}
             className="flex flex-wrap gap-4 justify-center lg:justify-start pt-2"
           >
-            <a
+            <SmoothScrollLink
               href="#contact"
               className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#D89432] text-black text-sm font-bold rounded-full tracking-wide hover:bg-amber-400 transition-colors duration-200 group"
             >
@@ -157,13 +158,13 @@ export default function IntroSection() {
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
               </svg>
-            </a>
-            <a
-              href="#projects"
+            </SmoothScrollLink>
+            <SmoothScrollLink
+              href="#professional-experience"
               className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/15 text-white text-sm font-semibold rounded-full tracking-wide hover:border-[#D89432]/60 hover:text-[#D89432] transition-all duration-200"
             >
               View My Work
-            </a>
+            </SmoothScrollLink>
           </motion.div>
         </motion.div>
 
