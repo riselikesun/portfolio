@@ -4,9 +4,37 @@ import { useLayoutEffect, useMemo, useRef } from "react";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, Variants } from "motion/react";
 
 import { skills } from "./skills";
 import SkillPlanet from "./skill-planet";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const headingVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.25, 0.1, 0.25, 1],
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const textVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  },
+};
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -303,22 +331,28 @@ export default function SkillsSolarSystem() {
       className="relative min-h-[100vh] w-full overflow-hidden bg-[#050505] text-white"
     >
       {/* Heading */}
-      <div
+      <motion.div
+        variants={headingVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
         className="absolute left-1/2 top-[9vh] z-50 w-full -translate-x-1/2 px-6 text-center"
       >
-        <h2
+        <motion.h2
+          variants={textVariants}
           id="skills-heading"
           className="text-3xl font-medium tracking-[-0.04em] sm:text-4xl md:text-5xl"
         >
           What I build with.
-        </h2>
+        </motion.h2>
 
-        <p
+        <motion.p
+          variants={textVariants}
           className="mt-3 text-sm text-white/40 sm:text-base"
         >
           A few of the tools that orbit my work.
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
 
       {/* Solar system */}
       <div

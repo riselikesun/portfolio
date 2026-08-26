@@ -71,6 +71,7 @@ export default function DirtyHandsSection() {
                             src="/dirty-hands.jpeg"
                             alt="Working the soil in the garden"
                             fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
                             priority={false}
                             className="object-cover"
                         />
