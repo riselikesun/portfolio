@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import config from './config';
 import { GoogleTagManager } from '@next/third-parties/google'
+import SmoothScroll from './components/smooth-scroll';
 
 const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" });
 const inter = Inter({ subsets: ["latin"] });
@@ -26,7 +27,9 @@ export default function RootLayout({
       <GoogleTagManager gtmId={config.googleTagID} />
       <body className={inter.className}>
         <TooltipProvider delayDuration={200}>
-          {children}
+          <SmoothScroll>
+            {children}
+          </SmoothScroll>
         </TooltipProvider>
       </body>
     </html>
