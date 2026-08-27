@@ -122,7 +122,7 @@ export function HobbyDetailModal({ hobby, onClose }: HobbyDetailModalProps) {
                     </h2>
 
                     {/* Details */}
-                    <p className="text-base sm:text-lg text-white/50 leading-[1.85]">
+                    <p className="text-base sm:text-lg text-white/50 leading-[1.85] whitespace-pre-wrap">
                       {hobby.details}
                     </p>
                   </div>
