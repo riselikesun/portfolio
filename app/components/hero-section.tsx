@@ -8,7 +8,7 @@ import { motion, useInView } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { AnimatedWord } from "./animated-word";
 import { CoffeeDialog } from "./coffee-dialog";
-import { SmoothScrollLink } from "./ui/smooth-scroll-link";
+import { SmoothScrollLink } from "@/components/ui/smooth-scroll-link";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);

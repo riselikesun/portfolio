@@ -4,7 +4,8 @@ import { motion, useScroll, useTransform, useMotionValue } from "motion/react";
 import { Sun } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { SmoothScrollLink } from "./ui/smooth-scroll-link";
+import { SmoothScrollLink } from "@/components/ui/smooth-scroll-link";
+
 
 const HomeAppBar = () => {
     const { scrollY } = useScroll();

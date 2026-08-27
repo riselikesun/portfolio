@@ -2,7 +2,8 @@
 
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
-import { SmoothScrollLink } from "./ui/smooth-scroll-link";
+import { SmoothScrollLink } from "@/components/ui/smooth-scroll-link";
+
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
