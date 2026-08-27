@@ -2,13 +2,14 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import config from "@/app/config";
 
 export const metadata: Metadata = {
     title: "Suraj Sharma | Resume",
     description: "Staff Web Developer — experience, skills, and downloadable resume.",
 };
 
-const PDF_PATH = "/suraj_sharma_resume.pdf";
+const PDF_PATH = `${config.blobBaseUrl}/suraj_sharma_resume.pdf`;
 
 export default function ResumePage() {
     return (

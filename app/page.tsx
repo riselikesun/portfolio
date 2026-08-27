@@ -11,7 +11,7 @@ export default function Home() {
         <ProfessionalExperience />
         <SkillsSolarSystem />
         <DirtyHandsSection />
-        {/* <Hobbies /> */}
+        <Hobbies />
 
         {/* <div>
           <h2 className="text-4xl font-semibold mt-20">Every sunrise marks a new beginning.</h2>

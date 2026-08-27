@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { BlobImage } from "@/components/ui/blob-image";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,6 +8,7 @@ import { motion, useInView } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { AnimatedWord } from "./animated-word";
 import { CoffeeDialog } from "./coffee-dialog";
+import { SmoothScrollLink } from "@/components/ui/smooth-scroll-link";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -39,7 +40,7 @@ export default function HeroSection() {
     const init = () => {
       ctx = gsap.context(() => {
         gsap.set(heroContentRef.current, {
-          background: "radial-gradient(circle, #00000000, #000000, #000000a6)"
+          background: "radial-gradient(circle, #0000007e, #000000, #000000a6)"
         });
 
         gsap.to(heroContentRef.current, {
@@ -73,11 +74,11 @@ export default function HeroSection() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="absolute inset-0"
       >
-        <Image
+        <BlobImage
           src="/risingsun.png"
           alt="Rising Sun"
           fill
-          priority
+          preload
           className="object-cover w-full h-full"
         />
         <div
@@ -89,10 +90,10 @@ export default function HeroSection() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
-            <motion.p variants={item} className="md:text-xl md:tracking-[16px] text-amber-300">
+            <motion.p variants={item} className="text-sm sm:text-base md:text-lg lg:text-xl tracking-[4px] sm:tracking-[8px] md:tracking-[12px] lg:tracking-[16px] text-amber-300">
               SOFTWARE ENGINEER
             </motion.p>
-            <h1 className="text-5xl md:text-9xl font-sans-serif text-white">
+            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-sans-serif text-white">
               <motion.span
                 variants={item}
               >Suraj </motion.span>
@@ -123,15 +124,17 @@ export default function HeroSection() {
                 Building software that&nbsp;
                 <AnimatedWord
                   words={["scales.", "performs.", "delights.", "matters."]}
-                  className="w-30 text-amber-300"
+                  className="w-20 text-amber-300"
                   interval={3000}
                 />
               </motion.p>
             </div>
             <div>
-              <motion.a href="#intro" className="cursor-default" variants={item}>
-                Scroll to rise
-              </motion.a>
+              <motion.div variants={item}>
+                <SmoothScrollLink href="#intro" className="cursor-pointer">
+                  Scroll to rise
+                </SmoothScrollLink>
+              </motion.div>
               <motion.p variants={item} className="flex justify-center p-2">
                 <ArrowDown className="animate-bounce" />
               </motion.p>

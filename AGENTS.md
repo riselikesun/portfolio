@@ -374,7 +374,6 @@ Use Next.js Image component whenever possible.
 Hero images:
 
 - fill
-- priority
 - sizes
 - object-cover
 

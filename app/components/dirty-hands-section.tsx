@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { BlobImage } from "@/components/ui/blob-image";
 import {
     FlaskConical,
     Hammer,
@@ -67,13 +67,12 @@ export default function DirtyHandsSection() {
             <div className="md:absolute flex justify-center w-full right-0 md:right-[-250px] top-24 lg:top-32 z-10">
                 <RevealText variant="large" className="max-w-7xl w-full">
                     <div className="relative aspect-[1/1] w-full">
-                        <Image
+                        <BlobImage
                             src="/dirty-hands.jpeg"
                             alt="Working the soil in the garden"
                             fill
                             sizes="(max-width: 768px) 100vw, 50vw"
-                            priority={false}
-                            className="object-cover"
+                            className="object-cover rounded-2xl md:rounded-[40px] opacity-70 border border-border"
                         />
                         <div className="absolute shadow-[inset_0px_0px_24px_36px_#070706] inset-0 md:bg-[linear-gradient(100deg,#00000000_0%,#0000_81%,#070706_83%)]" />
                     </div>

@@ -1,135 +1,149 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, useScroll, useTransform, useMotionValue } from "motion/react";
+import { Sun } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { SmoothScrollLink } from "@/components/ui/smooth-scroll-link";
 
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger);
-}
 
 const HomeAppBar = () => {
-    const navRef = useRef<HTMLElement>(null);
-    const wordmarkRef = useRef<HTMLHeadingElement>(null);
-    const didAnimateRef = useRef(false);
+    const { scrollY } = useScroll();
+    const rotate = useTransform(scrollY, [0, 1000], [0, 90], { clamp: false });
 
-    const navLinks = [
-        { label: "Work", href: "#work" },
-        { label: "Contact", href: "#contact" },
-        { label: "Resume", href: "/resume", target: "_blank", rel: "noopener noreferrer" },
-    ];
+    const placeholderRef = useRef<HTMLDivElement>(null);
+    const offsetX = useMotionValue(0);
+    const offsetY = useMotionValue(0);
+    const [isMounted, setIsMounted] = useState(false);
+
+    // Store the initial innerHeight to prevent jumping when mobile browser UI hides/shows on scroll
+    const initialHeightRef = useRef(typeof window !== 'undefined' ? window.innerHeight : 0);
+    const initialWidthRef = useRef(typeof window !== 'undefined' ? window.innerWidth : 0);
 
     useEffect(() => {
-        if (!wordmarkRef.current || !navRef.current) return;
-
-        let ctx: gsap.Context;
-        const getOffsetY = () => {
-            const navHeight = navRef.current?.offsetHeight ?? 64;
-            const restingCenter = navHeight / 2;
-            const viewportMid = window.innerHeight / 2;
-            return viewportMid - restingCenter;
-        };
-
-        const init = () => {
-            ctx = gsap.context(() => {
-                if (!didAnimateRef.current) {
-                    gsap.set(navRef.current, {
-                        y: -120,
-                        opacity: 0,
-                    });
-
-                    gsap.to(navRef.current, {
-                        y: 0,
-                        opacity: 1,
-                        duration: 0.8,
-                        delay: 0.5,
-                        ease: "power3.out",
-                        onComplete: () => {
-                            didAnimateRef.current = true;
-                        },
-                    });
-                } else {
-                    // On resize/re-init, just set final position instantly
-                    gsap.set(navRef.current, { y: 0, opacity: 1 });
+        setIsMounted(true);
+        const updatePos = () => {
+            if (placeholderRef.current) {
+                // If width changed (e.g. orientation change), we update the stored height.
+                // Otherwise, we keep the initial height so mobile scroll doesn't cause jumps.
+                if (window.innerWidth !== initialWidthRef.current) {
+                    initialHeightRef.current = window.innerHeight;
+                    initialWidthRef.current = window.innerWidth;
                 }
 
-                gsap.set(wordmarkRef.current, {
-                    scale: 1,
-                    y: getOffsetY(),
-                    transformOrigin: "50% 0%",
-                });
+                const centerX = document.documentElement.clientWidth / 2;
+                const centerY = initialHeightRef.current * 0.4;
 
-                gsap.to(wordmarkRef.current, {
-                    scale: 0.267,
-                    y: 0,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: document.body,
-                        start: "top top",
-                        end: "+=100",
-                        scrub: 0.6,
-                    },
-                });
-            }, navRef);
+                const rect = placeholderRef.current.getBoundingClientRect();
+                const placeholderCenterX = rect.left + rect.width / 2;
+
+                offsetX.set(centerX - placeholderCenterX);
+                offsetY.set(centerY);
+            }
         };
 
-        init();
+        updatePos();
 
-        let resizeTimer: ReturnType<typeof setTimeout>;
-        const handleResize = () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                ctx.revert();
-                init();
-                ScrollTrigger.refresh();
-            }, 150);
+        let frame: number;
+        let count = 0;
+        const checkLayout = () => {
+            updatePos();
+            count++;
+            if (count < 60) frame = requestAnimationFrame(checkLayout);
         };
-        window.addEventListener("resize", handleResize);
+        checkLayout();
 
+        window.addEventListener('resize', updatePos);
         return () => {
-            window.removeEventListener("resize", handleResize);
-            clearTimeout(resizeTimer);
-            ctx.revert();
+            cancelAnimationFrame(frame);
+            window.removeEventListener('resize', updatePos);
         };
+    }, [offsetX, offsetY]);
+
+    const [scaleMax, setScaleMax] = useState(4.5);
+    useEffect(() => {
+        const w = window.innerWidth;
+        if (w < 768) setScaleMax(2.5); // Mobile
+        else if (w < 1024) setScaleMax(3.5); // Tablet (iPad)
+        else setScaleMax(4.5); // Desktop
     }, []);
 
+    // Use the auto-tracking function signature for useTransform (Framer Motion v12+)
+    const y = useTransform(() => {
+        const oy = offsetY.get();
+        if (oy === 0) return 0;
+        return Math.max(0, oy - scrollY.get());
+    });
 
+    const x = useTransform(() => {
+        const oy = offsetY.get();
+        const ox = offsetX.get();
+        if (oy === 0) return 0;
+        const progress = Math.min(1, Math.max(0, scrollY.get() / oy));
+        return ox * (1 - progress);
+    });
+
+    const scale = useTransform(() => {
+        const oy = offsetY.get();
+        if (oy === 0) return 1;
+        const progress = Math.min(1, Math.max(0, scrollY.get() / oy));
+        return scaleMax - (scaleMax - 1) * progress;
+    });
+
+    const navOpacity = useTransform(() => {
+        const oy = offsetY.get();
+        if (oy === 0) return 1;
+        const start = Math.max(0, oy - 150);
+        const s = scrollY.get();
+        if (s < start) return 0;
+        if (s >= oy) return 1;
+        return (s - start) / (oy - start);
+    });
 
     return (
-        <nav
-            ref={navRef}
-            className="fixed inset-x-0 top-0 z-10 w-full bg-transparent shadow-none mix-blend-difference opacity-0"
-        >
-            <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-2 items-center p-4">
-                    <div />
-
-                    <p
-                        ref={wordmarkRef}
-                        className="2xl sm:text-3xl md:text-6xl font-bold text-white text-center fixed left-1/2 -translate-x-1/2 top-5 w-max z-50 font-mono tracking-widest"
-                    >
-                        <a key='/' href='#' >
-                            Rise Like Sun
-                        </a>
-                    </p>
-
-                    <div className="flex items-center justify-end gap-8">
-                        {navLinks.map((link) => (
-                            <a
-                                key={link.label}
-                                href={link.href}
-                                target={link.target}
-                                rel={link.rel}
-                                className="text-m font-mono tracking-wide text-white hover:opacity-70 transition-opacity"
-                            >
-                                {link.label}
-                            </a>
-                        ))}
-                    </div>
-
+        <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[min(92vw,900px)] h-[52px]">
+            {/* The Pill Background and Links */}
+            <motion.div
+                style={{ opacity: isMounted ? navOpacity : 0 }}
+                className="absolute inset-0 backdrop-blur-md bg-white/[0.03] border border-white/10 rounded-full px-5 flex items-center justify-between shadow-lg"
+            >
+                <div ref={placeholderRef} className="flex items-center gap-2 opacity-0 pointer-events-none">
+                    <div className="h-4 w-4 sm:h-5 sm:w-5" />
+                    <div className="font-serif text-sm sm:text-lg tracking-widest">riselikesun</div>
                 </div>
-            </div>
-        </nav>
+
+                <nav className="hidden md:flex items-center gap-7 text-sm text-white/70">
+                    <SmoothScrollLink href="#intro" className="hover:text-white transition">About</SmoothScrollLink>
+                    <SmoothScrollLink href="#professional-experience" className="hover:text-white transition">Work</SmoothScrollLink>
+                    <SmoothScrollLink href="#hobbies" className="hover:text-white transition">Beyond Code</SmoothScrollLink>
+                </nav>
+
+                <div className="flex items-center gap-3">
+                    <Link href="/resume" target="_blank" rel="noopener noreferrer" className="hidden sm:block text-xs font-medium text-white/70 hover:text-white transition">
+                        Resume
+                    </Link>
+                    <SmoothScrollLink
+                        href="#contact"
+                        className="text-xs font-medium bg-white text-black rounded-full px-4 py-1.5 hover:bg-[#D89432] transition-colors"
+                    >
+                        Say hi
+                    </SmoothScrollLink>
+                </div>
+            </motion.div>
+
+            {/* The Animated Logo that scales down and docks */}
+            <motion.div
+                style={{ x, y, scale, opacity: isMounted ? 1 : 0 }}
+                className="absolute left-5 top-0 bottom-0 flex items-center gap-2 origin-center"
+            >
+                <motion.div style={{ rotate }} className="text-[#D89432]">
+                    <Sun className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.8} />
+                </motion.div>
+                <SmoothScrollLink href="#top" className="font-serif text-sm sm:text-lg tracking-widest text-white hover:opacity-80 transition-opacity">
+                    riselikesun
+                </SmoothScrollLink>
+            </motion.div>
+        </header>
     );
 };
 
