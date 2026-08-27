@@ -35,10 +35,9 @@ const HomeAppBar = () => {
 
                 const rect = placeholderRef.current.getBoundingClientRect();
                 const placeholderCenterX = rect.left + rect.width / 2;
-                const placeholderCenterY = rect.top + rect.height / 2;
 
                 offsetX.set(centerX - placeholderCenterX);
-                offsetY.set(centerY - placeholderCenterY);
+                offsetY.set(centerY);
             }
         };
 
@@ -108,8 +107,8 @@ const HomeAppBar = () => {
                 className="absolute inset-0 backdrop-blur-md bg-white/[0.03] border border-white/10 rounded-full px-5 flex items-center justify-between shadow-lg"
             >
                 <div ref={placeholderRef} className="flex items-center gap-2 opacity-0 pointer-events-none">
-                    <div className="h-5 w-5" />
-                    <div className="font-serif text-lg tracking-tight">riselikesun</div>
+                    <div className="h-4 w-4 sm:h-5 sm:w-5" />
+                    <div className="font-serif text-sm sm:text-lg tracking-widest">riselikesun</div>
                 </div>
 
                 <nav className="hidden md:flex items-center gap-7 text-sm text-white/70">
@@ -137,9 +136,9 @@ const HomeAppBar = () => {
                 className="absolute left-5 top-0 bottom-0 flex items-center gap-2 origin-center"
             >
                 <motion.div style={{ rotate }} className="text-[#D89432]">
-                    <Sun className="h-5 w-5" strokeWidth={1.8} />
+                    <Sun className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.8} />
                 </motion.div>
-                <SmoothScrollLink href="#top" className="font-serif text-lg tracking-tight text-white hover:opacity-80 transition-opacity">
+                <SmoothScrollLink href="#top" className="font-serif text-sm sm:text-lg tracking-widest text-white hover:opacity-80 transition-opacity">
                     riselikesun
                 </SmoothScrollLink>
             </motion.div>

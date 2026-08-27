@@ -90,7 +90,7 @@ export default function HeroSection() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
-            <motion.p variants={item} className="text-sm sm:text-md md:text-lg lg:text-xl tracking-[4px] sm:tracking-[8px] md:tracking-[12px] lg:tracking-[16px] text-amber-300">
+            <motion.p variants={item} className="text-sm sm:text-base md:text-lg lg:text-xl tracking-[4px] sm:tracking-[8px] md:tracking-[12px] lg:tracking-[16px] text-amber-300">
               SOFTWARE ENGINEER
             </motion.p>
             <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-sans-serif text-white">
@@ -124,7 +124,7 @@ export default function HeroSection() {
                 Building software that&nbsp;
                 <AnimatedWord
                   words={["scales.", "performs.", "delights.", "matters."]}
-                  className="w-30 text-amber-300"
+                  className="w-20 text-amber-300"
                   interval={3000}
                 />
               </motion.p>

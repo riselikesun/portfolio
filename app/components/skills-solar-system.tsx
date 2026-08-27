@@ -328,7 +328,7 @@ export default function SkillsSolarSystem() {
     <section
       ref={sectionRef}
       aria-labelledby="skills-heading"
-      className="relative min-h-[100vh] w-full overflow-hidden bg-[#050505] text-white"
+      className="relative min-h-[100vh] w-full overflow-hidden bg-[#050505] text-white z-0"
     >
       {/* Heading */}
       <motion.div
