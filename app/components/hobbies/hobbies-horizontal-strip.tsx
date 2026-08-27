@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { Hobby } from "./data";
-import { HobbyDetailModal } from "./HobbyDetailModal";
+import { HobbyDetailModal } from "./hobby-detail-modal";
 import StripCard from "./strip-card";
 
 if (typeof window !== "undefined") {

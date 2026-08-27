@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { BlobImage } from "@/components/ui/blob-image";
 import { motion } from "motion/react";
 import type { Hobby } from "./data";
 
@@ -42,7 +42,7 @@ export function HobbyCard({ hobby, index, wide = false }: HobbyCardProps) {
     >
       {/* Full-bleed background image */}
       <div className="absolute inset-0 z-0 transition-transform duration-700 ease-out will-change-transform group-hover:scale-105">
-        <Image
+        <BlobImage
           src={hobby.image}
           alt={hobby.title}
           fill

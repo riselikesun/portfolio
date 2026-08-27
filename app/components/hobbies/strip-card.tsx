@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { BlobImage } from "@/components/ui/blob-image";
 import { motion } from "motion/react";
 import type { Hobby } from "./data";
 
@@ -54,13 +54,13 @@ export default function StripCard({ hobby, index, onClick }: StripCardProps) {
             style={{ borderRadius: 0 }}
           >
             <div className="relative w-full h-full will-change-transform group-hover:scale-105 transition-transform duration-700 ease-out">
-              <Image
+              <BlobImage
                 src={hobby.image}
                 alt={hobby.title}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
-                loading={"lazy"}
+                quality={85}
               />
             </div>
           </motion.div>

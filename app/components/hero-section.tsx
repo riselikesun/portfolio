@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { BlobImage } from "@/components/ui/blob-image";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -74,11 +74,11 @@ export default function HeroSection() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="absolute inset-0"
       >
-        <Image
+        <BlobImage
           src="/risingsun.png"
           alt="Rising Sun"
           fill
-          priority
+          preload
           className="object-cover w-full h-full"
         />
         <div

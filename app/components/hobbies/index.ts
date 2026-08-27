@@ -1,4 +1,4 @@
-export { default } from "./Hobbies";
-export { HobbiesHorizontalStrip } from "./HobbiesHorizontalStrip";
-export { HobbyDetailModal } from "./HobbyDetailModal";
+export { default } from "./hobbies";
+export { HobbiesHorizontalStrip } from "./hobbies-horizontal-strip";
+export { HobbyDetailModal } from "./hobby-detail-modal";
 export type { Hobby } from "./data";

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { HobbiesHorizontalStrip } from "./HobbiesHorizontalStrip";
+import { HobbiesHorizontalStrip } from "./hobbies-horizontal-strip";
 import { HOBBIES } from "./data";
 
 const sectionVariants = {

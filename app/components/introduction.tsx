@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import Image from "next/image";
+import { BlobImage } from "@/components/ui/blob-image";
 import { SmoothScrollLink } from "@/components/ui/smooth-scroll-link";
 
 
@@ -61,11 +61,11 @@ export default function IntroSection() {
           />
 
           <div className="relative w-full h-[36rem] sm:h-[42rem] md:h-[52rem] lg:h-[60vh] xl:h-[70vh] max-h-[720px] z-10">
-            <Image
+            <BlobImage
               src="/intro-image.png"
               alt="Suraj Sharma — Full Stack Engineer India"
               fill
-              priority
+              loading="eager"
               className="object-contain drop-shadow-[0_0_60px_rgba(216,148,50,0.15)]"
               sizes="(max-width: 768px) 80vw, 40vw"
             />

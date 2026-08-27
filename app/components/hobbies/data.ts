@@ -38,7 +38,6 @@ export const HOBBIES: Hobby[] = [
       "/hobbies/3d-printing/failed-3d-printing-chess-pieces.jpg",
       "/hobbies/3d-printing/home-cad-design.jpg",
       // "/hobbies/3d-printing/lithophane-printed-image.MOV",
-      "/hobbies/3d-printing/printing-dragon.jpg"
     ],
     span: 1,
   },

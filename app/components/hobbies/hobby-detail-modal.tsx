@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import Image from "next/image";
+import { BlobImage } from "@/components/ui/blob-image";
 import { motion, AnimatePresence } from "motion/react";
 import { X } from "lucide-react";
 import { useLenis } from "lenis/react";
@@ -74,13 +74,13 @@ export function HobbyDetailModal({ hobby, onClose }: HobbyDetailModalProps) {
                   className="relative w-full lg:w-[55%] xl:w-[60%] h-[40vh] sm:h-[50vh] lg:h-auto flex-shrink-0"
                   style={{ borderRadius: 0 }}
                 >
-                  <Image
+                  <BlobImage
                     src={hobby.image}
                     alt={hobby.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 60vw"
-                    priority
+                    quality={85}
                   />
                   <div
                     aria-hidden
@@ -122,7 +122,7 @@ export function HobbyDetailModal({ hobby, onClose }: HobbyDetailModalProps) {
                     Gallery
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-2 sm:gap-4">
-                    {hobby.gallery.map((src, i) => {
+                    {hobby.gallery.map((src, idx) => {
                       return (
                         <motion.div
                           key={src}
@@ -132,12 +132,14 @@ export function HobbyDetailModal({ hobby, onClose }: HobbyDetailModalProps) {
                           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                           className={`relative w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-black/40 "col-span-1 aspect-square md:aspect-[4/3]`}
                         >
-                          <Image
+                          <BlobImage
                             src={src}
-                            alt={`${hobby.title} photo ${i + 1}`}
+                            alt={`${hobby.title} gallery image ${idx + 1}`}
                             fill
+                            sizes="(max-width: 767px) 100vw, (max-width: 1535px) 50vw, 33vw"
                             className="object-cover"
-                            sizes="(max-width: 768px) 100vw, 50vw"
+                            loading={idx < 3 ? "eager" : "lazy"}
+
                           />
                         </motion.div>
                       );
