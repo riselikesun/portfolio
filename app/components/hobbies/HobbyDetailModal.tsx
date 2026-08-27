@@ -13,7 +13,6 @@ interface HobbyDetailModalProps {
 }
 
 export function HobbyDetailModal({ hobby, onClose }: HobbyDetailModalProps) {
-  // ESC to close modal
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -26,7 +25,6 @@ export function HobbyDetailModal({ hobby, onClose }: HobbyDetailModalProps) {
 
   const lenis = useLenis();
 
-  // Lock body scroll while open
   useEffect(() => {
     if (hobby) {
       document.body.style.overflow = "hidden";
@@ -46,7 +44,6 @@ export function HobbyDetailModal({ hobby, onClose }: HobbyDetailModalProps) {
     <AnimatePresence>
       {hobby && (
         <>
-          {/* ── Backdrop ──────────────────────────────────────────────── */}
           <motion.div
             key="hobby-backdrop"
             initial={{ opacity: 0 }}
@@ -58,7 +55,6 @@ export function HobbyDetailModal({ hobby, onClose }: HobbyDetailModalProps) {
             aria-hidden
           />
 
-          {/* ── Modal — shares layoutId with the strip card ────────────── */}
           <motion.div
             key={`modal-${hobby.id}`}
             layoutId={`hobby-card-${hobby.id}`}
@@ -73,7 +69,6 @@ export function HobbyDetailModal({ hobby, onClose }: HobbyDetailModalProps) {
               data-lenis-prevent="true"
             >
               <div className="flex flex-col lg:flex-row w-full flex-shrink-0 lg:min-h-[75vh]">
-                {/* ── Hero image — shares layoutId with card image ────────── */}
                 <motion.div
                   layoutId={`hobby-image-${hobby.id}`}
                   className="relative w-full lg:w-[55%] xl:w-[60%] h-[40vh] sm:h-[50vh] lg:h-auto flex-shrink-0"
@@ -87,14 +82,12 @@ export function HobbyDetailModal({ hobby, onClose }: HobbyDetailModalProps) {
                     sizes="(max-width: 1024px) 100vw, 60vw"
                     priority
                   />
-                  {/* Fade toward content panel */}
                   <div
                     aria-hidden
                     className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-l from-[#0c0b09] lg:via-[#0c0b09]/50 via-transparent to-transparent"
                   />
                 </motion.div>
 
-                {/* ── Content panel ──────────────────────────────────────── */}
                 <motion.div
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -102,9 +95,7 @@ export function HobbyDetailModal({ hobby, onClose }: HobbyDetailModalProps) {
                   transition={{ delay: 0.18, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   className="w-full lg:w-[45%] xl:w-[40%] flex flex-col justify-center"
                 >
-                  {/* Text Section (Constrained for readability) */}
                   <div className="w-full max-w-5xl mx-auto px-6 sm:px-12 pt-8 pb-4 lg:py-12 flex flex-col gap-6">
-                    {/* Tags */}
                     <div className="flex flex-wrap gap-2 pt-1">
                       {hobby.tags.map((tag) => (
                         <span
@@ -115,13 +106,9 @@ export function HobbyDetailModal({ hobby, onClose }: HobbyDetailModalProps) {
                         </span>
                       ))}
                     </div>
-
-                    {/* Title */}
                     <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-white leading-snug">
                       {hobby.title}
                     </h2>
-
-                    {/* Details */}
                     <p className="text-base sm:text-lg text-white/50 leading-[1.85] whitespace-pre-wrap">
                       {hobby.details}
                     </p>
@@ -129,46 +116,35 @@ export function HobbyDetailModal({ hobby, onClose }: HobbyDetailModalProps) {
                 </motion.div>
               </div>
 
-              {/* Gallery Section (Edge-to-edge, dense masonry grid) */}
               {hobby.gallery.length > 0 && (
                 <div className="w-full px-2 sm:px-6 pb-12 mt-4 lg:mt-8">
                   <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#D89432] mb-6 px-2">
                     Gallery
                   </p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4">
-                      {hobby.gallery.map((src, i) => {
-                        // Dynamic Mosaic Layout Logic:
-                        // If there is an odd number of images, the first one becomes a massive full-width feature.
-                        // The rest fall into a beautiful 2-column grid. This guarantees ZERO wasted space.
-                        const isOdd = hobby.gallery.length % 2 !== 0;
-                        const isFeatured = isOdd && i === 0;
-                        
-                        // Featured images get a cinematic wide ratio, grid images get a classic photo ratio
-                        const spanClass = isFeatured ? "md:col-span-2 aspect-video md:aspect-[21/9]" : "col-span-1 aspect-square md:aspect-[4/3]";
-
-                        return (
-                          <motion.div
-                            key={src}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                            className={`relative w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-black/40 ${spanClass}`}
-                          >
-                            <Image
-                              src={src}
-                              alt={`${hobby.title} photo ${i + 1}`}
-                              fill
-                              className="object-cover"
-                              sizes={isFeatured ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
-                            />
-                          </motion.div>
-                        );
-                      })}
-                    </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-2 sm:gap-4">
+                    {hobby.gallery.map((src, i) => {
+                      return (
+                        <motion.div
+                          key={src}
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-50px" }}
+                          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                          className={`relative w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-black/40 "col-span-1 aspect-square md:aspect-[4/3]`}
+                        >
+                          <Image
+                            src={src}
+                            alt={`${hobby.title} photo ${i + 1}`}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                          />
+                        </motion.div>
+                      );
+                    })}
                   </div>
-                )}
-              {/* ── Close button ───────────────────────────────────────── */}
+                </div>
+              )}
               <motion.button
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -180,7 +156,6 @@ export function HobbyDetailModal({ hobby, onClose }: HobbyDetailModalProps) {
               >
                 <X size={15} />
               </motion.button>
-
             </div>
           </motion.div>
         </>
