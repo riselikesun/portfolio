@@ -5,7 +5,7 @@ import { BlobImage } from "@/components/ui/blob-image";
 import { motion, AnimatePresence } from "motion/react";
 import { X } from "lucide-react";
 import { useLenis } from "lenis/react";
-import type { Hobby } from "./data";
+import type { Hobby } from "../../data/hobbies";
 
 interface HobbyDetailModalProps {
   hobby: Hobby | null;

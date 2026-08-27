@@ -2,7 +2,7 @@
 
 import { BlobImage } from "@/components/ui/blob-image";
 import { motion } from "motion/react";
-import type { Hobby } from "./data";
+import type { Hobby } from "../../data/hobbies";
 
 interface StripCardProps {
   hobby: Hobby;
@@ -40,10 +40,10 @@ export default function StripCard({ hobby, index, onClick }: StripCardProps) {
         onKeyDown={(e) => e.key === "Enter" && onClick()}
       >
         {/* The clipped content mask */}
-        <motion.div 
+        <motion.div
           layoutId={`hobby-card-${hobby.id}`}
-          className="absolute inset-0 rounded-3xl overflow-hidden" 
-          style={{ 
+          className="absolute inset-0 rounded-3xl overflow-hidden"
+          style={{
             borderRadius: 24,
             WebkitMaskImage: "-webkit-radial-gradient(white, black)"
           }}

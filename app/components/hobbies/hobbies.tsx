@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { HobbiesHorizontalStrip } from "./hobbies-horizontal-strip";
-import { HOBBIES } from "./data";
+import { HOBBIES } from "../../data/hobbies";
 
 const sectionVariants = {
   hidden: {},

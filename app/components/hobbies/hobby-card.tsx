@@ -2,7 +2,7 @@
 
 import { BlobImage } from "@/components/ui/blob-image";
 import { motion } from "motion/react";
-import type { Hobby } from "./data";
+import type { Hobby } from "../../data/hobbies";
 
 interface HobbyCardProps {
   hobby: Hobby;

@@ -3,7 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import type { Hobby } from "./data";
+import type { Hobby } from "../../data/hobbies";
 import { HobbyDetailModal } from "./hobby-detail-modal";
 import StripCard from "./strip-card";
 
@@ -28,7 +28,7 @@ export function HobbiesHorizontalStrip({ hobbies }: HobbiesHorizontalStripProps)
 
     const ctx = gsap.context(() => {
       const strip = stripRef.current!;
-      
+
       const getScrollDistance = () => {
         const totalWidth = strip.scrollWidth;
         const viewportWidth = window.innerWidth;
