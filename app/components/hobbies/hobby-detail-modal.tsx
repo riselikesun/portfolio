@@ -23,6 +23,27 @@ export function HobbyDetailModal({ hobby, onClose }: HobbyDetailModalProps) {
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose]);
 
+  // Support mobile & browser back button / swipe-back gesture to close modal
+  useEffect(() => {
+    if (!hobby) return;
+
+    const stateKey = `hobby-modal-${hobby.id}`;
+    window.history.pushState({ modalOpen: stateKey }, "");
+
+    const handlePopState = () => {
+      onClose();
+    };
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+      if (window.history.state?.modalOpen === stateKey) {
+        window.history.back();
+      }
+    };
+  }, [hobby, onClose]);
+
   const lenis = useLenis();
 
   useEffect(() => {
@@ -64,6 +85,18 @@ export function HobbyDetailModal({ hobby, onClose }: HobbyDetailModalProps) {
               borderRadius: 24,
             }}
           >
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ delay: 0.15, duration: 0.2 }}
+              onClick={onClose}
+              className="absolute top-4 right-4 z-30 w-9 h-9 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 hover:border-[#D89432]/50 transition-all duration-200 cursor-pointer shadow-lg"
+              aria-label="Close"
+            >
+              <X size={15} />
+            </motion.button>
+
             <div
               className="relative h-full flex flex-col overflow-y-auto scrollbar-none"
               data-lenis-prevent="true"
@@ -147,17 +180,6 @@ export function HobbyDetailModal({ hobby, onClose }: HobbyDetailModalProps) {
                   </div>
                 </div>
               )}
-              <motion.button
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ delay: 0.15, duration: 0.2 }}
-                onClick={onClose}
-                className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white hover:bg-white/20 hover:border-[#D89432]/50 transition-all duration-200 cursor-pointer"
-                aria-label="Close"
-              >
-                <X size={15} />
-              </motion.button>
             </div>
           </motion.div>
         </>
