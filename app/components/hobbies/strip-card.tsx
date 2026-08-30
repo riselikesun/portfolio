@@ -60,7 +60,7 @@ export default function StripCard({ hobby, index, onClick }: StripCardProps) {
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
-                quality={85}
+                quality={75}
               />
             </div>
           </motion.div>
