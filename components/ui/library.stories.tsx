@@ -4,9 +4,15 @@ import { Button } from './button';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './card';
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './dialog';
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from './tooltip';
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@/components/ui/navbar';
 import { BlobImage } from './blob-image';
 import { SmoothScrollLink } from './smooth-scroll-link';
-import { ArrowRight } from '@/components/icons';
+import { ArrowRight, Github } from '@/components/icons';
+import { Mail, Target, Briefcase } from 'lucide-react';
+import { Progress } from './progress';
+import { MetricCard } from './metric-card';
+import { Timeline, TimelineItem, TimelineDot, TimelineContent } from './timeline';
+import { AnimatedWord } from '@/components/animations/animated-word';
 import { addons } from 'storybook/manager-api';
 import { themes } from 'storybook/theming';
 
@@ -133,7 +139,7 @@ export const Overview: Story = {
                   <CardDescription>Default glassmorphism look</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">
+                  <p>
                     This is the standard look for cards with dynamic shadows.
                   </p>
                 </CardContent>
@@ -153,7 +159,7 @@ export const Overview: Story = {
                   <CardDescription>Enhanced gradient & shadow</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">
+                  <p>
                     Prominent visual style used for highlighted content blocks.
                   </p>
                 </CardContent>
@@ -176,14 +182,14 @@ export const Overview: Story = {
               </div>
               
               <div className="relative z-10 flex flex-col h-full gap-4">
-                <h4 className="text-sm font-medium text-white uppercase tracking-wider">Blurred</h4>
+                <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Blurred</h4>
                 <Card variant="blurred" className="min-h-[220px] h-full">
                   <CardHeader>
-                    <CardTitle className="text-white">Blurred Card</CardTitle>
-                    <CardDescription className="text-white/70">Extra subtle blurred glass</CardDescription>
+                    <CardTitle>Blurred Card</CardTitle>
+                    <CardDescription>Extra subtle blurred glass</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-white/60">
+                    <p>
                       A very subtle, translucent card designed to sit nicely over complex backgrounds.
                     </p>
                   </CardContent>
@@ -204,10 +210,172 @@ export const Overview: Story = {
                   />
                 </div>
                 <div className="relative z-10 flex flex-col justify-end h-full p-6">
-                  <h3 className="text-xl font-bold text-white">Image Overlay</h3>
-                  <p className="text-sm text-white/70 mt-1">Full-bleed image background without default padding.</p>
+                  <h3 className="text-xl font-bold">Image Overlay</h3>
+                  <p className="text-muted-foreground mt-1">Full-bleed image background without default padding.</p>
                 </div>
               </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* NAVIGATION */}
+        <section className="space-y-8">
+          <div className="border-b border-border/50 pb-4">
+            <h2 className="text-3xl font-bold tracking-tight">Navigation</h2>
+            <p className="text-muted-foreground mt-2">Top-level navigation bars with floating and sticky variants.</p>
+          </div>
+          
+          <div className="flex flex-col gap-12 bg-muted/20 p-8 rounded-[24px] relative border border-border/50 overflow-hidden">
+            
+            {/* Sticky Variant Demo */}
+            <div>
+              <h4 className="text-sm font-medium text-muted-foreground mb-4 uppercase tracking-wider">Sticky (Default)</h4>
+              <div className="relative border border-border/50 rounded-lg overflow-hidden h-[160px] bg-background">
+                <Navbar variant="sticky" className="absolute top-0 w-full">
+                  <NavbarBrand>Acme Inc</NavbarBrand>
+                  <NavbarContent justify="end">
+                    <NavbarItem>Home</NavbarItem>
+                    <NavbarItem>About</NavbarItem>
+                    <NavbarItem>Contact</NavbarItem>
+                    <Button size="sm" className="hidden sm:inline-flex">Sign Up</Button>
+                  </NavbarContent>
+                </Navbar>
+                <div className="p-8 pt-24 text-muted-foreground text-sm">Scrollable page content...</div>
+              </div>
+            </div>
+
+            {/* Floating Variant Demo */}
+            <div>
+              <h4 className="text-sm font-medium text-muted-foreground mb-4 uppercase tracking-wider">Floating Pill</h4>
+              <div className="relative border border-border/50 rounded-lg overflow-hidden h-[160px] bg-background">
+                {/* Background image to show off blur */}
+                <div className="absolute inset-0 opacity-20 z-0">
+                  <BlobImage src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=600&auto=format&fit=crop" alt="bg" fill className="object-cover" />
+                </div>
+                
+                <Navbar variant="floating" className="absolute max-w-3xl">
+                  <NavbarBrand>Linear</NavbarBrand>
+                  <NavbarContent justify="center" className="hidden md:flex">
+                    <NavbarItem>Features</NavbarItem>
+                    <NavbarItem>Method</NavbarItem>
+                    <NavbarItem>Customers</NavbarItem>
+                  </NavbarContent>
+                  <NavbarContent justify="end">
+                    <Button variant="outline" size="sm" className="h-8 rounded-full border-foreground/20">Log in</Button>
+                  </NavbarContent>
+                </Navbar>
+                <div className="relative z-0 p-8 pt-28 text-muted-foreground text-sm">Scrollable page content...</div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* DATA DISPLAY */}
+        <section className="space-y-8">
+          <div className="border-b border-border/50 pb-4">
+            <h2 className="text-3xl font-bold tracking-tight">Data Display</h2>
+            <p className="text-muted-foreground mt-2">Metrics, progress, and chronological data.</p>
+          </div>
+          
+          <div className="space-y-16">
+            
+            {/* Metric Cards */}
+            <div>
+              <h4 className="text-sm font-medium text-muted-foreground mb-4 uppercase tracking-wider">Metric Cards</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <MetricCard 
+                  icon={<Mail />} 
+                  label="Email" 
+                  value="hello@example.com" 
+                  href="mailto:hello@example.com" 
+                  accent="text-sky-300"
+                />
+                <MetricCard 
+                  icon={<Github />} 
+                  label="GitHub" 
+                  value="github.com/user" 
+                  href="https://github.com" 
+                  accent="text-emerald-300"
+                />
+                <MetricCard 
+                  variant="featured"
+                  icon={<Target />} 
+                  label="Status" 
+                  value="Available for hire" 
+                  accent="text-primary"
+                />
+              </div>
+            </div>
+
+            {/* Progress */}
+            <div>
+              <h4 className="text-sm font-medium text-muted-foreground mb-4 uppercase tracking-wider">Progress Bars</h4>
+              <div className="flex flex-col gap-8 max-w-lg">
+                <div className="space-y-2">
+                  <div className="flex justify-between text-sm">
+                    <span className="font-medium text-foreground">React</span>
+                    <span className="text-muted-foreground">95%</span>
+                  </div>
+                  <Progress value={95} />
+                </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between text-sm">
+                    <span className="font-medium text-foreground">Framer Motion</span>
+                    <span className="text-muted-foreground">80%</span>
+                  </div>
+                  <Progress value={80} />
+                </div>
+              </div>
+            </div>
+
+            {/* Timeline */}
+            <div>
+              <h4 className="text-sm font-medium text-muted-foreground mb-4 uppercase tracking-wider">Timeline</h4>
+              <div className="max-w-2xl bg-foreground/[0.02] p-8 rounded-2xl border border-border/50">
+                <Timeline>
+                  <TimelineItem>
+                    <TimelineDot active />
+                    <TimelineContent>
+                      <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
+                        Senior Engineer <Badge variant="outline" className="border-primary/50 text-primary bg-primary/10">Present</Badge>
+                      </h3>
+                      <p className="text-sm text-muted-foreground font-mono">2023 - Present</p>
+                      <p className="text-muted-foreground mt-2">Leading the frontend architecture and building scalable component libraries.</p>
+                    </TimelineContent>
+                  </TimelineItem>
+                  <TimelineItem>
+                    <TimelineDot />
+                    <TimelineContent>
+                      <h3 className="text-lg font-semibold text-foreground">Frontend Developer</h3>
+                      <p className="text-sm text-muted-foreground font-mono">2021 - 2023</p>
+                      <p className="text-muted-foreground mt-2">Developed dynamic user interfaces and optimized web vitals by 40%.</p>
+                    </TimelineContent>
+                  </TimelineItem>
+                </Timeline>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ANIMATIONS */}
+        <section className="space-y-8">
+          <div className="border-b border-border/50 pb-4">
+            <h2 className="text-3xl font-bold tracking-tight">Animations</h2>
+            <p className="text-muted-foreground mt-2">Reusable motion components and effects.</p>
+          </div>
+          
+          <div>
+            <h4 className="text-sm font-medium text-muted-foreground mb-4 uppercase tracking-wider">Animated Word (Typewriter)</h4>
+            <div className="h-40 flex items-center justify-center border border-border/50 rounded-[24px] bg-foreground/[0.02]">
+              <p className="text-2xl md:text-3xl font-medium text-foreground">
+                Building software that{" "}
+                <AnimatedWord 
+                  words={["scales.", "performs.", "delights.", "matters."]} 
+                  className="text-primary font-bold min-w-[140px]" 
+                  interval={2000}
+                />
+              </p>
             </div>
           </div>
         </section>

@@ -4,18 +4,18 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const cardVariants = cva(
-  "group/card flex flex-col gap-(--card-spacing) overflow-hidden rounded-[22px] [--card-spacing:--spacing(8)] data-[size=sm]:[--card-spacing:--spacing(5)] transition-all duration-300 *:[img:first-child]:rounded-t-[22px] *:[img:last-child]:rounded-b-[22px]",
+  "group/card flex flex-col gap-(--card-spacing) overflow-hidden rounded-[22px] [--card-spacing:--spacing(8)] data-[size=sm]:[--card-spacing:--spacing(5)] transition-all duration-300 *:[img:first-child]:rounded-t-[22px] *:[img:last-child]:rounded-b-[22px] text-card-foreground",
   {
     variants: {
       variant: {
         default:
-          "bg-card border border-border backdrop-blur-md text-sm text-card-foreground hover:bg-foreground/[0.04] hover:border-foreground/20 shadow-[0_0_30px] shadow-primary/10 hover:shadow-[0_0_40px] hover:shadow-primary/15",
+          "bg-card border border-border backdrop-blur-md hover:bg-foreground/[0.04] hover:border-foreground/20 shadow-[0_0_30px] shadow-primary/10 hover:shadow-[0_0_40px] hover:shadow-primary/15",
         featured:
-          "bg-gradient-to-br from-foreground/[0.06] to-foreground/[0.02] border-primary/30 border shadow-[0_0_40px] shadow-primary/15 hover:shadow-[0_0_60px] hover:shadow-primary/25 hover:border-primary/50 text-sm text-card-foreground backdrop-blur-md",
+          "bg-gradient-to-br from-foreground/[0.06] to-foreground/[0.02] border-primary/30 border shadow-[0_0_40px] shadow-primary/15 hover:shadow-[0_0_60px] hover:shadow-primary/25 hover:border-primary/50 backdrop-blur-md",
         image:
-          "relative border border-border/50 bg-background cursor-default text-sm text-card-foreground",
+          "relative border border-border/50 bg-background cursor-default",
         blurred:
-          "bg-foreground/[0.025] border border-border/50 backdrop-blur-sm hover:border-primary/30 text-sm text-card-foreground",
+          "bg-foreground/[0.025] border border-border/50 backdrop-blur-sm hover:border-primary/30",
       },
       padding: {
         default: "py-(--card-spacing) has-[>img:first-child]:pt-0",
@@ -96,7 +96,7 @@ function CardContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-content"
-      className={cn("px-(--card-spacing)", className)}
+      className={cn("px-(--card-spacing) flex-1", className)}
       {...props}
     />
   )
