@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, useInView } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import { AnimatedWord } from "./animated-word";
+import { AnimatedWord } from "@/components/animations/animated-word";
 import { CoffeeDialog } from "./coffee-dialog";
 import { SmoothScrollLink } from "@/components/ui/smooth-scroll-link";
 

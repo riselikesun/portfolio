@@ -1,20 +1,46 @@
 import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
-function Card({
-  className,
-  size = "default",
-  ...props
-}: React.ComponentProps<"div"> & { size?: "default" | "sm" }) {
+const cardVariants = cva(
+  "group/card flex flex-col gap-(--card-spacing) overflow-hidden rounded-[22px] [--card-spacing:--spacing(8)] data-[size=sm]:[--card-spacing:--spacing(5)] transition-all duration-300 *:[img:first-child]:rounded-t-[22px] *:[img:last-child]:rounded-b-[22px]",
+  {
+    variants: {
+      variant: {
+        default:
+          "bg-card border border-border backdrop-blur-md text-sm text-card-foreground hover:bg-foreground/[0.04] hover:border-foreground/20 shadow-[0_0_30px] shadow-primary/10 hover:shadow-[0_0_40px] hover:shadow-primary/15",
+        featured:
+          "bg-gradient-to-br from-foreground/[0.06] to-foreground/[0.02] border-primary/30 border shadow-[0_0_40px] shadow-primary/15 hover:shadow-[0_0_60px] hover:shadow-primary/25 hover:border-primary/50 text-sm text-card-foreground backdrop-blur-md",
+        image:
+          "relative border border-border/50 bg-background cursor-default text-sm text-card-foreground",
+        blurred:
+          "bg-foreground/[0.025] border border-border/50 backdrop-blur-sm hover:border-primary/30 text-sm text-card-foreground",
+      },
+      padding: {
+        default: "py-(--card-spacing) has-[>img:first-child]:pt-0",
+        none: "p-0",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      padding: "default",
+    },
+  }
+)
+
+export interface CardProps
+  extends React.ComponentProps<"div">,
+    VariantProps<typeof cardVariants> {
+  size?: "default" | "sm"
+}
+
+function Card({ className, variant, padding, size = "default", ...props }: CardProps) {
   return (
     <div
       data-slot="card"
       data-size={size}
-      className={cn(
-        "group/card flex flex-col gap-(--card-spacing) overflow-hidden rounded-2xl bg-card py-(--card-spacing) text-sm text-card-foreground ring-1 ring-foreground/10 [--card-spacing:--spacing(6)] has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(4)] *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl",
-        className
-      )}
+      className={cn(cardVariants({ variant, padding, className }))}
       {...props}
     />
   )
@@ -37,7 +63,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-title"
-      className={cn("font-heading text-base font-medium", className)}
+      className={cn("font-heading text-xl font-semibold tracking-tight", className)}
       {...props}
     />
   )
