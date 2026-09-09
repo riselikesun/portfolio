@@ -1,5 +1,6 @@
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
+import { Slot } from "radix-ui"
 
 import { cn } from "@/lib/utils"
 
@@ -32,12 +33,20 @@ const cardVariants = cva(
 export interface CardProps
   extends React.ComponentProps<"div">,
     VariantProps<typeof cardVariants> {
-  size?: "default" | "sm"
+  /** The size variant scaling internal padding. */
+  size?: "default" | "sm";
+  /** Renders the component as its child using Radix Slot. */
+  asChild?: boolean;
 }
 
-function Card({ className, variant, padding, size = "default", ...props }: CardProps) {
+/**
+ * Flexible container for grouped content.
+ * Supports multiple visual variants and padding scales.
+ */
+function Card({ className, variant, padding, size = "default", asChild = false, ...props }: CardProps) {
+  const Comp = asChild ? Slot.Root : "div";
   return (
-    <div
+    <Comp
       data-slot="card"
       data-size={size}
       className={cn(cardVariants({ variant, padding, className }))}

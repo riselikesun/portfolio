@@ -54,18 +54,29 @@ const buttonVariants = cva(
   }
 )
 
+export interface ButtonProps
+  extends React.ComponentProps<"button">,
+    VariantProps<typeof buttonVariants> {
+  /** 
+   * Merges the component onto its child if true.
+   * Useful for wrapping Next.js `<Link>` components. 
+   */
+  asChild?: boolean;
+}
+
+/**
+ * Primary UI component for user interactions.
+ * Built with Radix UI Slot for seamless `asChild` composition.
+ */
 function Button({
   className,
   variant = "default",
   size = "default",
-  cursor = "default",
+  cursor = "pointer",
   iconHover = "none",
   asChild = false,
   ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
-  }) {
+}: ButtonProps) {
   const Comp = asChild ? Slot.Root : "button"
 
   return (

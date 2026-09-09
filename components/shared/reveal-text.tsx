@@ -9,7 +9,6 @@ import {
   staggerContainer,
   getReducedVariants,
 } from "@/lib/motion-variants";
-import type { Variants } from "motion/react";
 
 
 interface RevealTextProps {

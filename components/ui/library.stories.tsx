@@ -5,8 +5,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './dialog';
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from './tooltip';
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@/components/ui/navbar';
-import { BlobImage } from './blob-image';
-import { SmoothScrollLink } from './smooth-scroll-link';
+import Image from 'next/image';
 import { ArrowRight, Github } from '@/components/icons';
 import { Mail, Target, Briefcase } from 'lucide-react';
 import { Progress } from './progress';
@@ -15,13 +14,14 @@ import { Timeline, TimelineItem, TimelineDot, TimelineContent } from './timeline
 import { AnimatedWord } from '@/components/animations/animated-word';
 import { addons } from 'storybook/manager-api';
 import { themes } from 'storybook/theming';
+import { Overview as CardOverview } from './card.stories'
 
 addons.setConfig({
   theme: themes.dark,
 });
 
 const meta = {
-  title: 'Overview',
+  title: 'All Components',
   parameters: {
     layout: 'fullscreen',
     options: { showPanel: false }, // Hides the addons panel at the bottom
@@ -39,14 +39,14 @@ export const Overview: Story = {
 
     return (
       <div className="flex flex-col gap-24 max-w-7xl mx-auto py-12 text-foreground">
-        
+
         {/* BUTTONS */}
         <section className="space-y-8">
           <div className="border-b border-border/50 pb-4">
             <h2 className="text-3xl font-bold tracking-tight">Buttons</h2>
             <p className="text-muted-foreground mt-2">Interactive elements for user actions.</p>
           </div>
-          
+
           <div className="overflow-x-auto pb-4">
             <table className="w-full text-left border-collapse">
               <thead>
@@ -73,7 +73,7 @@ export const Overview: Story = {
               </tbody>
             </table>
           </div>
-          
+
           <div>
             <h4 className="text-sm font-medium text-muted-foreground mb-4 uppercase tracking-wider">With Icons (Hover Effects)</h4>
             <div className="flex flex-wrap gap-4 items-center">
@@ -99,7 +99,7 @@ export const Overview: Story = {
             <h2 className="text-3xl font-bold tracking-tight">Badges</h2>
             <p className="text-muted-foreground mt-2">Small status descriptors and tags.</p>
           </div>
-          
+
           <div className="overflow-x-auto pb-4">
             <table className="text-left border-collapse w-full">
               <thead>
@@ -121,14 +121,14 @@ export const Overview: Story = {
             </table>
           </div>
         </section>
-
+ 
         {/* CARDS */}
         <section className="space-y-8">
           <div className="border-b border-border/50 pb-4">
             <h2 className="text-3xl font-bold tracking-tight">Cards</h2>
             <p className="text-muted-foreground mt-2">Containers for grouped content, built with cva variants.</p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {/* Default Variant */}
             <div className="flex flex-col h-full gap-4 p-8">
@@ -173,14 +173,14 @@ export const Overview: Story = {
             <div className="relative flex flex-col h-full p-8 overflow-hidden">
               {/* Background on the outer wrapper */}
               <div className="absolute inset-0 z-0">
-                <BlobImage 
-                  src="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=600&auto=format&fit=crop" 
-                  alt="Detailed Forest Background" 
-                  fill 
-                  className="object-cover opacity-100" 
+                <Image
+                  src="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=600&auto=format&fit=crop"
+                  alt="Detailed Forest Background"
+                  fill
+                  className="object-cover opacity-100"
                 />
               </div>
-              
+
               <div className="relative z-10 flex flex-col h-full gap-4">
                 <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Blurred</h4>
                 <Card variant="blurred" className="min-h-[220px] h-full">
@@ -202,16 +202,16 @@ export const Overview: Story = {
               <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Image Variant</h4>
               <Card variant="image" padding="none" className="min-h-[250px] h-full">
                 <div className="absolute inset-0 z-0 opacity-50">
-                  <BlobImage 
-                    src="https://images.unsplash.com/photo-1707343843437-caacff5cfa74?q=80&w=600&auto=format&fit=crop" 
-                    alt="Sample Background" 
-                    fill 
-                    className="object-cover" 
+                  <Image
+                    src="https://images.unsplash.com/photo-1707343843437-caacff5cfa74?q=80&w=600&auto=format&fit=crop"
+                    alt="Sample Background"
+                    fill
+                    className="object-cover"
                   />
                 </div>
-                <div className="relative z-10 flex flex-col justify-end h-full p-6">
-                  <h3 className="text-xl font-bold">Image Overlay</h3>
-                  <p className="text-muted-foreground mt-1">Full-bleed image background without default padding.</p>
+                <div className="relative z-10 flex-1 flex flex-col justify-end w-full p-6 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                  <h3 className="text-xl font-bold text-white mb-2">Image Overlay</h3>
+                  <p className="text-white/80 text-sm">Full-bleed image background without default padding.</p>
                 </div>
               </Card>
             </div>
@@ -224,9 +224,9 @@ export const Overview: Story = {
             <h2 className="text-3xl font-bold tracking-tight">Navigation</h2>
             <p className="text-muted-foreground mt-2">Top-level navigation bars with floating and sticky variants.</p>
           </div>
-          
+
           <div className="flex flex-col gap-12 bg-muted/20 p-8 rounded-[24px] relative border border-border/50 overflow-hidden">
-            
+
             {/* Sticky Variant Demo */}
             <div>
               <h4 className="text-sm font-medium text-muted-foreground mb-4 uppercase tracking-wider">Sticky (Default)</h4>
@@ -250,9 +250,9 @@ export const Overview: Story = {
               <div className="relative border border-border/50 rounded-lg overflow-hidden h-[160px] bg-background">
                 {/* Background image to show off blur */}
                 <div className="absolute inset-0 opacity-20 z-0">
-                  <BlobImage src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=600&auto=format&fit=crop" alt="bg" fill className="object-cover" />
+                  <Image src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=600&auto=format&fit=crop" alt="bg" fill className="object-cover" />
                 </div>
-                
+
                 <Navbar variant="floating" className="absolute max-w-3xl">
                   <NavbarBrand>Linear</NavbarBrand>
                   <NavbarContent justify="center" className="hidden md:flex">
@@ -277,32 +277,32 @@ export const Overview: Story = {
             <h2 className="text-3xl font-bold tracking-tight">Data Display</h2>
             <p className="text-muted-foreground mt-2">Metrics, progress, and chronological data.</p>
           </div>
-          
+
           <div className="space-y-16">
-            
+
             {/* Metric Cards */}
             <div>
               <h4 className="text-sm font-medium text-muted-foreground mb-4 uppercase tracking-wider">Metric Cards</h4>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <MetricCard 
-                  icon={<Mail />} 
-                  label="Email" 
-                  value="hello@example.com" 
-                  href="mailto:hello@example.com" 
+                <MetricCard
+                  icon={<Mail />}
+                  label="Email"
+                  value="hello@example.com"
+                  href="mailto:hello@example.com"
                   accent="text-sky-300"
                 />
-                <MetricCard 
-                  icon={<Github />} 
-                  label="GitHub" 
-                  value="github.com/user" 
-                  href="https://github.com" 
+                <MetricCard
+                  icon={<Github />}
+                  label="GitHub"
+                  value="github.com/user"
+                  href="https://github.com"
                   accent="text-emerald-300"
                 />
-                <MetricCard 
+                <MetricCard
                   variant="featured"
-                  icon={<Target />} 
-                  label="Status" 
-                  value="Available for hire" 
+                  icon={<Target />}
+                  label="Status"
+                  value="Available for hire"
                   accent="text-primary"
                 />
               </div>
@@ -364,15 +364,15 @@ export const Overview: Story = {
             <h2 className="text-3xl font-bold tracking-tight">Animations</h2>
             <p className="text-muted-foreground mt-2">Reusable motion components and effects.</p>
           </div>
-          
+
           <div>
             <h4 className="text-sm font-medium text-muted-foreground mb-4 uppercase tracking-wider">Animated Word (Typewriter)</h4>
             <div className="h-40 flex items-center justify-center border border-border/50 rounded-[24px] bg-foreground/[0.02]">
               <p className="text-2xl md:text-3xl font-medium text-foreground">
                 Building software that{" "}
-                <AnimatedWord 
-                  words={["scales.", "performs.", "delights.", "matters."]} 
-                  className="text-primary font-bold min-w-[140px]" 
+                <AnimatedWord
+                  words={["scales.", "performs.", "delights.", "matters."]}
+                  className="text-primary font-bold min-w-[140px]"
                   interval={2000}
                 />
               </p>
@@ -386,7 +386,7 @@ export const Overview: Story = {
             <h2 className="text-3xl font-bold tracking-tight">Overlays</h2>
             <p className="text-muted-foreground mt-2">Interactive popups and floating labels.</p>
           </div>
-          
+
           <div className="flex flex-wrap gap-12 items-center">
             {/* Dialog */}
             <div>

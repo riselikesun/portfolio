@@ -3,6 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 import { ArrowUpRight } from "lucide-react"
 import { Card } from "@/components/ui/card"
+import { Slot } from "radix-ui"
 
 const metricCardVariants = cva(
   "group relative overflow-hidden transition-all duration-300 rounded-[20px]",
@@ -20,11 +21,18 @@ const metricCardVariants = cva(
 )
 
 export interface MetricCardProps extends React.ComponentProps<"div">, VariantProps<typeof metricCardVariants> {
+  /** Optional icon displayed in the top-left corner. */
   icon?: React.ReactNode;
+  /** The descriptive title for the metric. */
   label: string;
+  /** The primary value to display. */
   value: string;
+  /** Optional URL. If provided, the card becomes a clickable link. */
   href?: string;
+  /** Optional Tailwind text color class for the icon (e.g. `text-sky-300`). */
   accent?: string; 
+  /** If true, merges the component onto its immediate child via Radix Slot. */
+  asChild?: boolean;
 }
 
 const MetricCardContent = ({ icon, label, value, href, accent }: MetricCardProps) => (
@@ -46,29 +54,37 @@ const MetricCardContent = ({ icon, label, value, href, accent }: MetricCardProps
   </div>
 )
 
+/**
+ * Display component for numeric or text metrics.
+ * Supports link variants and an optional icon.
+ */
 const MetricCard = React.forwardRef<HTMLDivElement, MetricCardProps>(
-  ({ className, variant, icon, label, value, href, accent, ...props }, ref) => {
+  ({ className, variant, icon, label, value, href, accent, asChild = false, ...props }, ref) => {
     
     if (href) {
       const isExternal = href.startsWith("http");
+      const Comp = asChild ? Slot.Root : "a";
       return (
-        <a 
-          href={href}
-          target={isExternal ? "_blank" : undefined}
-          rel={isExternal ? "noreferrer noopener" : undefined}
+        <Comp 
+          href={!asChild ? href : undefined}
+          target={!asChild && isExternal ? "_blank" : undefined}
+          rel={!asChild && isExternal ? "noreferrer noopener" : undefined}
           className={cn("block focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 rounded-[20px]", className)}
         >
           <Card ref={ref} padding="none" className={cn(metricCardVariants({ variant }), "h-full")} {...props}>
             <MetricCardContent icon={icon} label={label} value={value} href={href} accent={accent} />
           </Card>
-        </a>
+        </Comp>
       )
     }
 
+    const Comp = asChild ? Slot.Root : "div";
     return (
-      <Card ref={ref} padding="none" className={cn(metricCardVariants({ variant }), className)} {...props}>
-         <MetricCardContent icon={icon} label={label} value={value} href={href} accent={accent} />
-      </Card>
+      <Comp className={className}>
+        <Card ref={ref} padding="none" className={cn(metricCardVariants({ variant }), "h-full")} {...props}>
+           <MetricCardContent icon={icon} label={label} value={value} href={href} accent={accent} />
+        </Card>
+      </Comp>
     )
   }
 )

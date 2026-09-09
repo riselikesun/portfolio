@@ -28,13 +28,23 @@ const badgeVariants = cva(
   }
 )
 
+export interface BadgeProps
+  extends React.ComponentProps<"span">,
+    VariantProps<typeof badgeVariants> {
+  /** If true, merges the component onto its immediate child via Radix Slot. */
+  asChild?: boolean;
+}
+
+/**
+ * Small status descriptor or tag.
+ * Supports multiple visual variants.
+ */
 function Badge({
   className,
   variant = "default",
   asChild = false,
   ...props
-}: React.ComponentProps<"span"> &
-  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
+}: BadgeProps) {
   const Comp = asChild ? Slot.Root : "span"
 
   return (

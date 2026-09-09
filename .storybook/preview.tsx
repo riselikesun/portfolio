@@ -46,6 +46,11 @@ const preview: Preview = {
     },
   ],
   parameters: {
+    options: {
+      storySort: {
+        order: ['All Components', ['Overview', '*']],
+      },
+    },
     docs: {
       theme: themes.dark,
     },
