@@ -139,17 +139,17 @@ export const Overview: Story = {
             <div className="flex flex-col h-full gap-4 p-8">
               <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Image Variant</h4>
               <Card variant="image" padding="none" className="min-h-[250px] h-full">
-                <div className="absolute inset-0 z-0 opacity-50">
+                <div className="absolute inset-0 z-0 bg-black">
                   <Image
                     src="https://images.unsplash.com/photo-1707343843437-caacff5cfa74?q=80&w=600&auto=format&fit=crop"
                     alt="Sample Background"
                     fill
-                    className="object-cover"
+                    className="object-cover opacity-60"
                   />
                 </div>
-                <div className="relative z-10 flex flex-col justify-end h-full p-6">
-                  <h3 className="text-xl font-bold">Image Overlay</h3>
-                  <p className="text-muted-foreground mt-1">Full-bleed image background without default padding.</p>
+                <div className="relative z-10 flex flex-col justify-end h-full p-6 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                  <h3 className="text-xl font-bold text-white">Image Overlay</h3>
+                  <p className="text-white/80 mt-1">Full-bleed image background without default padding.</p>
                 </div>
               </Card>
             </div>
