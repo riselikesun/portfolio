@@ -1,0 +1,39 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/Animations" />
+
+# Animation Guidelines
+
+Animations should improve UX, not distract from it. Never animate simply because animation is possible. 
+
+We utilize three primary libraries for motion, each with a strict, designated purpose:
+
+## 1. Framer Motion
+**Purpose**: Micro-interactions, hover effects, page transitions, and reveals.
+- Use `<motion.div>` for elements that respond directly to user state (e.g. hovering over a card, clicking a button).
+- Use `AnimatePresence` for components mounting and unmounting from the DOM (like Dialogs or Tooltips).
+- **Rule of Thumb**: If it's a UI interaction or a simple layout reveal, use Framer Motion.
+
+## 2. GSAP (GreenSock)
+**Purpose**: Complex scroll animations, pinned sections, and timelines.
+- Do NOT use GSAP for simple hover states.
+- Use GSAP ScrollTrigger for parallax effects or orchestrating complex animations that are bound to the user's scroll position.
+- **Rule of Thumb**: If the animation relies heavily on the scrollbar position or requires a multi-step, sequential timeline, use GSAP.
+
+## 3. Lenis
+**Purpose**: Smooth scrolling.
+- Lenis runs at the highest level of the application to hijack native scrolling and make it buttery smooth.
+- It is heavily integrated with GSAP ScrollTrigger to ensure scroll-bound animations do not jitter.
+- Do NOT attempt to animate scroll positions using Framer Motion while Lenis is active.
+
+---
+
+## ⚠️ Critical Rule: No Overlap
+
+> **WARNING: Never animate the same property using both GSAP and Framer Motion.** 
+
+If you are using Framer Motion to animate the `opacity` of a card on mount, do not attach a GSAP ScrollTrigger to that same card to animate its `opacity` on scroll. This will cause race conditions and severe visual bugs. Pick one engine per element.
+
+## Performance Considerations
+- Always prefer `transform` (translate, scale, rotate) and `opacity` animations over layout animations (width, height, margin) to avoid expensive browser repaints.
+- Respect user preferences by wrapping global animations in `prefers-reduced-motion` media queries when practical.

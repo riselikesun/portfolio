@@ -9,6 +9,8 @@ import { themes } from 'storybook/theming';
 
 import React, { useEffect } from 'react';
 
+import { DocsContainer } from '@storybook/addon-docs/blocks';
+
 const preview: Preview = {
   globalTypes: {
     theme: {
@@ -52,7 +54,13 @@ const preview: Preview = {
       },
     },
     docs: {
-      theme: themes.dark,
+      container: (props: any) => {
+        const isDark = props.context.channel.data.GLOBALS_UPDATED?.[0]?.globals?.theme === 'dark' 
+          || props.context.store?.globals?.globals?.theme === 'dark';
+        return (
+          <DocsContainer {...props} theme={isDark ? themes.dark : themes.light} />
+        );
+      },
     },
     controls: {
       matchers: {
