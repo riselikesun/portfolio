@@ -10,6 +10,11 @@ import { themes } from 'storybook/theming';
 import React, { useEffect } from 'react';
 
 import { DocsContainer } from '@storybook/addon-docs/blocks';
+import { TooltipProvider } from "../components/ui/tooltip";
+import SmoothScroll from '../app/components/smooth-scroll';
+import MockDate from 'mockdate';
+import { mswLoader } from 'msw-storybook-addon/csf3';
+import { mswHandlers } from './msw-handlers';
 
 const preview: Preview = {
   globalTypes: {
@@ -42,11 +47,21 @@ const preview: Preview = {
 
       return (
         <div className={`${figtree.variable} ${inter.className} font-sans`}>
-          <Story />
+          <TooltipProvider delayDuration={200}>
+            <SmoothScroll>
+              <Story />
+            </SmoothScroll>
+          </TooltipProvider>
         </div>
       );
     },
   ],
+  loaders: [mswLoader()],
+  async beforeEach({ msw }) {
+    if (msw) msw.use(...mswHandlers);
+    localStorage.setItem('theme', 'dark');
+    MockDate.set('2024-04-01T12:00:00Z');
+  },
   parameters: {
     options: {
       storySort: {

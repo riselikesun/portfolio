@@ -10,7 +10,7 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  tags: ['autodocs'],
+  tags: ['ai-generated', 'autodocs'],
   argTypes: {
     variant: {
       control: 'select',

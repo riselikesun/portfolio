@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect } from 'storybook/test';
 import { Button } from './button';
 import { Mail, ArrowRight, Loader2 } from 'lucide-react';
 
@@ -8,7 +9,7 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  tags: ['autodocs'],
+  tags: ['ai-generated', 'autodocs'],
   argTypes: {
     variant: {
       control: 'select',
@@ -191,5 +192,14 @@ export const IconOnly: Story = {
   args: {
     size: 'icon',
     children: <Mail />,
+  },
+};
+
+export const CssCheck: Story = {
+  args: { children: 'Submit' },
+  play: async ({ canvas }) => {
+    const button = canvas.getByRole('button', { name: /submit/i });
+    // Verify Tailwind loaded correctly by checking inline-flex display
+    await expect(getComputedStyle(button).display).toBe('inline-flex');
   },
 };

@@ -8,7 +8,7 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  tags: ['autodocs'],
+  tags: ['ai-generated', 'autodocs'],
 } satisfies Meta<typeof Dialog>;
 
 export default meta;

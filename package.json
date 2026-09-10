@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "vitest -c vitest.unit.config.ts"
+    "test": "vitest -c vitest.unit.config.ts",
+    "test:storybook": "vitest --project storybook"
   },
   "dependencies": {
     "@hugeicons/core-free-icons": "^4.2.3",
@@ -52,16 +53,24 @@
     "eslint-plugin-storybook": "^10.6.0",
     "jest-axe": "^11.0.0",
     "jsdom": "^29.1.1",
+    "mockdate": "^3.0.5",
+    "msw": "^2.15.0",
+    "msw-storybook-addon": "^3.0.0",
     "playwright": "latest",
     "postcss": "^8",
     "storybook": "^10.6.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^5",
     "vite": "latest",
-    "vitest": "^5.0.0"
+    "vitest": "^4.1.11"
   },
   "overrides": {
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.4"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }

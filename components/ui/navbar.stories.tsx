@@ -9,7 +9,7 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
   },
-  tags: ['autodocs'],
+  tags: ['ai-generated', 'autodocs'],
   argTypes: {
     variant: {
       control: 'select',

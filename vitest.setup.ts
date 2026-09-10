@@ -1,6 +1,13 @@
 import '@testing-library/jest-dom'
-import { expect } from 'vitest'
+import { expect, vi } from 'vitest'
 import * as matchers from '@testing-library/jest-dom/matchers'
 
 // Extends Vitest's expect method with methods from react-testing-library
 expect.extend(matchers)
+
+class ResizeObserverMock {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
+global.ResizeObserver = ResizeObserverMock as any
