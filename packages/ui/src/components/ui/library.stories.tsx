@@ -14,7 +14,6 @@ import { Timeline, TimelineItem, TimelineDot, TimelineContent } from './timeline
 import { AnimatedWord } from '@/components/animations/animated-word';
 import { addons } from 'storybook/manager-api';
 import { themes } from 'storybook/theming';
-import { Overview as CardOverview } from './card.stories'
 
 addons.setConfig({
   theme: themes.dark,
@@ -121,7 +120,7 @@ export const Overview: Story = {
             </table>
           </div>
         </section>
- 
+
         {/* CARDS */}
         <section className="space-y-8">
           <div className="border-b border-border/50 pb-4">

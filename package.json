@@ -1,76 +1,13 @@
 {
-  "name": "nextjs",
-  "version": "0.1.0",
+  "name": "portfolio-workspace",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "next dev --hostname 0.0.0.0",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint .",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "test": "vitest -c vitest.unit.config.ts",
-    "test:storybook": "vitest --project storybook"
-  },
-  "dependencies": {
-    "@hugeicons/core-free-icons": "^4.2.3",
-    "@hugeicons/react": "^1.1.9",
-    "@next/third-parties": "^16.3.0",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "cn": "^0.2.5",
-    "gsap": "^3.15.0",
-    "lenis": "^1.3.26",
-    "lucide-react": "^1.31.0",
-    "motion": "^12.43.0",
-    "next": "16.2.12",
-    "radix-ui": "^1.6.7",
-    "react": "19.2.8",
-    "react-dom": "19.2.8",
-    "shadcn": "^4.16.2",
-    "tailwind-merge": "^3.6.0",
-    "tw-animate-css": "^1.4.0",
-    "@chromatic-com/storybook": "latest",
-    "@storybook/addon-a11y": "^10.6.0",
-    "@storybook/addon-docs": "^10.6.0",
-    "@storybook/addon-mcp": "^10.6.0",
-    "@storybook/addon-vitest": "^10.6.0",
-    "@storybook/nextjs-vite": "^10.6.0",
-    "@vitejs/plugin-react": "^6.1.1",
-    "msw": "^2.15.0",
-    "msw-storybook-addon": "^3.0.0",
-    "storybook": "^10.6.0",
-    "vite": "latest"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4.3.3",
-    "@testing-library/jest-dom": "^7.0.1",
-    "@testing-library/react": "^16.3.3",
-    "@types/jest-axe": "^3.5.9",
-    "@types/node": "^20",
-    "@types/react": "19.2.18",
-    "@types/react-dom": "19.2.4",
-    "@vitest/browser-playwright": "latest",
-    "@vitest/coverage-v8": "latest",
-    "eslint": "10.8.0",
-    "eslint-config-next": "16.2.12",
-    "eslint-plugin-storybook": "^10.6.0",
-    "jest-axe": "^11.0.0",
-    "jsdom": "^29.1.1",
-    "mockdate": "^3.0.5",
-    "playwright": "latest",
-    "postcss": "^8",
-    "tailwindcss": "^4.3.3",
-    "typescript": "^5.6.3",
-    "vitest": "^4.1.11"
-  },
-  "overrides": {
-    "@types/react": "19.2.18",
-    "@types/react-dom": "19.2.4"
-  },
-  "msw": {
-    "workerDirectory": [
-      "public"
-    ]
+    "dev": "npm run dev -ws",
+    "build": "npm run build -ws",
+    "test": "npm run test -ws"
   }
 }
