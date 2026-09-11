@@ -18,6 +18,14 @@ const meta: Meta<typeof Typography> = {
       control: 'select',
       options: ['sm', 'base', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', '7xl', '8xl', '9xl'],
     },
+    weight: {
+      control: 'select',
+      options: ['light', 'normal', 'medium', 'semibold', 'bold', 'extrabold'],
+    },
+    tracking: {
+      control: 'select',
+      options: ['tighter', 'tight', 'normal', 'wide', 'wider', 'widest'],
+    },
     align: {
       control: 'select',
       options: ['left', 'center', 'right', 'justify'],
@@ -130,6 +138,38 @@ export const Overview: Story = {
           <Typography variant="p" size="4xl">4x Large (4xl)</Typography>
           <Typography variant="p" size="7xl">7x Large (7xl)</Typography>
           <Typography variant="p" size="9xl">9x Large (9xl)</Typography>
+        </div>
+      </section>
+
+      {/* WEIGHTS SECTION */}
+      <section className="space-y-8">
+        <div className="border-b border-border/50 pb-4">
+          <h2 className="text-3xl font-bold tracking-tight">Weights</h2>
+          <p className="text-muted-foreground mt-2">Adjust the font weight independently of the variant.</p>
+        </div>
+        <div className="flex flex-col gap-4">
+          <Typography variant="h3" weight="light">Light Weight (light)</Typography>
+          <Typography variant="h3" weight="normal">Normal Weight (normal)</Typography>
+          <Typography variant="h3" weight="medium">Medium Weight (medium)</Typography>
+          <Typography variant="h3" weight="semibold">Semibold Weight (semibold)</Typography>
+          <Typography variant="h3" weight="bold">Bold Weight (bold)</Typography>
+          <Typography variant="h3" weight="extrabold">Extrabold Weight (extrabold)</Typography>
+        </div>
+      </section>
+
+      {/* LETTER SPACING SECTION */}
+      <section className="space-y-8">
+        <div className="border-b border-border/50 pb-4">
+          <h2 className="text-3xl font-bold tracking-tight">Letter Spacing (Tracking)</h2>
+          <p className="text-muted-foreground mt-2">Adjust the spacing between letters.</p>
+        </div>
+        <div className="flex flex-col gap-4">
+          <Typography variant="h3" tracking="tighter">Tighter Tracking</Typography>
+          <Typography variant="h3" tracking="tight">Tight Tracking</Typography>
+          <Typography variant="h3" tracking="normal">Normal Tracking</Typography>
+          <Typography variant="h3" tracking="wide">Wide Tracking</Typography>
+          <Typography variant="h3" tracking="wider">Wider Tracking</Typography>
+          <Typography variant="h3" tracking="widest">Widest Tracking</Typography>
         </div>
       </section>
     </div>

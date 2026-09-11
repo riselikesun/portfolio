@@ -44,6 +44,22 @@ const typographyVariants = cva(
         "8xl": "text-8xl",
         "9xl": "text-9xl",
       },
+      weight: {
+        light: "font-light",
+        normal: "font-normal",
+        medium: "font-medium",
+        semibold: "font-semibold",
+        bold: "font-bold",
+        extrabold: "font-extrabold",
+      },
+      tracking: {
+        tighter: "tracking-tighter",
+        tight: "tracking-tight",
+        normal: "tracking-normal",
+        wide: "tracking-wide",
+        wider: "tracking-wider",
+        widest: "tracking-widest",
+      },
       noWrap: {
         true: "truncate",
       },
@@ -77,12 +93,12 @@ export interface TypographyProps
 }
 
 const Typography = React.forwardRef<HTMLElement, TypographyProps>(
-  ({ className, variant, color, size, align, noWrap, gutterBottom, as, ...props }, ref) => {
+  ({ className, variant, color, size, weight, tracking, align, noWrap, gutterBottom, as, ...props }, ref) => {
     const Comp = as || (variant ? variantToElement[variant] : "p") || "p"
 
     return (
       <Comp
-        className={cn(typographyVariants({ variant, color, size, align, noWrap, gutterBottom, className }))}
+        className={cn(typographyVariants({ variant, color, size, weight, tracking, align, noWrap, gutterBottom, className }))}
         ref={ref}
         {...props}
       />
