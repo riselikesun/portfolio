@@ -19,6 +19,6 @@
       "@ui/*": ["./src/components/ui/*"]
     }
   },
-  "include": ["src", ".storybook"],
+  "include": ["src", ".storybook", "vitest.setup.ts"],
   "exclude": ["node_modules", "dist"]
 }
