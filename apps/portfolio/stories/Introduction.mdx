@@ -1,0 +1,43 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/Introduction" />
+
+# Portfolio Design System
+
+Welcome to the internal UI library for the personal portfolio. This documentation serves as a living handbook for the engineering principles, architectural decisions, and design aesthetics driving the project.
+
+The goal is not merely to generate working code, but to build a portfolio that represents **production-quality engineering, exceptional UI/UX, and maintainable architecture**, comparable to companies like Vercel, Linear, Stripe, and Apple.
+
+---
+
+## Core Engineering Principles
+
+Every component and implementation in this system optimizes for:
+1. Maintainability
+2. Readability
+3. Reusability
+4. Performance
+5. Accessibility
+
+## Architecture Philosophy
+
+This UI library favors **composition over inheritance** and keeps components strictly single-responsibility. 
+
+### Technology Stack
+- **Framework**: Next.js (App Router)
+- **Language**: TypeScript (Strict Mode)
+- **Styling**: Tailwind CSS
+- **Primitives**: Radix UI + class-variance-authority (CVA)
+- **Animations**: Framer Motion, GSAP, Lenis
+
+### Component Guidelines
+* Server Components are preferred by default. `use client` is only added when browser APIs, state, or animations are explicitly required.
+* Components use the `cva` library to map semantic variants (e.g., `default`, `featured`, `blurred`) directly to Tailwind classes, avoiding messy inline conditional strings.
+* We prioritize **native HTML accessibility** (keyboard navigation, focus states, ARIA attributes) heavily supplemented by Radix UI primitives.
+
+## Design Aesthetics
+
+Our UI feels **Minimal, Elegant, Premium, Modern, and Spacious**.
+We embrace whitespace as a core design token. We avoid clutter, inconsistent spacing, and unnecessary colors. 
+
+To learn more about the specifics of our tokens and animations, please refer to the **Design Tokens** and **Animations** guides in this Storybook.

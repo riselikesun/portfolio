@@ -1,0 +1,78 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/Design Tokens" />
+
+# Design Tokens
+
+The Suraj Sharma portfolio utilizes strict semantic design tokens to power its themes. Colors are defined in `globals.css` using `oklch` (for dark mode) and standard hex (for light mode), and mapped to semantic Tailwind classes.
+
+## Theming Philosophy
+
+Our theming system relies on **semantic colors** (`bg-background`, `text-foreground`, `bg-primary`) rather than hardcoded utilities (`bg-white`, `text-black`). This ensures perfect scalability between Light and Dark modes.
+
+### ☀️ Light Mode: Warm & Earthy
+The light mode eschews pure white backgrounds for a soft, warm stone gray (`#FAFAF9`), giving a premium Stripe/Apple-like aesthetic. It pairs this with a vibrant Amber primary color (`#C57D24`).
+
+### 🌙 Dark Mode: Deep Gold
+The dark mode features an extremely deep background (`oklch(0.145 0 0)`) accented by a rich, elegant Gold (`#D89432`). 
+
+---
+
+## Semantic Color Palette
+
+<ColorPalette>
+  <ColorItem
+    title="Background & Foreground"
+    subtitle="Core layout colors"
+    colors={{
+      Background: 'var(--background)',
+      Foreground: 'var(--foreground)',
+    }}
+  />
+  <ColorItem
+    title="Primary"
+    subtitle="Buttons, highlights, accents"
+    colors={{
+      Primary: 'var(--primary)',
+      'Primary Foreground': 'var(--primary-foreground)',
+    }}
+  />
+  <ColorItem
+    title="Cards & Popovers"
+    subtitle="Elevated surface colors"
+    colors={{
+      Card: 'var(--card)',
+      Popover: 'var(--popover)',
+    }}
+  />
+  <ColorItem
+    title="Muted & Secondary"
+    subtitle="Soft backgrounds and deactivated text"
+    colors={{
+      Muted: 'var(--muted)',
+      'Muted Foreground': 'var(--muted-foreground)',
+      Secondary: 'var(--secondary)',
+    }}
+  />
+  <ColorItem
+    title="Borders & Inputs"
+    subtitle="Subtle structural dividers"
+    colors={{
+      Border: 'var(--border)',
+      Input: 'var(--input)',
+    }}
+  />
+</ColorPalette>
+
+---
+
+## Custom Styling Details
+
+### Premium Scrollbar
+We use a bespoke scrollbar implementation to avoid ugly native scrollbars on Windows/Linux:
+- **Width**: `6px`
+- **Thumb**: Subtle translucent white (`rgba(255, 255, 255, 0.1)`) with a `10px` border radius.
+- **Hover**: Fills with the brand primary color with a `0.5` opacity.
+
+### Fractional Opacity Tokens
+We heavily utilize Tailwind's fractional opacity syntax (e.g. `bg-foreground/[0.03]`) for overlays. This allows a single class to automatically generate a subtle black overlay in Light Mode, and a subtle white overlay in Dark Mode, ensuring seamless multi-theme support without duplicating CSS.
