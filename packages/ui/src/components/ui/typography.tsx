@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const typographyVariants = cva(
-  "text-foreground",
+  "",
   {
     variants: {
       variant: {
@@ -17,9 +17,43 @@ const typographyVariants = cva(
         muted: "text-sm text-muted-foreground",
         overline: "text-sm font-medium text-muted-foreground uppercase tracking-wider",
       },
+      color: {
+        default: "text-foreground",
+        muted: "text-muted-foreground",
+        primary: "text-primary",
+        secondary: "text-secondary-foreground",
+        destructive: "text-destructive",
+      },
+      align: {
+        left: "text-left",
+        center: "text-center",
+        right: "text-right",
+        justify: "text-justify",
+      },
+      size: {
+        sm: "text-sm",
+        base: "text-base",
+        lg: "text-lg",
+        xl: "text-xl",
+        "2xl": "text-2xl",
+        "3xl": "text-3xl",
+        "4xl": "text-4xl",
+        "5xl": "text-5xl",
+        "6xl": "text-6xl",
+        "7xl": "text-7xl",
+        "8xl": "text-8xl",
+        "9xl": "text-9xl",
+      },
+      noWrap: {
+        true: "truncate",
+      },
+      gutterBottom: {
+        true: "mb-4",
+      },
     },
     defaultVariants: {
       variant: "p",
+      color: "default",
     },
   }
 )
@@ -37,18 +71,18 @@ const variantToElement: Record<string, React.ElementType> = {
 }
 
 export interface TypographyProps
-  extends React.HTMLAttributes<HTMLElement>,
+  extends Omit<React.HTMLAttributes<HTMLElement>, "color">,
     VariantProps<typeof typographyVariants> {
   as?: React.ElementType
 }
 
 const Typography = React.forwardRef<HTMLElement, TypographyProps>(
-  ({ className, variant, as, ...props }, ref) => {
+  ({ className, variant, color, size, align, noWrap, gutterBottom, as, ...props }, ref) => {
     const Comp = as || (variant ? variantToElement[variant] : "p") || "p"
 
     return (
       <Comp
-        className={cn(typographyVariants({ variant, className }))}
+        className={cn(typographyVariants({ variant, color, size, align, noWrap, gutterBottom, className }))}
         ref={ref}
         {...props}
       />
