@@ -1,5 +1,5 @@
 import { addons } from 'storybook/manager-api';
-import { themes, create } from 'storybook/theming';
+import { create } from 'storybook/theming';
 import { GLOBALS_UPDATED } from 'storybook/internal/core-events';
 
 const sharedTheme = {

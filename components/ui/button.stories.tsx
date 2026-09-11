@@ -196,6 +196,7 @@ export const IconOnly: Story = {
 };
 
 export const CssCheck: Story = {
+  tags: ['!dev'],
   args: { children: 'Submit' },
   play: async ({ canvas }) => {
     const button = canvas.getByRole('button', { name: /submit/i });

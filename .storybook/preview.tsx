@@ -70,8 +70,19 @@ const preview: Preview = {
     },
     docs: {
       container: (props: any) => {
-        const isDark = props.context.channel.data.GLOBALS_UPDATED?.[0]?.globals?.theme === 'dark' 
-          || props.context.store?.globals?.globals?.theme === 'dark';
+        const [isDark, setIsDark] = React.useState(
+          document.documentElement.classList.contains('dark')
+        );
+
+        React.useEffect(() => {
+          const html = document.documentElement;
+          const observer = new MutationObserver(() => {
+            setIsDark(html.classList.contains('dark'));
+          });
+          observer.observe(html, { attributes: true, attributeFilter: ['class'] });
+          return () => observer.disconnect();
+        }, []);
+
         return (
           <DocsContainer {...props} theme={isDark ? themes.dark : themes.light} />
         );

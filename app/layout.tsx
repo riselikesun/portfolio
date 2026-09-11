@@ -6,8 +6,8 @@ import config from './config';
 import { GoogleTagManager } from '@next/third-parties/google'
 import SmoothScroll from './components/smooth-scroll';
 
-const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" });
-const inter = Inter({ subsets: ["latin"] });
+const figtree = Figtree({ subsets: ["latin"], variable: "--font-heading" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "Suraj Sharma | Software engineer",
@@ -23,9 +23,9 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="en" className={cn("font-sans dark", figtree.variable)}>
+    <html lang="en" className={cn("font-sans dark", figtree.variable, inter.variable)}>
       <GoogleTagManager gtmId={config.googleTagID} />
-      <body className={inter.className}>
+      <body>
         <TooltipProvider delayDuration={200}>
           <SmoothScroll>
             {children}
