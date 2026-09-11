@@ -56,20 +56,21 @@ export const Default: Story = {
   render: () => (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Edit Profile</Button>
+        <Button variant="destructive">Delete Account</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
+          <DialogTitle>Delete account</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
+            Are you sure you want to delete your account? This action cannot be undone.
           </DialogDescription>
         </DialogHeader>
         <div className="py-4">
-          <p className="text-sm text-muted-foreground">Form content goes here...</p>
+          <p className="text-sm text-muted-foreground">Type "DELETE" to confirm.</p>
         </div>
         <DialogFooter>
-          <Button type="submit">Save changes</Button>
+          <Button variant="outline">Cancel</Button>
+          <Button variant="destructive" type="submit">Confirm Delete</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

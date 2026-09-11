@@ -16,12 +16,12 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   tags: ['!dev'],
   args: {
-    words: ['scale.', 'perform.', 'delight.', 'matter.'],
+    words: ['build.', 'ship.', 'innovate.', 'grow.'],
     className: 'text-primary w-30',
   },
   render: (args) => (
     <div className="text-2xl font-bold flex gap-2">
-      We build solutions that
+      We help companies
       <AnimatedWord 
         {...args}
       />
@@ -49,7 +49,7 @@ export const Overview: Story = {
               We build solutions that
               <AnimatedWord 
                 words={['scale.', 'perform.', 'delight.', 'matter.']} 
-                className="text-primary"
+                className="text-primary w-30"
               />
             </h3>
           </div>

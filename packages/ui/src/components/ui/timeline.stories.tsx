@@ -23,27 +23,27 @@ export const Default: Story = {
           <TimelineDot active />
           <TimelineContent>
             <h3 className="text-lg font-semibold flex items-center gap-2">
-              Senior Software Engineer
-              <Badge variant="outline" className="border-primary/50 text-primary bg-primary/10">Present</Badge>
+              Order Delivered
+              <Badge variant="outline" className="border-primary/50 text-primary bg-primary/10">Today</Badge>
             </h3>
-            <p className="text-sm font-mono text-muted-foreground mt-1">2023 - Present</p>
-            <p className="text-muted-foreground mt-2">Leading the frontend architecture and building scalable component libraries.</p>
+            <p className="text-sm font-mono text-muted-foreground mt-1">10:42 AM</p>
+            <p className="text-muted-foreground mt-2">Package was handed directly to a resident.</p>
           </TimelineContent>
         </TimelineItem>
         <TimelineItem>
           <TimelineDot />
           <TimelineContent>
-            <h3 className="text-lg font-semibold">Software Engineer</h3>
-            <p className="text-sm font-mono text-muted-foreground mt-1">2021 - 2023</p>
-            <p className="text-muted-foreground mt-2">Developed core product features and improved web performance metrics.</p>
+            <h3 className="text-lg font-semibold">Out for Delivery</h3>
+            <p className="text-sm font-mono text-muted-foreground mt-1">08:15 AM</p>
+            <p className="text-muted-foreground mt-2">The package is on the truck and out for delivery.</p>
           </TimelineContent>
         </TimelineItem>
         <TimelineItem>
           <TimelineDot />
           <TimelineContent>
-            <h3 className="text-lg font-semibold">Junior Developer</h3>
-            <p className="text-sm font-mono text-muted-foreground mt-1">2019 - 2021</p>
-            <p className="text-muted-foreground mt-2">Started career working on bug fixes and small features for the main application.</p>
+            <h3 className="text-lg font-semibold">Order Shipped</h3>
+            <p className="text-sm font-mono text-muted-foreground mt-1">Yesterday, 4:30 PM</p>
+            <p className="text-muted-foreground mt-2">Carrier has received the package at the distribution center.</p>
           </TimelineContent>
         </TimelineItem>
       </Timeline>
