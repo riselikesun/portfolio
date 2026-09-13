@@ -1,35 +1,35 @@
 "use client";
 
 import {
+  Button,
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogDescription,
   DialogTrigger,
-} from "@/components/ui/dialog";
-
-import { Button } from "@/components/ui/button";
+  Typography,
+} from "@riselikesun/ui";
 import config from "../config";
 
 export function CoffeeDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button
-          size="default"
-          cursor="pointer"
-          className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#D89432] text-black text-sm font-bold rounded-full tracking-wide hover:bg-amber-400 transition-colors duration-200 group"
-        >
+        <Button size="lg" cursor="pointer">
           ☕ Let's Grab a Coffee
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-sm">
+      <DialogContent>
         <DialogHeader>
-          <DialogTitle>Let's talk</DialogTitle>
+          <DialogTitle>
+            <Typography as="span" variant="h3">Let's talk</Typography>
+          </DialogTitle>
           <DialogDescription>
-            Pick whatever's easiest for you.
+            <Typography as="span" variant="muted">
+              Pick whatever's easiest for you.
+            </Typography>
           </DialogDescription>
         </DialogHeader>
 

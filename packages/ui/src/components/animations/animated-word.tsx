@@ -2,17 +2,45 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Typography } from "@riselikesun/ui";
+import type { TypographyProps } from "@riselikesun/ui";
+import { cn } from "@/lib/utils";
 
-interface AnimatedWordProps {
+/**
+ * Extends TypographyProps<"span"> so consumers get all typography tokens
+ * (variant, color, weight, size...) and all native span HTML attributes
+ * (className, style, aria-*, data-*, etc.) without declaring them explicitly.
+ */
+export interface AnimatedWordProps extends Omit<TypographyProps<"span">, "as"> {
+  /** Array of words to animate through */
   words: string[];
+  /** Time in milliseconds between each word change. Default is 2500ms. */
   interval?: number;
-  className?: string;
 }
 
+/**
+ * An inline word cycler that animates through an array of words.
+ *
+ * It uses the design system's Typography component underneath (as a `span`),
+ * so you can pass any Typography token (variant, color, weight) to style the word.
+ *
+ * The component manages its own interval and uses Framer Motion for the slide-in/out effect.
+ *
+ * @example
+ * ```tsx
+ * <AnimatedWord
+ *   words={["scales.", "performs.", "delights."]}
+ *   color="accent"
+ *   weight="bold"
+ *   interval={3000}
+ * />
+ * ```
+ */
 export function AnimatedWord({
   words,
   interval = 2500,
-  className = "",
+  className,
+  ...typographyProps
 }: AnimatedWordProps) {
   const [index, setIndex] = useState(0);
 
@@ -27,8 +55,11 @@ export function AnimatedWord({
   }, [words.length, interval]);
 
   return (
-    <span
-      className={`relative inline-block align-bottom text-left ${className}`}
+    <Typography
+      as="span"
+      align="left"
+      {...typographyProps}
+      className={cn("inline-block", className)}
     >
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.span
@@ -45,6 +76,6 @@ export function AnimatedWord({
           {words[index]}
         </motion.span>
       </AnimatePresence>
-    </span>
+    </Typography>
   );
 }

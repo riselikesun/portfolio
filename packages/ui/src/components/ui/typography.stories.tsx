@@ -8,38 +8,23 @@ const meta: Meta<typeof Typography> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['h1', 'h2', 'h3', 'h4', 'p', 'lead', 'small', 'muted', 'overline'],
+      options: [
+        'h1', 'h2', 'h3', 'h4', 'p', 'lead', 'small',
+        'muted', 'overline', 'display', 'subtitle', 'eyebrow',
+      ],
     },
     color: {
       control: 'select',
-      options: ['default', 'primary', 'muted', 'secondary', 'destructive'],
-    },
-    size: {
-      control: 'select',
-      options: ['sm', 'base', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', '7xl', '8xl', '9xl'],
+      options: ['default', 'muted', 'primary', 'accent', 'on-dark'],
     },
     weight: {
       control: 'select',
-      options: ['light', 'normal', 'medium', 'semibold', 'bold', 'extrabold'],
-    },
-    tracking: {
-      control: 'select',
-      options: ['tighter', 'tight', 'normal', 'wide', 'wider', 'widest'],
+      options: ['default', 'normal', 'medium', 'semibold', 'bold', 'extrabold'],
     },
     align: {
       control: 'select',
-      options: ['left', 'center', 'right', 'justify'],
+      options: ['left', 'center', 'right'],
     },
-    noWrap: {
-      control: 'boolean',
-    },
-    gutterBottom: {
-      control: 'boolean',
-    },
-    as: {
-      control: 'text',
-      description: 'Override the default HTML element (e.g., span, div)'
-    }
   },
 }
 
@@ -55,123 +40,99 @@ export const Default: Story = {
 }
 
 export const Overview: Story = {
-    tags: ['!dev'],
+  tags: ['!dev'],
   render: () => (
-    <div className="flex flex-col gap-16 p-6 max-w-5xl mx-auto">
-      
-      {/* VARIANTS SECTION */}
-      <section className="space-y-8">
-        <div className="border-b border-border/50 pb-4">
-          <h2 className="text-3xl font-bold tracking-tight">Variants</h2>
-          <p className="text-muted-foreground mt-2">Semantic typography variants used throughout the application.</p>
-        </div>
-        <div className="flex flex-col gap-8">
-          <div>
-            <Typography variant="h1">Heading 1</Typography>
-            <Typography variant="muted" className="mt-2">text-4xl font-heading font-bold</Typography>
-          </div>
-          <div>
-            <Typography variant="h2">Heading 2</Typography>
-            <Typography variant="muted" className="mt-2">text-3xl font-heading font-bold tracking-tight</Typography>
-          </div>
-          <div>
-            <Typography variant="h3">Heading 3</Typography>
-            <Typography variant="muted" className="mt-2">text-2xl font-heading font-semibold</Typography>
-          </div>
-          <div>
-            <Typography variant="h4">Heading 4</Typography>
-            <Typography variant="muted" className="mt-2">text-xl font-heading font-semibold tracking-tight</Typography>
-          </div>
-          <div>
-            <Typography variant="lead">Lead Paragraph</Typography>
-            <Typography variant="muted" className="mt-2">text-xl text-muted-foreground</Typography>
-          </div>
-          <div>
-            <Typography variant="p">
-              Paragraph. This is standard body text. It has a generous line height for readability.
-              Use this for the majority of text content on your pages.
-            </Typography>
-            <Typography variant="muted" className="mt-2">text-base leading-7</Typography>
-          </div>
-          <div>
-            <Typography variant="small">Small Text</Typography>
-            <Typography variant="muted" className="mt-2">text-sm font-medium leading-none</Typography>
-          </div>
-          <div>
-            <Typography variant="muted">Muted Text. Used for secondary information or descriptions.</Typography>
-            <Typography variant="muted" className="mt-2">text-sm text-muted-foreground</Typography>
-          </div>
-          <div>
-            <Typography variant="overline">Overline / Label</Typography>
-            <Typography variant="muted" className="mt-2">text-sm font-medium text-muted-foreground uppercase tracking-wider</Typography>
-          </div>
-        </div>
-      </section>
-
-      {/* COLORS SECTION */}
-      <section className="space-y-8">
-        <div className="border-b border-border/50 pb-4">
-          <h2 className="text-3xl font-bold tracking-tight">Colors</h2>
-          <p className="text-muted-foreground mt-2">Semantic color options passed directly via the color prop.</p>
-        </div>
-        <div className="flex flex-col gap-4">
-          <Typography variant="h4" color="default">Default Color</Typography>
-          <Typography variant="h4" color="primary">Primary Color</Typography>
-          <Typography variant="h4" color="secondary">Secondary Color</Typography>
-          <Typography variant="h4" color="muted">Muted Color</Typography>
-          <Typography variant="h4" color="destructive">Destructive Color</Typography>
-        </div>
-      </section>
-
-      {/* SIZES SECTION */}
-      <section className="space-y-8">
-        <div className="border-b border-border/50 pb-4">
-          <h2 className="text-3xl font-bold tracking-tight">Sizes</h2>
-          <p className="text-muted-foreground mt-2">Scale typography size dynamically, overriding the variant's default size.</p>
-        </div>
-        <div className="flex flex-col gap-4">
-          <Typography variant="p" size="sm">Small (sm)</Typography>
-          <Typography variant="p" size="base">Base (base)</Typography>
-          <Typography variant="p" size="lg">Large (lg)</Typography>
-          <Typography variant="p" size="xl">Extra Large (xl)</Typography>
-          <Typography variant="p" size="2xl">2x Large (2xl)</Typography>
-          <Typography variant="p" size="4xl">4x Large (4xl)</Typography>
-          <Typography variant="p" size="7xl">7x Large (7xl)</Typography>
-          <Typography variant="p" size="9xl">9x Large (9xl)</Typography>
-        </div>
-      </section>
-
-      {/* WEIGHTS SECTION */}
-      <section className="space-y-8">
-        <div className="border-b border-border/50 pb-4">
-          <h2 className="text-3xl font-bold tracking-tight">Weights</h2>
-          <p className="text-muted-foreground mt-2">Adjust the font weight independently of the variant.</p>
-        </div>
-        <div className="flex flex-col gap-4">
-          <Typography variant="h3" weight="light">Light Weight (light)</Typography>
-          <Typography variant="h3" weight="normal">Normal Weight (normal)</Typography>
-          <Typography variant="h3" weight="medium">Medium Weight (medium)</Typography>
-          <Typography variant="h3" weight="semibold">Semibold Weight (semibold)</Typography>
-          <Typography variant="h3" weight="bold">Bold Weight (bold)</Typography>
-          <Typography variant="h3" weight="extrabold">Extrabold Weight (extrabold)</Typography>
-        </div>
-      </section>
-
-      {/* LETTER SPACING SECTION */}
-      <section className="space-y-8">
-        <div className="border-b border-border/50 pb-4">
-          <h2 className="text-3xl font-bold tracking-tight">Letter Spacing (Tracking)</h2>
-          <p className="text-muted-foreground mt-2">Adjust the spacing between letters.</p>
-        </div>
-        <div className="flex flex-col gap-4">
-          <Typography variant="h3" tracking="tighter">Tighter Tracking</Typography>
-          <Typography variant="h3" tracking="tight">Tight Tracking</Typography>
-          <Typography variant="h3" tracking="normal">Normal Tracking</Typography>
-          <Typography variant="h3" tracking="wide">Wide Tracking</Typography>
-          <Typography variant="h3" tracking="wider">Wider Tracking</Typography>
-          <Typography variant="h3" tracking="widest">Widest Tracking</Typography>
-        </div>
-      </section>
+    <div className="flex flex-col gap-8 p-6 max-w-3xl">
+      <div>
+        <Typography variant="h1">Heading 1</Typography>
+        <Typography variant="muted" className="mt-2">text-4xl · font-heading · font-bold</Typography>
+      </div>
+      <div>
+        <Typography variant="h2">Heading 2</Typography>
+        <Typography variant="muted" className="mt-2">text-3xl · font-heading · font-bold · tracking-tight</Typography>
+      </div>
+      <div>
+        <Typography variant="h3">Heading 3</Typography>
+        <Typography variant="muted" className="mt-2">text-2xl · font-heading · font-semibold</Typography>
+      </div>
+      <div>
+        <Typography variant="h4">Heading 4</Typography>
+        <Typography variant="muted" className="mt-2">text-xl · font-heading · font-semibold · tracking-tight</Typography>
+      </div>
+      <div>
+        <Typography variant="lead">Lead Paragraph</Typography>
+        <Typography variant="muted" className="mt-2">text-xl</Typography>
+      </div>
+      <div>
+        <Typography variant="p">
+          Paragraph. This is standard body text. It has a generous line height for readability.
+          Use this for the majority of text content on your pages.
+        </Typography>
+        <Typography variant="muted" className="mt-2">text-base · leading-7</Typography>
+      </div>
+      <div>
+        <Typography variant="small">Small Text</Typography>
+        <Typography variant="muted" className="mt-2">text-sm · leading-none</Typography>
+      </div>
+      <div>
+        <Typography variant="muted">Muted Text. Used for secondary information or descriptions.</Typography>
+        <Typography variant="muted" className="mt-2">text-sm · text-muted-foreground</Typography>
+      </div>
+      <div>
+        <Typography variant="overline">Overline / Label</Typography>
+        <Typography variant="muted" className="mt-2">text-sm · font-medium · uppercase · tracking-wider</Typography>
+      </div>
+      <div>
+        <Typography variant="subtitle">Subtitle text for supporting content</Typography>
+        <Typography variant="muted" className="mt-2">text-lg / md:text-2xl</Typography>
+      </div>
+      <div>
+        <Typography variant="eyebrow">Software Engineer</Typography>
+        <Typography variant="muted" className="mt-2">text-sm→xl · uppercase · wide tracking</Typography>
+      </div>
+      <div className="bg-black rounded-xl p-6">
+        <Typography variant="display" color="on-dark">Display</Typography>
+        <Typography variant="muted" className="mt-2">text-5xl→9xl · font-heading</Typography>
+      </div>
     </div>
-  )
+  ),
+}
+
+export const Colors: Story = {
+  tags: ['!dev'],
+  render: () => (
+    <div className="flex flex-col gap-4 p-6 max-w-xl">
+      <Typography variant="h4" color="default">Default — text-foreground</Typography>
+      <Typography variant="h4" color="muted">Muted — text-muted-foreground</Typography>
+      <Typography variant="h4" color="primary">Primary — text-primary</Typography>
+      <div className="bg-black rounded-xl p-4 flex flex-col gap-4">
+        <Typography variant="h4" color="accent">Accent — text-amber-300</Typography>
+        <Typography variant="h4" color="on-dark">On Dark — text-white</Typography>
+      </div>
+    </div>
+  ),
+}
+
+export const Weights: Story = {
+  tags: ['!dev'],
+  render: () => (
+    <div className="flex flex-col gap-3 p-6 max-w-xl">
+      <Typography variant="p" weight="normal">Normal weight (400)</Typography>
+      <Typography variant="p" weight="medium">Medium weight (500)</Typography>
+      <Typography variant="p" weight="semibold">Semibold weight (600)</Typography>
+      <Typography variant="p" weight="bold">Bold weight (700)</Typography>
+      <Typography variant="p" weight="extrabold">Extrabold weight (800)</Typography>
+    </div>
+  ),
+}
+
+export const Alignment: Story = {
+  tags: ['!dev'],
+  render: () => (
+    <div className="flex flex-col gap-4 p-6 max-w-xl border rounded-xl">
+      <Typography variant="p" align="left">Left aligned text</Typography>
+      <Typography variant="p" align="center">Center aligned text</Typography>
+      <Typography variant="p" align="right">Right aligned text</Typography>
+    </div>
+  ),
 }

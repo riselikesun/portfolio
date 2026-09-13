@@ -6,9 +6,10 @@ import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, useInView } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import { AnimatedWord } from "@/components/animations/animated-word";
+import { AnimatedWord } from "@riselikesun/ui";
 import { CoffeeDialog } from "./coffee-dialog";
 import { SmoothScrollLink } from "@/components/ui/smooth-scroll-link";
+import { Typography } from "@riselikesun/ui";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -90,10 +91,12 @@ export default function HeroSection() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
-            <motion.p variants={item} className="text-sm sm:text-base md:text-lg lg:text-xl tracking-[4px] sm:tracking-[8px] md:tracking-[12px] lg:tracking-[16px] text-amber-300">
-              SOFTWARE ENGINEER
-            </motion.p>
-            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-sans-serif text-white">
+            <motion.div variants={item}>
+              <Typography variant="eyebrow" color="accent">
+                SOFTWARE ENGINEER
+              </Typography>
+            </motion.div>
+            <Typography variant="display" color="on-dark">
               <motion.span
                 variants={item}
               >Suraj </motion.span>
@@ -105,7 +108,7 @@ export default function HeroSection() {
 
               >Sharma</motion.span>
 
-            </h1>
+            </Typography>
           </motion.div>
 
           <div className="h-8" />
@@ -117,17 +120,20 @@ export default function HeroSection() {
             animate={isInView ? "visible" : "hidden"}
           >
             <div>
-              <motion.p variants={item} className="p-4">
+              <motion.div variants={item} className="p-4">
                 <CoffeeDialog />
-              </motion.p>
-              <motion.p variants={item} className="md:text-2xl p-2">
-                Building software that&nbsp;
-                <AnimatedWord
-                  words={["scales.", "performs.", "delights.", "matters."]}
-                  className="w-20 text-amber-300"
-                  interval={3000}
-                />
-              </motion.p>
+              </motion.div>
+              <motion.div variants={item} className="p-2">
+                <Typography variant="subtitle">
+                  Building software that&nbsp;
+                  <AnimatedWord
+                    color="accent"
+                    words={["scales.", "performs.", "delights.", "matters."]}
+                    className="w-30"
+                    interval={3000}
+                  />
+                </Typography>
+              </motion.div>
             </div>
             <div>
               <motion.div variants={item}>
