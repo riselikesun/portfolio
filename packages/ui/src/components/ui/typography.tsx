@@ -37,7 +37,7 @@ export const typographyVariants = cva("", {
   variants: {
     variant: {
       // Semantic headings — map to h1–h4 by default
-      h1: "text-4xl font-heading font-bold",
+      h1: "text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-heading font-bold leading-[1.05]",
       h2: "text-3xl font-heading font-bold tracking-tight",
       h3: "text-2xl font-heading font-semibold",
       h4: "text-xl font-heading font-semibold tracking-tight",
@@ -50,8 +50,7 @@ export const typographyVariants = cva("", {
       // Display / hero — large-scale presentation text
       display: "text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-heading",
       subtitle: "text-lg md:text-2xl",
-      eyebrow:
-        "text-sm sm:text-base md:text-lg lg:text-xl tracking-[4px] sm:tracking-[8px] md:tracking-[12px] lg:tracking-[16px] uppercase",
+      eyebrow: "text-xs uppercase tracking-[0.35em] text-primary font-semibold",
     },
     /**
      * Semantic color tokens — intentionally design-system values only.
@@ -107,6 +106,14 @@ export const typographyVariants = cva("", {
       wide: "tracking-wide",
       wider: "tracking-wider",
       widest: "tracking-widest",
+    },
+    leading: {
+      none: "leading-none",
+      tight: "leading-tight",
+      snug: "leading-snug",
+      normal: "leading-normal",
+      relaxed: "leading-relaxed",
+      loose: "leading-loose",
     },
     noWrap: {
       true: "truncate",
@@ -209,6 +216,7 @@ const Typography = function Typography<E extends React.ElementType = "p">(
     align,
     size,
     tracking,
+    leading,
     noWrap,
     gutterBottom,
     ...props
@@ -221,7 +229,7 @@ const Typography = function Typography<E extends React.ElementType = "p">(
       data-slot="typography"
       data-variant={variant}
       className={cn(
-        typographyVariants({ variant, color, weight, align, size, tracking, noWrap, gutterBottom }),
+        typographyVariants({ variant, color, weight, align, size, tracking, leading, noWrap, gutterBottom }),
         className
       )}
       {...props}

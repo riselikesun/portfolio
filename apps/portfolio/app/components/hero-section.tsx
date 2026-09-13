@@ -90,7 +90,7 @@ export default function HeroSection() {
             animate={isInView ? "visible" : "hidden"}
           >
             <motion.div variants={item}>
-              <Typography variant="eyebrow" color="accent">
+              <Typography color="accent" size="xl" className="uppercase tracking-[4px] sm:tracking-[8px] md:tracking-[12px] lg:tracking-[16px]">
                 SOFTWARE ENGINEER
               </Typography>
             </motion.div>

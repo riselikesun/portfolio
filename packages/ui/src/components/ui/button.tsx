@@ -9,11 +9,11 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground font-bold tracking-wide hover:brightness-110 shadow-[0_0_15px] shadow-primary/20 hover:shadow-[0_0_25px] hover:shadow-primary/40",
+        default: "bg-primary text-primary-foreground font-bold tracking-wide hover:brightness-110",
         outline:
           "border-border hover:bg-foreground/5 hover:text-foreground aria-expanded:bg-foreground/5 aria-expanded:text-foreground",
         secondary:
-          "border-foreground/15 font-semibold tracking-wide hover:border-primary/60 hover:text-primary aria-expanded:bg-foreground/10 aria-expanded:text-foreground",
+          "border-foreground/15 text-foreground font-semibold tracking-wide hover:border-primary/60 hover:text-primary",
         ghost:
           "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
         destructive:
@@ -22,14 +22,14 @@ const buttonVariants = cva(
       },
       size: {
         default:
-          "h-10 gap-2 px-5 has-data-[icon=inline-end]:pr-4 has-data-[icon=inline-start]:pl-4",
-        xs: "h-6 gap-1 px-2.5 text-xs has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 [&_svg:not([class*='size-'])]:size-3",
-        sm: "h-8 gap-1.5 px-3 has-data-[icon=inline-end]:pr-2.5 has-data-[icon=inline-start]:pl-2.5",
-        lg: "h-12 gap-2 px-7 py-3.5 has-data-[icon=inline-end]:pr-5 has-data-[icon=inline-start]:pl-5 text-base",
-        icon: "size-10",
-        "icon-xs": "size-6 [&_svg:not([class*='size-'])]:size-3",
-        "icon-sm": "size-8",
-        "icon-lg": "size-12",
+          "gap-2 px-7 py-3.5 has-data-[icon=inline-end]:pr-5 has-data-[icon=inline-start]:pl-5",
+        xs: "gap-1 px-3 py-1.5 text-xs has-data-[icon=inline-end]:pr-2.5 has-data-[icon=inline-start]:pl-2.5 [&_svg:not([class*='size-'])]:size-3",
+        sm: "gap-1.5 px-5 py-2.5 has-data-[icon=inline-end]:pr-4 has-data-[icon=inline-start]:pl-4",
+        lg: "gap-2.5 px-9 py-4 text-base has-data-[icon=inline-end]:pr-7 has-data-[icon=inline-start]:pl-7",
+        icon: "size-12",
+        "icon-xs": "size-7 [&_svg:not([class*='size-'])]:size-3",
+        "icon-sm": "size-10",
+        "icon-lg": "size-14",
       },
       cursor: {
         default: "cursor-default",
