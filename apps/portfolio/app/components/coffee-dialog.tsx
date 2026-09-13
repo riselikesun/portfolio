@@ -34,7 +34,7 @@ export function CoffeeDialog() {
         </DialogHeader>
 
         <div className="flex flex-col gap-2">
-          <Button asChild variant="outline" cursor="pointer">
+          <Button asChild variant="outline" cursor="pointer" size="lg">
             <a
               href={config.linkedin}
               target="_blank"
@@ -44,13 +44,14 @@ export function CoffeeDialog() {
             </a>
           </Button>
 
-          <Button asChild variant="outline" cursor="pointer">
+          <Button asChild variant="outline" cursor="pointer" size="lg">
             <a href={`mailto:${config.email}`}>Email me</a>
           </Button>
 
           <Button
             asChild
             cursor="pointer"
+            size="lg"
           >
             <a
               href={config.calendarURL}

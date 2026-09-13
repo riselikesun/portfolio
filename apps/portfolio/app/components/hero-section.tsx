@@ -1,15 +1,13 @@
 "use client";
 
-import { BlobImage } from "@/components/ui/blob-image";
-import gsap from "gsap";
 import { useEffect, useRef } from "react";
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, useInView } from "framer-motion";
-import { ArrowDown } from "lucide-react";
-import { AnimatedWord } from "@riselikesun/ui";
+import { AnimatedWord, Typography, SmoothScrollLink } from "@riselikesun/ui";
+import { ArrowDown } from "@riselikesun/ui/icons";
 import { CoffeeDialog } from "./coffee-dialog";
-import { SmoothScrollLink } from "@/components/ui/smooth-scroll-link";
-import { Typography } from "@riselikesun/ui";
+import { BlobImage } from "@/components/ui/blob-image";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -137,13 +135,15 @@ export default function HeroSection() {
             </div>
             <div>
               <motion.div variants={item}>
-                <SmoothScrollLink href="#intro" className="cursor-pointer">
-                  Scroll to rise
+                <SmoothScrollLink href="#intro" className="cursor-pointer group">
+                  <Typography color="muted">
+                    Scroll to rise
+                  </Typography>
+              <motion.div variants={item} className="flex justify-center p-2">
+                <ArrowDown className="text-primary animate-bounce" />
+              </motion.div>
                 </SmoothScrollLink>
               </motion.div>
-              <motion.p variants={item} className="flex justify-center p-2">
-                <ArrowDown className="animate-bounce" />
-              </motion.p>
             </div>
           </motion.div>
         </div>

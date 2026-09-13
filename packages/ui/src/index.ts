@@ -17,3 +17,5 @@ export {
   DialogTitle,
   DialogTrigger,
 } from "./components/ui/dialog";
+export { SmoothScrollLink } from "./components/ui/smooth-scroll-link";
+export type { SmoothScrollLinkProps } from "./components/ui/smooth-scroll-link";
