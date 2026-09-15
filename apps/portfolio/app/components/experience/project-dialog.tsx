@@ -1,10 +1,11 @@
 "use client";
 
 import { Project, TechItem } from "@/app/types/types";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { ExternalLink, ArrowUpRight, ArrowRight } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
 import { TechPill } from "./tech-pill";
 import { motion, Variants } from "motion/react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, Link, Badge, Typography, Card, Button, CardHeader, CardContent, CardFooter, List, ListItem } from "@riselikesun/ui";
+import { CardAction } from "@/components/ui/card";
 
 const dialogContainerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -47,85 +48,84 @@ export function ProjectDialog({ project, companyTech = [], isFeatured = false }:
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div
-          className={`
-            cursor-pointer group flex flex-col transition-all duration-300
-            bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.04] hover:border-white/[0.1]
-            ${isFeatured ? 'rounded-2xl p-5 min-h-[120px]' : 'rounded-xl p-4'}
-          `}
+        <Card
+          size="sm"
+          className="group/project-dialog cursor-pointer"
         >
-          <div className="font-medium text-white mb-2">
+          <CardHeader className="card-header">
             {project.projectWebsite ? (
-              <a
-                href={project.projectWebsite}
-                target="_blank"
+              <Link showExternalIcon href={project.projectWebsite} target="_blank"
                 rel="noopener noreferrer"
-                onClick={handleLinkClick}
-                className="card-link inline-flex items-center gap-2 hover:text-[#D89432] transition-colors group/link"
-                aria-label={`Visit ${project.name} website`}
-              >
-                {project.name}
-                <ExternalLink size={16} className="text-slate-400 group-hover/link:text-[#D89432] transition-colors" />
-              </a>
+                onClick={handleLinkClick} aria-label={`Visit ${project.name} website`}>{project.name}</Link>
             ) : (
               <span>{project.name}</span>
             )}
-          </div>
-          <p className={`text-sm text-slate-400 leading-relaxed ${isFeatured ? 'line-clamp-3' : 'line-clamp-2'}`}>
-            {project.description}
-          </p>
+          </CardHeader>
 
-          <div className="mt-auto pt-4 flex items-center text-xs font-medium text-slate-500 group-hover:text-[#D89432] group-has-[.card-link:hover]:text-slate-500 transition-colors duration-300">
-            <span>View Details</span>
-            <ArrowRight size={14} className="ml-1 transform transition-transform duration-300 group-hover:translate-x-1 group-has-[.card-link:hover]:translate-x-0" />
-          </div>
-        </div>
+          <CardContent>
+            <Typography variant="muted" leading="relaxed" className={isFeatured ? 'line-clamp-3' : 'line-clamp-2'}>
+              {project.description}
+            </Typography>
+          </CardContent>
+          <CardFooter>
+            <CardAction>
+              <Button
+                variant="ghost"
+                size="sm"
+                iconHover="right"
+                className="p-0 group-[:hover:not(:has(.card-header:hover))]/project-dialog:text-primary"
+              >
+                <span>View Details</span>
+                <ArrowRight className="group-[:hover:not(:has(.card-header:hover))]/project-dialog:translate-x-1" />
+              </Button>
+            </CardAction>
+          </CardFooter>
+        </Card>
       </DialogTrigger>
-
-      <DialogContent className="bg-[#0a0a0a] border-white/10 text-slate-200 sm:max-w-7xl w-[95vw] max-h-[90vh] overflow-y-auto p-6 sm:p-10 md:p-12 lg:p-16">
-        <motion.div variants={dialogContainerVariants} initial="hidden" animate="visible" className="flex flex-col">
+      <DialogContent padding="lg" width="7xl">
+        <motion.div variants={dialogContainerVariants} initial="hidden" animate="visible">
           <motion.div variants={dialogItemVariants}>
             <DialogHeader>
               <div className="flex items-center justify-between gap-3 pr-8">
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-3">
-                    <DialogTitle className="text-2xl font-bold text-white tracking-tight">
+                    <DialogTitle> <Typography size="2xl">
                       {project.name}
-                    </DialogTitle>
+                    </Typography></DialogTitle>
                     {project.projectWebsite && (
-                      <a
+                      <Link
+                        variant="pill"
+                        size="xs"
+                        showExternalIcon
                         href={project.projectWebsite}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-full bg-[#D89432]/10 hover:bg-[#D89432]/20 text-xs font-medium leading-none text-[#D89432] transition-colors border border-[#D89432]/20 shrink-0 whitespace-nowrap"
                       >
-                        Live Project <ExternalLink size={12} className="relative -mt-[1px]" />
-                      </a>
+                        Live Project
+                      </Link>
                     )}
                   </div>
 
                   {project.client && (
-                    <div className="flex items-center gap-1.5 text-sm font-medium">
-                      <span className="text-slate-400">Client:</span>
+                    <div className="flex items-center gap-1.5  font-medium">
+                      <Typography as="span" variant="muted" size="sm">Client:</Typography>
                       {project.clientWebsite ? (
-                        <a
+                        <Link
                           href={project.clientWebsite}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-[#D89432] hover:text-amber-300 transition-colors group/client"
+                          variant="highlighted"
+                          showExternalIcon
                         >
                           {project.client}
-                          <ExternalLink size={12} className="text-[#D89432] group-hover/client:text-amber-300 transition-colors" />
-                        </a>
+                        </Link>
                       ) : (
-                        <span className="text-slate-200">{project.client}</span>
+                        <Typography>{project.client}</Typography>
                       )}
                     </div>
                   )}
                 </div>
               </div>
-              <DialogDescription className="text-slate-400 text-base leading-relaxed mt-4">
-                {project.description}
+              <DialogDescription className="mt-4">
+                <Typography color="muted" leading="relaxed" size="base"> {project.description}</Typography>
               </DialogDescription>
             </DialogHeader>
           </motion.div>
@@ -133,24 +133,21 @@ export function ProjectDialog({ project, companyTech = [], isFeatured = false }:
           <div className="mt-6 space-y-6">
             {project.responsibilities && project.responsibilities.length > 0 && (
               <motion.div variants={dialogItemVariants}>
-                <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Key Responsibilities & Achievements</h4>
-                <ul className="space-y-3">
+                <Typography variant="overline" color="default" className="mb-4">Key Responsibilities & Achievements</Typography>
+                <List >
                   {project.responsibilities.map((res, i) => (
-                    <li key={i} className="flex items-start text-sm text-slate-300 leading-relaxed">
-                      <span className="mr-3 mt-1.5 flex-shrink-0 flex items-center justify-center w-1.5 h-1.5 rounded-full bg-[#D89432]/70" />
-                      <span>{res}</span>
-                    </li>
+                    <ListItem key={i}>{res}</ListItem>
                   ))}
-                </ul>
+                </List>
               </motion.div>
             )}
 
             {uniqueTech.length > 0 && (
               <motion.div variants={dialogItemVariants}>
-                <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Technology Stack</h4>
+                <Typography variant="overline" color="default" className="mb-4">Technology Stack</Typography>
                 <div className="flex flex-wrap gap-2">
                   {uniqueTech.map((t, i) => (
-                    <TechPill key={i} tech={t} className="px-3 py-1 text-xs" />
+                    <TechPill key={i} tech={t} />
                   ))}
                 </div>
               </motion.div>

@@ -63,7 +63,7 @@ export const typographyVariants = cva("", {
       primary: "text-primary",
       secondary: "text-secondary-foreground",
       destructive: "text-destructive",
-      accent: "text-amber-300",
+      accent: "text-highlight",
       "on-dark": "text-white",
     },
     weight: {
@@ -86,6 +86,7 @@ export const typographyVariants = cva("", {
      * Useful when you want muted-style text but at a different scale.
      */
     size: {
+      xs: "text-xs",
       sm: "text-sm",
       base: "text-base",
       lg: "text-lg",

@@ -43,17 +43,21 @@ export interface CardProps
  * Flexible container for grouped content.
  * Supports multiple visual variants and padding scales.
  */
-function Card({ className, variant, padding, size = "default", asChild = false, ...props }: CardProps) {
-  const Comp = asChild ? Slot.Root : "div";
-  return (
-    <Comp
-      data-slot="card"
-      data-size={size}
-      className={cn(cardVariants({ variant, padding, className }))}
-      {...props}
-    />
-  )
-}
+const Card = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className, variant, padding, size = "default", asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot.Root : "div";
+    return (
+      <Comp
+        ref={ref}
+        data-slot="card"
+        data-size={size}
+        className={cn(cardVariants({ variant, padding, className }))}
+        {...props}
+      />
+    )
+  }
+)
+Card.displayName = "Card"
 
 function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (

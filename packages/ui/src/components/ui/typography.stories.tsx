@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Typography } from './typography'
 
 const meta: Meta<typeof Typography> = {
-  title: 'All Components/Typography',
+  title: 'All Components/Data Display/Typography',
   component: Typography,
   tags: ['autodocs'],
   argTypes: {
@@ -15,7 +15,7 @@ const meta: Meta<typeof Typography> = {
     },
     color: {
       control: 'select',
-      options: ['default', 'muted', 'primary', 'accent', 'on-dark'],
+      options: ['default', 'muted', 'primary', 'secondary', 'destructive', 'accent', 'on-dark'],
     },
     weight: {
       control: 'select',

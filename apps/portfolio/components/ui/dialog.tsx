@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { Dialog as DialogPrimitive } from "radix-ui"
+import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -47,24 +48,71 @@ function DialogOverlay({
   )
 }
 
+const dialogContentVariants = cva(
+  "fixed max-h-[90vh] overflow-y-auto top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-6 rounded-[24px] duration-200 outline-none data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 shadow-2xl",
+  {
+    variants: {
+      background: {
+        default: "bg-popover backdrop-blur-xl text-popover-foreground border border-border",
+        solid: "bg-[#0a0a0a] border-white/10 text-slate-200 border",
+        dark: "bg-[#0a0a0a] border-white/10 text-slate-200 border",
+        card: "bg-card border border-border text-card-foreground",
+        glass: "bg-foreground/[0.03] backdrop-blur-xl border border-foreground/10 text-foreground",
+        none: "",
+      },
+      padding: {
+        none: "p-0",
+        sm: "p-4",
+        default: "p-6",
+        md: "p-6 sm:p-8",
+        lg: "p-6 sm:p-10 md:p-12 lg:p-16",
+        xl: "p-6 sm:p-10 md:p-12 lg:p-16",
+      },
+      width: {
+        default: "sm:max-w-md",
+        sm: "sm:max-w-sm",
+        md: "sm:max-w-md",
+        lg: "sm:max-w-lg",
+        xl: "sm:max-w-xl",
+        "2xl": "sm:max-w-2xl",
+        "3xl": "sm:max-w-3xl",
+        "4xl": "sm:max-w-4xl",
+        "5xl": "sm:max-w-5xl",
+        "6xl": "sm:max-w-6xl",
+        "7xl": "w-[95vw] sm:max-w-7xl",
+        full: "w-[95vw] sm:max-w-[calc(100vw-4rem)]",
+      },
+    },
+    defaultVariants: {
+      background: "default",
+      padding: "default",
+      width: "default",
+    },
+  }
+)
+
+export interface DialogContentProps
+  extends React.ComponentProps<typeof DialogPrimitive.Content>,
+    VariantProps<typeof dialogContentVariants> {
+  showCloseButton?: boolean
+}
+
 function DialogContent({
   className,
   children,
   showCloseButton = true,
+  background = "default",
+  padding = "default",
+  width = "default",
   ...props
-}: React.ComponentProps<typeof DialogPrimitive.Content> & {
-  showCloseButton?: boolean
-}) {
+}: DialogContentProps) {
   return (
     <DialogPortal>
       <DialogOverlay />
       <DialogPrimitive.Content
         data-slot="dialog-content"
         data-lenis-prevent="true"
-        className={cn(
-          "fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-6 rounded-[24px] bg-popover backdrop-blur-xl p-6 text-popover-foreground border border-border duration-200 outline-none sm:max-w-md data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 shadow-2xl",
-          className
-        )}
+        className={cn(dialogContentVariants({ background, padding, width, className }))}
         {...props}
       >
         {children}
@@ -166,4 +214,5 @@ export {
   DialogPortal,
   DialogTitle,
   DialogTrigger,
+  dialogContentVariants,
 }

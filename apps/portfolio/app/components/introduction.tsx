@@ -3,7 +3,7 @@
 import { motion, Variants } from "framer-motion";
 import { BlobImage } from "@/components/ui/blob-image";
 import { SmoothScrollLink } from "@riselikesun/ui";
-import { Button, Typography } from "@riselikesun/ui";
+import { Button, Typography, Link } from "@riselikesun/ui";
 import { ArrowUpRight } from "@riselikesun/ui/icons";
 
 
@@ -117,17 +117,12 @@ export default function IntroSection() {
               globally, led cross-functional teams, and built AI-powered platforms
               that redefine what software can do. From scaling Infoblox&apos;s
               marketing tech to engineering{" "}
-              <Typography
-                as="a"
+              <Link
+                variant="underline"
                 href="https://quillbot.com/paraphrasing-tool"
-                target="_blank"
-                rel="noopener noreferrer"
-                color="on-dark"
-                weight="semibold"
-                className="underline decoration-primary decoration-2 underline-offset-4"
               >
                 QuillBot
-              </Typography>&apos;s core writing product, I build things that last.
+              </Link>&apos;s core writing product, I build things that last.
             </Typography>
           </motion.div>
 

@@ -11,7 +11,7 @@ import { Mail, Target, Briefcase } from 'lucide-react';
 import { Progress } from './progress';
 import { MetricCard } from './metric-card';
 import { Timeline, TimelineItem, TimelineDot, TimelineContent } from './timeline';
-import { AnimatedWord } from '@/components/animations/animated-word';
+import { AnimatedWord } from '../animations/animated-word';
 import { addons } from 'storybook/manager-api';
 import { themes } from 'storybook/theming';
 

@@ -3,8 +3,8 @@ import { ProjectDialog } from './experience/project-dialog'
 import { TechStackDialog } from './experience/tech-stack-dialog'
 import { ExperienceDialog } from './experience/experience-dialog'
 import { TechPill } from './experience/tech-pill'
-import { ExternalLink } from 'lucide-react'
 import { motion, Variants } from 'motion/react'
+import { Card, CardContent, CardFooter, Typography, Badge, Link, List, ListItem } from '@riselikesun/ui'
 
 const textVariants: Variants = {
   hidden: { opacity: 0, y: 15 },
@@ -29,8 +29,8 @@ export default function ExperienceCard({ exp, isFeatured = false }: ExperienceCa
     ...(exp.responsibilities || []),
     ...(exp.achievements || []),
     // If no top-level responsibilities, grab the first few from projects
-    ...(exp.responsibilities?.length || exp.achievements?.length ? [] : 
-        (exp.projects?.flatMap(p => p.responsibilities || []).slice(0, 3) || []))
+    ...(exp.responsibilities?.length || exp.achievements?.length ? [] :
+      (exp.projects?.flatMap(p => p.responsibilities || []).slice(0, 3) || []))
   ];
 
   // Combine tech from top-level and projects, removing duplicates
@@ -46,66 +46,56 @@ export default function ExperienceCard({ exp, isFeatured = false }: ExperienceCa
   const hasMoreTech = uniqueTech.length > maxTech;
 
   return (
-    <article 
-      className={`
-        h-full rounded-3xl p-6 md:p-8 backdrop-blur-md transition-all duration-300 flex flex-col
-        ${isFeatured 
-          ? 'bg-gradient-to-br from-white/[0.06] to-white/[0.02] border-[#D89432]/30 border shadow-[0_0_40px_rgba(216,148,50,0.15)] hover:shadow-[0_0_60px_rgba(216,148,50,0.25)] hover:border-[#D89432]/50' 
-          : 'bg-white/[0.03] border-white/10 border hover:bg-white/[0.05] hover:border-white/20'
-        }
-      `}
+    <Card
+      variant={isFeatured ? "featured" : "blurred"}
+      className="h-full"
     >
-      <div className={isFeatured ? "grid grid-cols-1 lg:grid-cols-2 gap-8 flex-grow mb-6" : "flex flex-col flex-grow mb-6"}>
+      <CardContent className={isFeatured ? "grid grid-cols-1 lg:grid-cols-2 gap-8" : "flex flex-col"}>
         {/* Left Column (or full width if not featured) */}
         <div className="flex flex-col">
           <motion.header variants={textVariants} className="mb-5 flex flex-col gap-1">
             <div className="flex justify-between items-start flex-wrap gap-4">
-              <h3 className={`font-bold tracking-tight text-white ${isFeatured ? 'text-2xl md:text-3xl' : 'text-xl'}`}>
+              <Typography variant="h3" size={isFeatured ? '2xl' : 'xl'}>
                 {exp.role}
-              </h3>
+              </Typography>
               {isFeatured && (
-                <span className="inline-flex items-center px-3 py-1 mb-3 rounded-full bg-[#D89432]/10 border border-[#D89432]/20 text-xs font-medium text-[#D89432] whitespace-nowrap">
+                <Badge variant="highlighted" className="mb-3">
                   Featured Role
-                </span>
+                </Badge>
               )}
             </div>
-            
-            <p className="text-base text-slate-300 mt-1 flex items-center flex-wrap gap-2">
+
+            <div className="mt-1 flex items-center flex-wrap gap-2 text-base">
               {exp.company.website ? (
-                <a
+                <Link
                   href={exp.company.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-[#D89432] hover:text-amber-300 transition-colors flex items-center gap-1 group"
+                  variant="highlighted"
+                  showExternalIcon="hover"
                 >
                   {exp.company.name}
-                  <ExternalLink size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                </a>
+                </Link>
               ) : (
-                <span className="font-semibold text-[#D89432]">{exp.company.name}</span>
+                <Typography as="span" color="primary" weight="semibold">{exp.company.name}</Typography>
               )}
-              <span className="text-slate-500">•</span>
-              <span className="text-slate-400">{exp.location ?? exp.company.location ?? 'Remote'}</span>
-            </p>
-            <p className="text-sm font-mono text-slate-500 mt-1">{exp.period}</p>
+              <Typography as="span" color="muted">•</Typography>
+              <Typography as="span" color="muted">{exp.location ?? exp.company.location ?? 'Remote'}</Typography>
+            </div>
+            <Typography size="sm" color="muted" className="font-mono mt-1">{exp.period}</Typography>
           </motion.header>
 
-          <motion.div variants={textVariants} className="flex-grow">
+          <motion.div variants={textVariants} className="grow">
             {highlights.length > 0 && (
-              <ul className="space-y-3">
+              <List color="secondary">
                 {highlights.map((r, i) => (
-                  <li key={i} className="flex items-start text-sm md:text-base text-slate-300 leading-relaxed">
-                    <span className="mr-3 mt-1.5 flex-shrink-0 flex items-center justify-center w-1.5 h-1.5 rounded-full bg-[#D89432]/70" />
-                    <span>{r}</span>
-                  </li>
+                  <ListItem key={i}>{r}</ListItem>
                 ))}
-              </ul>
+              </List>
             )}
-            
+
             {/* Show Projects for non-featured cards */}
             {!isFeatured && exp.projects && exp.projects.length > 0 && (
               <div className="mt-6">
-                <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Key Projects</h4>
+                <Typography color="muted" weight="semibold" size="sm" tracking="wider" className="mb-3 uppercase">Key Projects</Typography>
                 <div className="flex flex-col gap-3">
                   {exp.projects.slice(0, 2).map((proj, i) => (
                     <ProjectDialog key={i} project={proj} isFeatured={false} />
@@ -120,8 +110,8 @@ export default function ExperienceCard({ exp, isFeatured = false }: ExperienceCa
         {isFeatured && (
           <motion.div variants={textVariants} className="flex flex-col">
             {exp.projects && exp.projects.length > 0 && (
-              <div className="flex-grow">
-                <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">Key Projects</h4>
+              <div className="grow">
+                <Typography color="muted" weight="semibold" size="sm" tracking="wider" className="mb-3 uppercase">Key Projects</Typography>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4">
                   {exp.projects.slice(0, 4).map((proj, i) => (
                     <ProjectDialog key={i} project={proj} companyTech={exp.tech} isFeatured={true} />
@@ -131,25 +121,27 @@ export default function ExperienceCard({ exp, isFeatured = false }: ExperienceCa
             )}
           </motion.div>
         )}
-      </div>
+      </CardContent>
 
       {/* Tech Stack spans full width at the bottom */}
-      <motion.div variants={textVariants} className="mt-auto pt-6 border-t border-white/[0.06] w-full flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        {visibleTech.length > 0 && (
-          <div className="flex flex-wrap gap-2 items-center flex-grow">
-            {visibleTech.map((tech, i) => (
-              <TechPill key={i} tech={tech} className="px-2.5 py-1.5 text-xs" />
-            ))}
-            {hasMoreTech && (
-              <TechStackDialog tech={uniqueTech} hiddenCount={uniqueTech.length - maxTech} />
-            )}
+      <CardFooter className="flex-col sm:flex-row sm:items-center justify-between">
+        <motion.div variants={textVariants} className="pt-8 border-t border-border/40 w-full flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          {visibleTech.length > 0 && (
+            <div className="flex flex-wrap gap-2 items-center grow">
+              {visibleTech.map((tech, i) => (
+                <TechPill key={i} tech={tech} />
+              ))}
+              {hasMoreTech && (
+                <TechStackDialog tech={uniqueTech} hiddenCount={uniqueTech.length - maxTech} />
+              )}
+            </div>
+          )}
+
+          <div className="shrink-0 self-start sm:self-auto">
+            <ExperienceDialog exp={exp} />
           </div>
-        )}
-        
-        <div className="flex-shrink-0 self-start sm:self-auto">
-          <ExperienceDialog exp={exp} />
-        </div>
-      </motion.div>
-    </article>
+        </motion.div>
+      </CardFooter>
+    </Card>
   )
 }

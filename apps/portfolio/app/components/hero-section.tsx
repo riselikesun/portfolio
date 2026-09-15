@@ -127,7 +127,7 @@ export default function HeroSection() {
                   <AnimatedWord
                     color="accent"
                     words={["scales.", "performs.", "delights.", "matters."]}
-                    className="w-30"
+                    className="w-20"
                     interval={3000}
                   />
                 </Typography>

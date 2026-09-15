@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, Variants } from 'motion/react';
+import { Typography } from '@riselikesun/ui';
 import ExperienceCard from './experience-card'
 import { experiences } from '../data/experiences'
 
@@ -35,8 +36,8 @@ export default function ProfessionalExperience() {
 						transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
 						className="space-y-2"
 					>
-						<h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">Professional Experience</h2>
-						<p className="text-slate-400 text-lg">My journey building scalable products and leading engineering teams.</p>
+						<Typography variant="h2">Professional Experience</Typography>
+						<Typography size="lg" color="muted">My journey building scalable products and leading engineering teams.</Typography>
 					</motion.div>
 
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -49,7 +50,7 @@ export default function ProfessionalExperience() {
 									whileInView="visible"
 									viewport={{ once: true, margin: "-50px" }}
 									key={i} 
-									className={isFeatured ? "md:col-span-2" : "col-span-1"}
+									className={isFeatured ? "md:col-span-2 h-full" : "col-span-1 h-full"}
 								>
 									<ExperienceCard exp={exp} isFeatured={isFeatured} />
 								</motion.div>
