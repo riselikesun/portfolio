@@ -1,7 +1,7 @@
 "use client";
 
 import { Project, TechItem } from "@/app/types/types";
-import { ExternalLink, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { TechPill } from "./tech-pill";
 import { motion, Variants } from "motion/react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, Link, Badge, Typography, Card, Button, CardHeader, CardContent, CardFooter, List, ListItem } from "@riselikesun/ui";
@@ -125,7 +125,7 @@ export function ProjectDialog({ project, companyTech = [], isFeatured = false }:
                 </div>
               </div>
               <DialogDescription className="mt-4">
-                <Typography color="muted" leading="relaxed" size="base"> {project.description}</Typography>
+                <Typography as="span" color="muted" leading="relaxed" size="base"> {project.description}</Typography>
               </DialogDescription>
             </DialogHeader>
           </motion.div>

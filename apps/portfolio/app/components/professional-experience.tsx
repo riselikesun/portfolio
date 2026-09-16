@@ -36,7 +36,7 @@ export default function ProfessionalExperience() {
 						transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
 						className="space-y-2"
 					>
-						<Typography variant="h2">Professional Experience</Typography>
+						<Typography color="secondary" variant="h2">Professional Experience</Typography>
 						<Typography size="lg" color="muted">My journey building scalable products and leading engineering teams.</Typography>
 					</motion.div>
 

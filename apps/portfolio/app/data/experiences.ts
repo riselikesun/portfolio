@@ -97,7 +97,7 @@ export const experiences: Experience[] = [
 			},
 		],
 		achievements: [
-			'Engineered and launched the AI Detector in just one week; it became an instant success, scaling to millions of users and ranking #2 in Google Search within a month.',
+			'Engineered and launched the AI Detector in just one week, it became an instant success, scaling to millions of users and ranking #2 in Google Search within a month.',
 			'Rapidly developed the Plagiarism Checker, driving significant premium user acquisition and contributing to major business growth.',
 			'Delivered multiple crucial features for the core Paraphraser product that substantially enhanced overall user experience and retention.',
 		],
