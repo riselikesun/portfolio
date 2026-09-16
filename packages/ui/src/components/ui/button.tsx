@@ -14,6 +14,8 @@ const buttonVariants = cva(
           "border-border hover:bg-foreground/5 hover:text-foreground aria-expanded:bg-foreground/5 aria-expanded:text-foreground",
         secondary:
           "border-foreground/15 text-foreground font-semibold tracking-wide hover:border-primary/60 hover:text-primary",
+        filled:
+          "bg-foreground text-primary-foreground font-semibold tracking-wide hover:bg-primary",
         ghost:
           "text-muted-foreground hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 hover:text-primary",
         destructive:

@@ -3,14 +3,19 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const navbarVariants = cva(
-  "flex items-center w-full z-50 transition-all duration-300 px-4 md:px-8 h-16",
+  "flex items-center max-w-7xl z-50 transition-all duration-300 px-5 h-13 backdrop-blur-md border-white/10 bg-white/[0.03]",
   {
     variants: {
       variant: {
-        default: "bg-background/80 backdrop-blur-md border-b border-border",
-        sticky: "sticky top-0 bg-background/80 backdrop-blur-md border-b border-border",
-        floating: "fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] rounded-full border border-border bg-background/70 backdrop-blur-md shadow-lg px-6 md:px-8",
+        default: "border-b border-border",
+        sticky: "sticky top-0 border-b border-border",
+        floating: "fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] rounded-full border border-border",
       },
+      width: {
+        sm: "max-w-4xl",
+        default: "max-w-7xl",
+        full: "max-w-full"
+      }
     },
     defaultVariants: {
       variant: "default",
@@ -20,13 +25,13 @@ const navbarVariants = cva(
 
 export interface NavbarProps
   extends React.ComponentProps<"header">,
-    VariantProps<typeof navbarVariants> {}
+  VariantProps<typeof navbarVariants> { }
 
 const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
-  ({ className, variant, ...props }, ref) => (
+  ({ className, variant, width, ...props }, ref) => (
     <header
       ref={ref}
-      className={cn(navbarVariants({ variant }), className)}
+      className={cn(navbarVariants({ variant, width }), className)}
       {...props}
     />
   )

@@ -28,3 +28,4 @@ export type { LinkProps } from "./components/ui/link";
 export { List, ListItem, ListIndicator, listVariants, listIndicatorVariants } from "./components/ui/list";
 export type { ListProps, ListItemProps, ListIndicatorProps } from "./components/ui/list";
 export { Progress } from './components/ui/progress'
+export { Navbar, NavbarBrand, NavbarContent, NavbarItem } from './components/ui/navbar'

@@ -1,6 +1,6 @@
 export { default as HomeAppBar } from './home-nav-bar';
 export { default as HeroSection } from './hero-section';
-export { default as Navbar } from './navbar';
+export { default as AppNavbar } from './app-navbar';
 export { CoffeeDialog } from './coffee-dialog';
 export { default as ContactMe } from './contact-me';
 export { default as DirtyHandsSection } from './dirty-hands-section';

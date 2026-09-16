@@ -17,4 +17,5 @@ export {
     Sprout,
     X,
     CalendarDays,
+    Sun
 } from "lucide-react";
