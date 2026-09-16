@@ -127,7 +127,7 @@ export function ExperienceDialog({ exp }: ExperienceDialogProps) {
                               {proj.name}
                             </Link>
                           ) : (
-                            <Typography variant="h4" color="primary">
+                            <Typography variant="h4" >
                               {proj.name}
                             </Typography>
                           )}

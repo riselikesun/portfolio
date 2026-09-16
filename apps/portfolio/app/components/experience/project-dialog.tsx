@@ -52,13 +52,14 @@ export function ProjectDialog({ project, companyTech = [], isFeatured = false }:
           size="sm"
           className="group/project-dialog cursor-pointer"
         >
-          <CardHeader className="card-header">
+          <CardHeader >
             {project.projectWebsite ? (
               <Link showExternalIcon href={project.projectWebsite} target="_blank"
+                className="card-header-link"
                 rel="noopener noreferrer"
-                onClick={handleLinkClick} aria-label={`Visit ${project.name} website`}>{project.name}</Link>
+                onClick={handleLinkClick} aria-label={`Visit ${project.name} website`}><h4>{project.name}</h4></Link>
             ) : (
-              <span>{project.name}</span>
+              <Typography variant="h4" color="secondary" size="base">{project.name}</Typography>
             )}
           </CardHeader>
 
@@ -73,10 +74,10 @@ export function ProjectDialog({ project, companyTech = [], isFeatured = false }:
                 variant="ghost"
                 size="sm"
                 iconHover="right"
-                className="p-0 group-[:hover:not(:has(.card-header:hover))]/project-dialog:text-primary"
+                className="p-0 group-[:hover:not(:has(.card-header-link:hover))]/project-dialog:text-primary"
               >
                 <span>View Details</span>
-                <ArrowRight className="group-[:hover:not(:has(.card-header:hover))]/project-dialog:translate-x-1" />
+                <ArrowRight className="group-[:hover:not(:has(.card-header-link:hover))]/project-dialog:translate-x-1" />
               </Button>
             </CardAction>
           </CardFooter>
