@@ -8,7 +8,6 @@ import {
   DialogTitle,
   DialogDescription,
   DialogTrigger,
-  Typography,
 } from "@riselikesun/ui";
 import config from "../config";
 
@@ -23,13 +22,11 @@ export function CoffeeDialog() {
 
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>
-            <Typography as="span" variant="h3">Let's talk</Typography>
+          <DialogTitle className="text-xl">
+            Let's talk
           </DialogTitle>
           <DialogDescription>
-            <Typography as="span" variant="muted">
-              Pick whatever's easiest for you.
-            </Typography>
+            Pick whatever's easiest for you.
           </DialogDescription>
         </DialogHeader>
 

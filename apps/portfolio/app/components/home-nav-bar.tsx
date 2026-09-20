@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform, useMotionValue } from "motion/react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { SmoothScrollLink } from "@/components/ui/smooth-scroll-link";
-import { Button, Navbar, NavbarBrand, NavbarContent, NavbarItem, Typography } from "@riselikesun/ui";
+import { Button, Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@riselikesun/ui";
 import { Sun } from "@riselikesun/ui/icons";
 
 
@@ -110,7 +110,7 @@ const HomeAppBar = () => {
                     <NavbarBrand>
                         <div ref={placeholderRef} className="flex items-center gap-2 opacity-0">
                             <div className="h-4 w-4 sm:h-5 sm:w-5" />
-                            <Typography size='xl' tracking="widest" className="font-serif hover:opacity-80 transition-opacity">riselikesun</Typography>
+                            <p className="font-serif text-sm sm:text-lg tracking-widest font-normal text-default hover:opacity-80 transition-opacity">riselikesun</p>
                         </div>
                     </NavbarBrand>
                     <NavbarContent justify="center" className="hidden md:flex">
@@ -120,8 +120,8 @@ const HomeAppBar = () => {
                     </NavbarContent>
                     <NavbarContent justify="end">
                         <NavbarItem className="hidden md:flex">
-                            <Link href="/resume" target="_blank" rel="noopener noreferrer">
-                                <Typography size="xs">Resume</Typography>
+                            <Link href="/resume" target="_blank" rel="noopener noreferrer hidden sm:block text-xs font-medium">
+                                Resume
                             </Link>
                         </NavbarItem>
                         <SmoothScrollLink
@@ -135,13 +135,13 @@ const HomeAppBar = () => {
             <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-4xl h-13 pointer-events-none">
                 <motion.div
                     style={{ x, y, scale, opacity: isMounted ? 1 : 0 }}
-                    className="absolute left-5 top-0 bottom-0 flex items-center gap-2 origin-center pointer-events-auto"    
+                    className="absolute left-5 top-0 bottom-0 flex items-center gap-2 origin-center pointer-events-auto"
                 >
                     <motion.div style={{ rotate }} className="text-primary">
                         <Sun className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.8} />
                     </motion.div>
-                    <SmoothScrollLink href="#top">
-                        <Typography size='xl' tracking="widest" className="font-serif hover:opacity-80 transition-opacity">RiseLikeSun</Typography>
+                    <SmoothScrollLink href="#top" className="font-serif text-sm sm:text-lg tracking-widest text-default hover:opacity-80 transition-opacity">
+                        RiseLikeSun
                     </SmoothScrollLink>
                 </motion.div>
             </div>

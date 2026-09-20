@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { ArrowRight } from "@riselikesun/ui/icons";
 import { TechPill } from "./tech-pill";
 import { motion, Variants } from "motion/react";
-import { Button, Card, CardContent, CardHeader, Link, List, ListItem, Typography } from "@riselikesun/ui";
+import { Button, Card, CardContent, CardHeader, Link, List, ListItem } from "@riselikesun/ui";
 
 const dialogContainerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -57,10 +57,8 @@ export function ExperienceDialog({ exp }: ExperienceDialogProps) {
             <DialogHeader>
               <div className="flex items-center justify-between gap-3 pr-8">
                 <div className="flex flex-col gap-1">
-                  <DialogTitle>
-                    <Typography size="2xl" >
+                  <DialogTitle className="text-2xl font-bold tracking-tight">
                       {exp.role}
-                    </Typography>
                   </DialogTitle>
                     {exp.company.website ? (
                       <Link
@@ -74,11 +72,11 @@ export function ExperienceDialog({ exp }: ExperienceDialogProps) {
                         {exp.company.name}
                       </Link>
                     ) : (
-                      <Typography variant="h3" size="lg">{exp.company.name}</Typography>
+                      <h3 className="text-lg">{exp.company.name}</h3>
                     )}
                 </div>
               </div>
-              <Typography size="sm" color="muted">{exp.period} • {exp.location ?? exp.company.location ?? 'Remote'}</Typography>
+               <p className="text-muted-foreground/80 font-mono text-sm mt-2">{exp.period} • {exp.location ?? exp.company.location ?? 'Remote'}</p>
             </DialogHeader>
           </motion.div>
 
@@ -86,7 +84,7 @@ export function ExperienceDialog({ exp }: ExperienceDialogProps) {
             {/* Top level responsibilities / achievements */}
             {(exp.responsibilities || exp.achievements) && (
               <motion.section variants={dialogItemVariants}>
-                <Typography variant="h3" size="sm" className="uppercase mb-4 border-b border-white/10 pb-2">Impact & Responsibilities</Typography>
+               <p className="text-sm font-semibold uppercase tracking-wider mb-4 border-b border-white/10 pb-2">Impact & Responsibilities</p>
                 <List color="secondary">
                   {[...(exp.responsibilities || []), ...(exp.achievements || [])].map((r, i) => (
                     <ListItem key={i}>{r}</ListItem>
@@ -98,7 +96,7 @@ export function ExperienceDialog({ exp }: ExperienceDialogProps) {
             {/* All Tech */}
             {uniqueTech.length > 0 && (
               <motion.section variants={dialogItemVariants}>
-                <Typography variant="h3" size="sm" className="uppercase mb-4 border-b border-white/10 pb-2">Comprehensive Tech Stack</Typography>
+                <p className="text-sm font-semibold uppercase tracking-wider mb-4 border-b border-white/10 pb-2">Comprehensive Tech Stack</p>
                 <div className="flex flex-wrap gap-2">
                   {uniqueTech.map((t, i) => (
                     <TechPill key={i} tech={t} className="px-3 py-1.5 text-xs" />
@@ -110,7 +108,7 @@ export function ExperienceDialog({ exp }: ExperienceDialogProps) {
             {/* Projects */}
             {exp.projects && exp.projects.length > 0 && (
               <motion.section variants={dialogItemVariants}>
-                <Typography variant="h3" size="sm" className="uppercase mb-4 border-b border-white/10 pb-2">Key Projects</Typography>
+                <p className="text-sm font-semibold uppercase tracking-wider mb-4 border-b border-white/10 pb-2">Key Projects</p>
                 <div className="grid grid-cols-1 gap-4">
                   {exp.projects.map((proj, i) => (
                     <Card key={i} variant="blurred" size="sm">
@@ -127,14 +125,14 @@ export function ExperienceDialog({ exp }: ExperienceDialogProps) {
                               {proj.name}
                             </Link>
                           ) : (
-                            <Typography variant="h4" >
+                            <h4 >
                               {proj.name}
-                            </Typography>
+                            </h4>
                           )}
                         </div>
                         {proj.client && (
                           <div className="flex items-center gap-1.5 text-xs font-medium">
-                            <Typography as="span" variant="muted" size="xs">Client:</Typography>
+                            <p className="text-muted-foreground text-xs">Client:</p>
                             {proj.clientWebsite ? (
                               <Link
                                 href={proj.clientWebsite}
@@ -147,17 +145,17 @@ export function ExperienceDialog({ exp }: ExperienceDialogProps) {
                                 {proj.client}
                               </Link>
                             ) : (
-                              <Typography as="span" size="xs" color="muted">
+                              <p className="text-muted-foreground text-xs">
                                 {proj.client}
-                              </Typography>
+                              </p>
                             )}
                           </div>
                         )}
                       </CardHeader>
                       <CardContent>
-                        <Typography variant="muted" size="sm" leading="relaxed">
+                        <p className="text-muted-foreground text-sm leading-relaxed">
                           {proj.description}
-                        </Typography>
+                        </p>
                         {proj.responsibilities && proj.responsibilities.length > 0 && (
                           <List  spacing="sm" color="muted" className="mt-4">
                             {proj.responsibilities.slice(0, 3).map((res, j) => (

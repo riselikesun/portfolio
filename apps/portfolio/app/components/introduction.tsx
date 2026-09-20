@@ -3,7 +3,7 @@
 import { motion, Variants } from "framer-motion";
 import { BlobImage } from "@/components/ui/blob-image";
 import { SmoothScrollLink } from "@riselikesun/ui";
-import { Button, Typography, Link } from "@riselikesun/ui";
+import { Button, Link } from "@riselikesun/ui";
 import { ArrowUpRight } from "@riselikesun/ui/icons";
 
 
@@ -82,48 +82,32 @@ export default function IntroSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.25 }}
         >
-          <motion.div variants={itemVariants}>
-            <Typography
-              variant="eyebrow"
-            >
-              Full Stack Engineer · Team Lead · India
-            </Typography>
+          <motion.div variants={itemVariants} className="text-xs font-semibold tracking-[0.35em] uppercase text-primary">
+            Full Stack Engineer · Team Lead · India
           </motion.div>
-          <motion.div variants={itemVariants}>
-            <Typography
-              as="h2"
-              variant="h1"
-              color="on-dark"
-              weight="extrabold"
-              tracking="tight"
-            >
+         <motion.h2
+            variants={itemVariants}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-extrabold leading-[1.05] tracking-tight text-default"
+          >
               The Engineer Behind{" "}
-              <Typography as="span" color="primary">
+              <span className="text-primary">
                 Products That Scale.
-              </Typography>
-            </Typography>
-          </motion.div>
-          <motion.div variants={itemVariants} className="max-w-lg mx-auto lg:mx-0">
-            <Typography
-              color="muted"
-              size='lg'
-              leading="relaxed"
-            >
-              I&apos;m{" "}
-              <Typography as="strong" color="on-dark" weight="semibold">Suraj Sharma,</Typography>
-              {" "} a Staff Web Developer and one of India&apos;s most sought-after
-              full stack engineers. I&apos;ve shipped products used by{" "}
-              <Typography as="strong" color="on-dark" weight="semibold">50 million+ people</Typography>{" "}
-              globally, led cross-functional teams, and built AI-powered platforms
-              that redefine what software can do. From scaling Infoblox&apos;s
-              marketing tech to engineering{" "}
+              </span>
+            </motion.h2>
+          <motion.div variants={itemVariants} className="max-w-lg mx-auto lg:mx-0 text-base md:text-lg text-white/55 leading-relaxed">
+            I&apos;m{" "}<strong className="text-white font-semibold">Suraj Sharma,</strong>
+            {" "} a Staff Web Developer and one of India&apos;s most sought-after
+            full stack engineers. I&apos;ve shipped products used by{" "}
+            <strong className="text-white font-semibold">50 million+ people</strong>{" "}
+            globally, led cross-functional teams, and built AI-powered platforms
+            that redefine what software can do. From scaling Infoblox&apos;s
+            marketing tech to engineering{" "}
               <Link
                 variant="underline"
                 href="https://quillbot.com/paraphrasing-tool"
               >
                 QuillBot
               </Link>&apos;s core writing product, I build things that last.
-            </Typography>
           </motion.div>
 
           {/* Stats row */}
@@ -133,12 +117,12 @@ export default function IntroSection() {
           >
             {stats.map(({ value, label }) => (
               <div key={value} className="flex flex-col items-center lg:items-start gap-1">
-                <Typography as="span" color="primary" weight="extrabold" tracking="tight" className="text-3xl md:text-4xl">
+                <span className="text-3xl md:text-4xl font-extrabold text-primary tracking-tight">
                   {value}
-                </Typography>
-                <Typography as="span" weight="medium" leading="tight" tracking="widest" className="text-xs text-white/40 uppercase whitespace-pre-line text-center lg:text-left">
+                </span>
+                <span className="text-xs text-secondary-foreground/50 font-medium leading-tight uppercase tracking-widest whitespace-pre-line text-center lg:text-left">
                   {label}
-                </Typography>
+                </span>
               </div>
             ))}
           </motion.div>

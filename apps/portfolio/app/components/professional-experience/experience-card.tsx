@@ -1,10 +1,10 @@
-import { Experience } from '../types/types'
-import { ProjectDialog } from './experience/project-dialog'
-import { TechStackDialog } from './experience/tech-stack-dialog'
-import { ExperienceDialog } from './experience/experience-dialog'
-import { TechPill } from './experience/tech-pill'
+import { Experience } from '../../types/types'
+import { ProjectDialog } from './project-dialog'
+import { TechStackDialog } from './tech-stack-dialog'
+import { ExperienceDialog } from './experience-dialog'
+import { TechPill } from './tech-pill'
 import { motion, Variants } from 'motion/react'
-import { Card, CardContent, CardFooter, Typography, Badge, Link, List, ListItem } from '@riselikesun/ui'
+import { Card, CardContent, CardFooter, Badge, Link, List, ListItem } from '@riselikesun/ui'
 
 const textVariants: Variants = {
   hidden: { opacity: 0, y: 15 },
@@ -55,9 +55,9 @@ export default function ExperienceCard({ exp, isFeatured = false }: ExperienceCa
         <div className="flex flex-col">
           <motion.header variants={textVariants} className="mb-5 flex flex-col gap-1">
             <div className="flex justify-between items-start flex-wrap gap-4">
-              <Typography variant="h3" size={isFeatured ? '2xl' : 'xl'}>
+              <h3 className={`font-bold tracking-tight ${isFeatured ? 'text-2xl md:text-3xl' : 'text-xl'}`}>
                 {exp.role}
-              </Typography>
+              </h3>
               {isFeatured && (
                 <Badge variant="highlighted" className="mb-3">
                   Featured Role
@@ -75,12 +75,12 @@ export default function ExperienceCard({ exp, isFeatured = false }: ExperienceCa
                   {exp.company.name}
                 </Link>
               ) : (
-                <Typography as="span" color="primary" weight="semibold">{exp.company.name}</Typography>
+                <span className="text-primary font-semibold">{exp.company.name}</span>
               )}
-              <Typography as="span" color="muted">•</Typography>
-              <Typography as="span" color="muted">{exp.location ?? exp.company.location ?? 'Remote'}</Typography>
+              <span className="text-muted-foreground">•</span>
+              <span className="text-muted-foreground">{exp.location ?? exp.company.location ?? 'Remote'}</span>
             </div>
-            <Typography size="sm" color="muted" className="font-mono mt-1">{exp.period}</Typography>
+            <p className="text-sm text-muted-foreground/60 font-mono mt-1">{exp.period}</p>
           </motion.header>
 
           <motion.div variants={textVariants} className="grow">
@@ -95,7 +95,7 @@ export default function ExperienceCard({ exp, isFeatured = false }: ExperienceCa
             {/* Show Projects for non-featured cards */}
             {!isFeatured && exp.projects && exp.projects.length > 0 && (
               <div className="mt-6">
-                <Typography color="muted" weight="semibold" size="sm" tracking="wider" className="mb-3 uppercase">Key Projects</Typography>
+                <p className="text-xs font-semibold tracking-wider text-muted-foreground mb-3 uppercase">Key Projects</p>
                 <div className="flex flex-col gap-3">
                   {exp.projects.slice(0, 2).map((proj, i) => (
                     <ProjectDialog key={i} project={proj} isFeatured={false} />
@@ -111,7 +111,7 @@ export default function ExperienceCard({ exp, isFeatured = false }: ExperienceCa
           <motion.div variants={textVariants} className="flex flex-col">
             {exp.projects && exp.projects.length > 0 && (
               <div className="grow">
-                <Typography color="muted" weight="semibold" size="sm" tracking="wider" className="mb-3 uppercase">Key Projects</Typography>
+                <p className="text-sm font-semibold tracking-wider text-muted-foreground mb-3 uppercase">Key Projects</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4">
                   {exp.projects.slice(0, 4).map((proj, i) => (
                     <ProjectDialog key={i} project={proj} companyTech={exp.tech} isFeatured={true} />

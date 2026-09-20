@@ -4,7 +4,7 @@ import { Project, TechItem } from "@/app/types/types";
 import { ArrowRight } from "lucide-react";
 import { TechPill } from "./tech-pill";
 import { motion, Variants } from "motion/react";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, Link, Badge, Typography, Card, Button, CardHeader, CardContent, CardFooter, List, ListItem } from "@riselikesun/ui";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, Link, Card, Button, CardHeader, CardContent, CardFooter, List, ListItem } from "@riselikesun/ui";
 import { CardAction } from "@/components/ui/card";
 
 const dialogContainerVariants: Variants = {
@@ -59,14 +59,14 @@ export function ProjectDialog({ project, companyTech = [], isFeatured = false }:
                 rel="noopener noreferrer"
                 onClick={handleLinkClick} aria-label={`Visit ${project.name} website`}><h4>{project.name}</h4></Link>
             ) : (
-              <Typography variant="h4" color="secondary" size="base">{project.name}</Typography>
+              <h4 className="text-default">{project.name}</h4>
             )}
           </CardHeader>
 
           <CardContent>
-            <Typography variant="muted" leading="relaxed" className={isFeatured ? 'line-clamp-3' : 'line-clamp-2'}>
+            <p className={`text-sm text-muted-foreground leading-relaxed ${isFeatured ? 'line-clamp-3' : 'line-clamp-2'}`}>
               {project.description}
-            </Typography>
+            </p>
           </CardContent>
           <CardFooter>
             <CardAction>
@@ -90,9 +90,8 @@ export function ProjectDialog({ project, companyTech = [], isFeatured = false }:
               <div className="flex items-center justify-between gap-3 pr-8">
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-3">
-                    <DialogTitle> <Typography size="2xl">
-                      {project.name}
-                    </Typography></DialogTitle>
+                    <DialogTitle>
+                      <p className="text-2xl">{project.name}</p></DialogTitle>
                     {project.projectWebsite && (
                       <Link
                         variant="pill"
@@ -109,7 +108,7 @@ export function ProjectDialog({ project, companyTech = [], isFeatured = false }:
 
                   {project.client && (
                     <div className="flex items-center gap-1.5  font-medium">
-                      <Typography as="span" variant="muted" size="sm">Client:</Typography>
+                      <span className="text-muted-foreground text-sm">Client:</span>
                       {project.clientWebsite ? (
                         <Link
                           href={project.clientWebsite}
@@ -119,14 +118,14 @@ export function ProjectDialog({ project, companyTech = [], isFeatured = false }:
                           {project.client}
                         </Link>
                       ) : (
-                        <Typography>{project.client}</Typography>
+                        <p className="text-primary">{project.client}</p>
                       )}
                     </div>
                   )}
                 </div>
               </div>
               <DialogDescription className="mt-4">
-                <Typography as="span" color="muted" leading="relaxed" size="base"> {project.description}</Typography>
+                <span className="text-muted-foreground leading-relaxed"> {project.description}</span>
               </DialogDescription>
             </DialogHeader>
           </motion.div>
@@ -134,7 +133,7 @@ export function ProjectDialog({ project, companyTech = [], isFeatured = false }:
           <div className="mt-6 space-y-6">
             {project.responsibilities && project.responsibilities.length > 0 && (
               <motion.div variants={dialogItemVariants}>
-                <Typography variant="overline" color="default" className="mb-4">Key Responsibilities & Achievements</Typography>
+                <p className="text-sm font-semibold text-default uppercase tracking-wider mb-4">Key Responsibilities & Achievements</p>
                 <List >
                   {project.responsibilities.map((res, i) => (
                     <ListItem key={i}>{res}</ListItem>
@@ -145,7 +144,7 @@ export function ProjectDialog({ project, companyTech = [], isFeatured = false }:
 
             {uniqueTech.length > 0 && (
               <motion.div variants={dialogItemVariants}>
-                <Typography variant="overline" color="default" className="mb-4">Technology Stack</Typography>
+                <p className="text-sm font-semibold text-default uppercase tracking-wider mb-4">Technology Stack</p>
                 <div className="flex flex-wrap gap-2">
                   {uniqueTech.map((t, i) => (
                     <TechPill key={i} tech={t} />

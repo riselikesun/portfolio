@@ -2,27 +2,22 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Typography } from "@riselikesun/ui";
-import type { TypographyProps } from "@riselikesun/ui";
-import { cn } from "@/lib/utils";
 
 /**
- * Extends TypographyProps<"span"> so consumers get all typography tokens
  * (variant, color, weight, size...) and all native span HTML attributes
  * (className, style, aria-*, data-*, etc.) without declaring them explicitly.
  */
-export interface AnimatedWordProps extends Omit<TypographyProps<"span">, "as"> {
+export interface AnimatedWordProps {
   /** Array of words to animate through */
   words: string[];
   /** Time in milliseconds between each word change. Default is 2500ms. */
   interval?: number;
+  /** Additional CSS classes to apply to the component */
+  className?: string;
 }
 
 /**
  * An inline word cycler that animates through an array of words.
- *
- * It uses the design system's Typography component underneath (as a `span`),
- * so you can pass any Typography token (variant, color, weight) to style the word.
  *
  * The component manages its own interval and uses Framer Motion for the slide-in/out effect.
  *
@@ -40,7 +35,6 @@ export function AnimatedWord({
   words,
   interval = 2500,
   className,
-  ...typographyProps
 }: AnimatedWordProps) {
   const [index, setIndex] = useState(0);
 
@@ -55,12 +49,7 @@ export function AnimatedWord({
   }, [words.length, interval]);
 
   return (
-    <Typography
-      as="span"
-      align="left"
-      {...typographyProps}
-      className={cn("inline-block", className)}
-    >
+    <span className={`relative inline-block align-bottom text-left ${className}`}>
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.span
           key={words[index]}
@@ -76,6 +65,6 @@ export function AnimatedWord({
           {words[index]}
         </motion.span>
       </AnimatePresence>
-    </Typography>
+    </span>
   );
 }

@@ -1,7 +1,7 @@
 import { TechItem } from "@/app/types/types";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
-import { Badge, Typography, Progress } from '@riselikesun/ui';
+import { Badge, Progress } from '@riselikesun/ui';
 
 interface TechPillProps {
   tech: TechItem;
@@ -20,12 +20,12 @@ export function TechPill({ tech, className = "" }: TechPillProps) {
         side="top" 
       >
         <div className="flex flex-col gap-2">
-          <Typography size="2xl" color="default">{tech.name}</Typography>          
+          <p className="text-2xl">{tech.name}</p>          
           {tech.proficiency !== undefined && (
             <div className="flex flex-col gap-1 mt-1">
               <div className="flex items-center justify-between gap-1">
-                <Typography>Proficiency</Typography>
-                <Typography color="primary">{tech.proficiency}%</Typography>
+                <p>Proficiency</p>
+                <p className="text-primary">{tech.proficiency}%</p>
               </div>
               <Progress value={tech.proficiency} />
             </div>
