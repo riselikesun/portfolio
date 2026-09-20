@@ -1,13 +1,13 @@
 // app/not-found.tsx
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Navbar } from "./components";
+import { AppNavbar } from "./components";
 
 
 export default function NotFound() {
     return (
         <>
-            <Navbar />
+            <AppNavbar />
             <main className="min-h-screen flex flex-col items-center justify-center gap-6 px-6 text-center bg-void">
                 <span className="font-mono text-sm tracking-widest text-sun-2">
                     404

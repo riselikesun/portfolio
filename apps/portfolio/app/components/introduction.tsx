@@ -2,7 +2,9 @@
 
 import { motion, Variants } from "framer-motion";
 import { BlobImage } from "@/components/ui/blob-image";
-import { SmoothScrollLink } from "@/components/ui/smooth-scroll-link";
+import { SmoothScrollLink } from "@riselikesun/ui";
+import { Button, Link } from "@riselikesun/ui";
+import { ArrowUpRight } from "@riselikesun/ui/icons";
 
 
 const containerVariants: Variants = {
@@ -57,7 +59,7 @@ export default function IntroSection() {
           {/* Glow disc behind image */}
           <div
             aria-hidden
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-32 bg-[#D89432]/20 blur-3xl rounded-full"
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-32 bg-primary/20 blur-3xl rounded-full"
           />
 
           <div className="relative w-full h-[36rem] sm:h-[42rem] md:h-[52rem] lg:h-[60vh] xl:h-[70vh] max-h-[720px] z-10">
@@ -80,47 +82,33 @@ export default function IntroSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.25 }}
         >
-          {/* Eye-brow label */}
-          <motion.p
-            variants={itemVariants}
-            className="text-xs font-semibold tracking-[0.35em] uppercase text-[#D89432]"
-          >
+          <motion.div variants={itemVariants} className="text-xs font-semibold tracking-[0.35em] uppercase text-primary">
             Full Stack Engineer · Team Lead · India
-          </motion.p>
-
-          {/* Hero heading — SEO target embedded naturally */}
-          <motion.h2
+          </motion.div>
+         <motion.h2
             variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-extrabold leading-[1.05] tracking-tight text-white"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-extrabold leading-[1.05] tracking-tight text-default"
           >
-            The Engineer Behind{" "}
-            <span className="text-[#D89432]">
-              Products That Scale.
-            </span>
-          </motion.h2>
-
-          {/* Supporting copy — impactful, keyword-rich */}
-          <motion.p
-            variants={itemVariants}
-            className="text-base md:text-lg text-white/55 leading-relaxed max-w-lg mx-auto lg:mx-0"
-          >
-            I&apos;m{" "}
-            <strong className="text-white font-semibold">Suraj Sharma,</strong>
+              The Engineer Behind{" "}
+              <span className="text-primary">
+                Products That Scale.
+              </span>
+            </motion.h2>
+          <motion.div variants={itemVariants} className="max-w-lg mx-auto lg:mx-0 text-base md:text-lg text-white/55 leading-relaxed">
+            I&apos;m{" "}<strong className="text-white font-semibold">Suraj Sharma,</strong>
             {" "} a Staff Web Developer and one of India&apos;s most sought-after
             full stack engineers. I&apos;ve shipped products used by{" "}
             <strong className="text-white font-semibold">50 million+ people</strong>{" "}
             globally, led cross-functional teams, and built AI-powered platforms
             that redefine what software can do. From scaling Infoblox&apos;s
             marketing tech to engineering{" "}
-            <a
-              href="https://quillbot.com/paraphrasing-tool"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white font-semibold underline decoration-[#D89432] decoration-2 underline-offset-4"
-            >
-              QuillBot
-            </a>&apos;s core writing product, I build things that last.
-          </motion.p>
+              <Link
+                variant="underline"
+                href="https://quillbot.com/paraphrasing-tool"
+              >
+                QuillBot
+              </Link>&apos;s core writing product, I build things that last.
+          </motion.div>
 
           {/* Stats row */}
           <motion.div
@@ -129,10 +117,10 @@ export default function IntroSection() {
           >
             {stats.map(({ value, label }) => (
               <div key={value} className="flex flex-col items-center lg:items-start gap-1">
-                <span className="text-3xl md:text-4xl font-extrabold text-[#D89432] tracking-tight">
+                <span className="text-3xl md:text-4xl font-extrabold text-primary tracking-tight">
                   {value}
                 </span>
-                <span className="text-xs text-white/40 font-medium leading-tight uppercase tracking-widest whitespace-pre-line text-center lg:text-left">
+                <span className="text-xs text-secondary-foreground/50 font-medium leading-tight uppercase tracking-widest whitespace-pre-line text-center lg:text-left">
                   {label}
                 </span>
               </div>
@@ -144,28 +132,17 @@ export default function IntroSection() {
             variants={itemVariants}
             className="flex flex-wrap gap-4 justify-center lg:justify-start pt-2"
           >
-            <SmoothScrollLink
-              href="#contact"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#D89432] text-black text-sm font-bold rounded-full tracking-wide hover:bg-amber-400 transition-colors duration-200 group"
-            >
-              Let&apos;s Work Together
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2.5}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
-              </svg>
-            </SmoothScrollLink>
-            <SmoothScrollLink
-              href="#professional-experience"
-              className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/15 text-white text-sm font-semibold rounded-full tracking-wide hover:border-[#D89432]/60 hover:text-[#D89432] transition-all duration-200"
-            >
-              View My Work
-            </SmoothScrollLink>
+            <Button asChild cursor="pointer" iconHover="up-right">
+              <SmoothScrollLink href="#contact">
+                Let&apos;s Work Together
+                <ArrowUpRight strokeWidth={2.5} />
+              </SmoothScrollLink>
+            </Button>
+            <Button asChild variant="secondary" cursor="pointer">
+              <SmoothScrollLink href="#professional-experience">
+                View My Work
+              </SmoothScrollLink>
+            </Button>
           </motion.div>
         </motion.div>
 

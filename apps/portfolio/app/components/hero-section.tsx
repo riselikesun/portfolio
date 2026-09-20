@@ -1,14 +1,13 @@
 "use client";
 
-import { BlobImage } from "@/components/ui/blob-image";
-import gsap from "gsap";
 import { useEffect, useRef } from "react";
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, useInView } from "framer-motion";
-import { ArrowDown } from "lucide-react";
-import { AnimatedWord } from "@/components/animations/animated-word";
+import { AnimatedWord, SmoothScrollLink } from "@riselikesun/ui";
+import { ArrowDown } from "@riselikesun/ui/icons";
 import { CoffeeDialog } from "./coffee-dialog";
-import { SmoothScrollLink } from "@/components/ui/smooth-scroll-link";
+import { BlobImage } from "@/components/ui/blob-image";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -90,10 +89,10 @@ export default function HeroSection() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
-            <motion.p variants={item} className="text-sm sm:text-base md:text-lg lg:text-xl tracking-[4px] sm:tracking-[8px] md:tracking-[12px] lg:tracking-[16px] text-amber-300">
+            <motion.div variants={item} className="uppercase text-sm sm:text-base md:text-lg lg:text-xl tracking-[4px] sm:tracking-[8px] md:tracking-[12px] lg:tracking-[16px] text-highlight">
               SOFTWARE ENGINEER
-            </motion.p>
-            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-sans-serif text-white">
+            </motion.div>
+             <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-sans-serif text-default">
               <motion.span
                 variants={item}
               >Suraj </motion.span>
@@ -104,40 +103,41 @@ export default function HeroSection() {
                 }}
 
               >Sharma</motion.span>
-
             </h1>
           </motion.div>
 
           <div className="h-8" />
 
           <motion.div
-            className="text-white text-center content-center pt-8 pb-8 flex flex-col justify-between"
+            className="text-center content-center pt-8 pb-8 flex flex-col justify-between"
             variants={titleContainer}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
             <div>
-              <motion.p variants={item} className="p-4">
+              <motion.div variants={item} className="p-4">
                 <CoffeeDialog />
-              </motion.p>
-              <motion.p variants={item} className="md:text-2xl p-2">
-                Building software that&nbsp;
-                <AnimatedWord
-                  words={["scales.", "performs.", "delights.", "matters."]}
-                  className="w-20 text-amber-300"
-                  interval={3000}
-                />
-              </motion.p>
+              </motion.div>
+              <motion.div variants={item} className="text-default md:text-2xl p-2">
+                  Building software that&nbsp;
+                  <AnimatedWord
+                    words={["scales.", "performs.", "delights.", "matters."]}
+                    className="w-20 text-highlight"
+                    interval={3000}
+                  />
+              </motion.div>
             </div>
             <div>
               <motion.div variants={item}>
-                <SmoothScrollLink href="#intro" className="cursor-pointer">
-                  Scroll to rise
+                <SmoothScrollLink href="#intro" className="cursor-pointer group">
+                  <p className="text-muted-foreground">
+                    Scroll to rise
+                  </p>
+                  <motion.div variants={item} className="flex justify-center p-2">
+                    <ArrowDown className="text-primary animate-bounce" />
+                  </motion.div>
                 </SmoothScrollLink>
               </motion.div>
-              <motion.p variants={item} className="flex justify-center p-2">
-                <ArrowDown className="animate-bounce" />
-              </motion.p>
             </div>
           </motion.div>
         </div>

@@ -20,6 +20,8 @@ const badgeVariants = cva(
         link: "text-primary underline-offset-4 cursor-pointer hover:underline",
         glass:
           "bg-foreground/[0.03] text-foreground/80 border border-foreground/10 hover:border-primary/40 hover:text-foreground",
+        highlighted:
+          "bg-primary/10 border-primary/20 text-primary hover:bg-primary/15 hover:border-primary/30",
       },
     },
     defaultVariants: {

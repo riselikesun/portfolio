@@ -3,16 +3,38 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-interface AnimatedWordProps {
+/**
+ * (variant, color, weight, size...) and all native span HTML attributes
+ * (className, style, aria-*, data-*, etc.) without declaring them explicitly.
+ */
+export interface AnimatedWordProps {
+  /** Array of words to animate through */
   words: string[];
+  /** Time in milliseconds between each word change. Default is 2500ms. */
   interval?: number;
+  /** Additional CSS classes to apply to the component */
   className?: string;
 }
 
+/**
+ * An inline word cycler that animates through an array of words.
+ *
+ * The component manages its own interval and uses Framer Motion for the slide-in/out effect.
+ *
+ * @example
+ * ```tsx
+ * <AnimatedWord
+ *   words={["scales.", "performs.", "delights."]}
+ *   color="accent"
+ *   weight="bold"
+ *   interval={3000}
+ * />
+ * ```
+ */
 export function AnimatedWord({
   words,
   interval = 2500,
-  className = "",
+  className,
 }: AnimatedWordProps) {
   const [index, setIndex] = useState(0);
 
@@ -27,9 +49,7 @@ export function AnimatedWord({
   }, [words.length, interval]);
 
   return (
-    <span
-      className={`relative inline-block align-bottom text-left ${className}`}
-    >
+    <span className={`relative inline-block align-bottom text-left ${className}`}>
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.span
           key={words[index]}

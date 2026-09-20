@@ -16,6 +16,11 @@ const meta = {
       options: ['sticky', 'floating'],
       description: 'The visual style and positioning of the navbar',
     },
+    width: {
+      control: 'select',
+      options: ['sm', 'default', 'lg', 'full'],
+      description: 'The width of the navbar',
+    }
   },
 } satisfies Meta<typeof Navbar>;
 
@@ -26,6 +31,7 @@ export const Sticky: Story = {
   tags: ['!dev'],
   args: {
     variant: 'sticky',
+    width: 'default',
   },
   parameters: {
     layout: 'fullscreen',

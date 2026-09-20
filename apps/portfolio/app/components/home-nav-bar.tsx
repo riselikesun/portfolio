@@ -1,10 +1,11 @@
 "use client";
 
 import { motion, useScroll, useTransform, useMotionValue } from "motion/react";
-import { Sun } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { SmoothScrollLink } from "@/components/ui/smooth-scroll-link";
+import { Button, Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@riselikesun/ui";
+import { Sun } from "@riselikesun/ui/icons";
 
 
 const HomeAppBar = () => {
@@ -101,49 +102,50 @@ const HomeAppBar = () => {
     });
 
     return (
-        <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[min(92vw,900px)] h-[52px]">
-            {/* The Pill Background and Links */}
+        <>
             <motion.div
                 style={{ opacity: isMounted ? navOpacity : 0 }}
-                className="absolute inset-0 backdrop-blur-md bg-white/[0.03] border border-white/10 rounded-full px-5 flex items-center justify-between shadow-lg"
             >
-                <div ref={placeholderRef} className="flex items-center gap-2 opacity-0 pointer-events-none">
-                    <div className="h-4 w-4 sm:h-5 sm:w-5" />
-                    <div className="font-serif text-sm sm:text-lg tracking-widest">riselikesun</div>
-                </div>
-
-                <nav className="hidden md:flex items-center gap-7 text-sm text-white/70">
-                    <SmoothScrollLink href="#intro" className="hover:text-white transition">About</SmoothScrollLink>
-                    <SmoothScrollLink href="#professional-experience" className="hover:text-white transition">Work</SmoothScrollLink>
-                    <SmoothScrollLink href="#hobbies" className="hover:text-white transition">Beyond Code</SmoothScrollLink>
-                </nav>
-
-                <div className="flex items-center gap-3">
-                    <Link href="/resume" target="_blank" rel="noopener noreferrer" className="hidden sm:block text-xs font-medium text-white/70 hover:text-white transition">
-                        Resume
-                    </Link>
-                    <SmoothScrollLink
-                        href="#contact"
-                        className="text-xs font-medium bg-white text-black rounded-full px-4 py-1.5 hover:bg-[#D89432] transition-colors"
-                    >
-                        Say hi
+                <Navbar variant="floating" width="sm">
+                    <NavbarBrand>
+                        <div ref={placeholderRef} className="flex items-center gap-2 opacity-0">
+                            <div className="h-4 w-4 sm:h-5 sm:w-5" />
+                            <p className="font-serif text-sm sm:text-lg tracking-widest font-normal text-default hover:opacity-80 transition-opacity">riselikesun</p>
+                        </div>
+                    </NavbarBrand>
+                    <NavbarContent justify="center" className="hidden md:flex">
+                        <SmoothScrollLink href="#intro"><NavbarItem>About</NavbarItem></SmoothScrollLink>
+                        <SmoothScrollLink href="#professional-experience"><NavbarItem>Work</NavbarItem></SmoothScrollLink>
+                        <SmoothScrollLink href="#hobbies"><NavbarItem>Beyond Code</NavbarItem></SmoothScrollLink>
+                    </NavbarContent>
+                    <NavbarContent justify="end">
+                        <NavbarItem className="hidden md:flex">
+                            <Link href="/resume" target="_blank" rel="noopener noreferrer hidden sm:block text-xs font-medium">
+                                Resume
+                            </Link>
+                        </NavbarItem>
+                        <SmoothScrollLink
+                            href="#contact"
+                        >
+                            <Button variant="filled" size='xs'>Say hi</Button>
+                        </SmoothScrollLink>
+                    </NavbarContent>
+                </Navbar>
+            </motion.div>
+            <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-4xl h-13 pointer-events-none">
+                <motion.div
+                    style={{ x, y, scale, opacity: isMounted ? 1 : 0 }}
+                    className="absolute left-5 top-0 bottom-0 flex items-center gap-2 origin-center pointer-events-auto"
+                >
+                    <motion.div style={{ rotate }} className="text-primary">
+                        <Sun className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.8} />
+                    </motion.div>
+                    <SmoothScrollLink href="#top" className="font-serif text-sm sm:text-lg tracking-widest text-default hover:opacity-80 transition-opacity">
+                        RiseLikeSun
                     </SmoothScrollLink>
-                </div>
-            </motion.div>
-
-            {/* The Animated Logo that scales down and docks */}
-            <motion.div
-                style={{ x, y, scale, opacity: isMounted ? 1 : 0 }}
-                className="absolute left-5 top-0 bottom-0 flex items-center gap-2 origin-center"
-            >
-                <motion.div style={{ rotate }} className="text-[#D89432]">
-                    <Sun className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.8} />
                 </motion.div>
-                <SmoothScrollLink href="#top" className="font-serif text-sm sm:text-lg tracking-widest text-white hover:opacity-80 transition-opacity">
-                    riselikesun
-                </SmoothScrollLink>
-            </motion.div>
-        </header>
+            </div>
+        </>
     );
 };
 

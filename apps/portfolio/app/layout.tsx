@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, Figtree } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import config from './config';
 import { GoogleTagManager } from '@next/third-parties/google'
 import SmoothScroll from './components/smooth-scroll';
 
-const figtree = Figtree({ subsets: ["latin"], variable: "--font-heading" });
+const interHeading = Inter({ subsets: ["latin"], variable: "--font-heading" });
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="en" className={cn("font-sans dark", figtree.variable, inter.variable)}>
+    <html lang="en" className={cn("font-sans dark", interHeading.variable, inter.variable)}>
       <GoogleTagManager gtmId={config.googleTagID} />
       <body>
         <TooltipProvider delayDuration={200}>

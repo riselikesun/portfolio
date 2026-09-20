@@ -1,33 +1,30 @@
 "use client";
 
 import {
+  Button,
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogDescription,
   DialogTrigger,
-} from "@/components/ui/dialog";
-
-import { Button } from "@/components/ui/button";
+} from "@riselikesun/ui";
 import config from "../config";
 
 export function CoffeeDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button
-          size="default"
-          cursor="pointer"
-          className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#D89432] text-black text-sm font-bold rounded-full tracking-wide hover:bg-amber-400 transition-colors duration-200 group"
-        >
+        <Button cursor="pointer">
           ☕ Let's Grab a Coffee
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-sm">
+      <DialogContent>
         <DialogHeader>
-          <DialogTitle>Let's talk</DialogTitle>
+          <DialogTitle className="text-xl">
+            Let's talk
+          </DialogTitle>
           <DialogDescription>
             Pick whatever's easiest for you.
           </DialogDescription>
@@ -48,10 +45,7 @@ export function CoffeeDialog() {
             <a href={`mailto:${config.email}`}>Email me</a>
           </Button>
 
-          <Button
-            asChild
-            cursor="pointer"
-          >
+          <Button asChild cursor="pointer">
             <a
               href={config.calendarURL}
               target="_blank"
