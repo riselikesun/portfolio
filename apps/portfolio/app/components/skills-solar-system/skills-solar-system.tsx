@@ -324,12 +324,12 @@ export default function SkillsSolarSystem() {
     return () => ctx.revert();
   }, [planets]);
 
+  //TODO remove hardcoded colors
   return (
     <section
       ref={sectionRef}
       aria-labelledby="skills-heading"
-      className="relative min-h-[100vh] w-full overflow-hidden bg-[#050505] text-white z-0"
-    >
+      className="relative min-h-[100vh] w-full overflow-hidden bg-[#050505] z-0">
       {/* Heading */}
       <motion.div
         variants={headingVariants}
@@ -348,7 +348,7 @@ export default function SkillsSolarSystem() {
 
         <motion.p
           variants={textVariants}
-          className="mt-3 text-sm text-white/40 sm:text-base"
+          className="mt-3 text-sm text-muted-foreground sm:text-base"
         >
           A few of the tools that orbit my work.
         </motion.p>
@@ -362,7 +362,7 @@ export default function SkillsSolarSystem() {
         {/* Warm solar glow */}
         <div
           aria-hidden
-          className=" pointer-events-none absolute left-1/2 top-1/2 h-[30%] w-[30%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F5B95F]/[0.07] blur-[100px] "
+          className=" pointer-events-none absolute left-1/2 top-1/2 h-[30%] w-[30%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/40 blur-[100px] "
         />
 
         {/* Actual elliptical orbits */}
@@ -392,12 +392,12 @@ export default function SkillsSolarSystem() {
         <div
           className="
             absolute left-1/2 top-1/2 z-20 flex h-28 w-28
-            -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#D89432] text-[#21170B] 
+            -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-primary text-primary-foreground 
             shadow-[0_0_55px_rgba(255,190,90,0.24),0_0_140px_rgba(255,170,50,0.10)] sm:h-36 sm:w-36 md:h-44 md:w-44
           "
         >
           <span
-            className="text-2xl font-medium tracking-[0.32em]"
+            className="text-md md:text-2xl font-medium tracking-widest"
           >
             SKILLS
           </span>

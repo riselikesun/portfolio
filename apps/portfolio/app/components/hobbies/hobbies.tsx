@@ -24,7 +24,7 @@ export default function Hobbies() {
     <section
       id="hobbies"
       aria-label="Hobbies and personal projects"
-      className="w-full bg-[#070706] text-[#F7F1E7]"
+      className="w-full"
     >
       <motion.div
         variants={sectionVariants}
@@ -38,8 +38,8 @@ export default function Hobbies() {
           variants={headingItemVariants}
           className="mb-6 flex items-center gap-4"
         >
-          <span className="h-px w-10 bg-[#D89432]" />
-          <span className="text-[10px] font-semibold uppercase tracking-[0.32em] text-[#D89432]">
+          <span className="h-px w-10 bg-primary" />
+          <span className="text-[10px] font-semibold uppercase tracking-[0.32em] text-primary">
             Beyond the keyboard
           </span>
         </motion.div>
@@ -47,11 +47,11 @@ export default function Hobbies() {
         {/* Heading */}
         <motion.h2
           variants={headingItemVariants}
-          className="text-[clamp(3rem,7vw,7rem)] font-semibold leading-[0.9] tracking-[-0.06em] text-white"
+          className="text-[clamp(3rem,7vw,7rem)] font-semibold leading-[0.9] tracking-[-0.06em]"
         >
           What I build
           <br />
-          <span className="text-[#D89432]">off-screen.</span>
+          <span className="text-primary">off-screen.</span>
         </motion.h2>
 
         {/* Sub-copy */}

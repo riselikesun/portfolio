@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { X } from "lucide-react";
 import { useLenis } from "lenis/react";
 import type { Hobby } from "../../data/hobbies";
+import { Badge } from "@riselikesun/ui";
 
 interface HobbyDetailModalProps {
   hobby: Hobby | null;
@@ -91,7 +92,7 @@ export function HobbyDetailModal({ hobby, onClose }: HobbyDetailModalProps) {
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ delay: 0.15, duration: 0.2 }}
               onClick={onClose}
-              className="absolute top-4 right-4 z-30 w-9 h-9 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 hover:border-[#D89432]/50 transition-all duration-200 cursor-pointer shadow-lg"
+              className="absolute top-4 right-4 z-30 w-9 h-9 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center  hover:bg-white/20 hover:border-[#D89432]/50 transition-all duration-200 cursor-pointer shadow-lg"
               aria-label="Close"
             >
               <X size={15} />
@@ -131,18 +132,15 @@ export function HobbyDetailModal({ hobby, onClose }: HobbyDetailModalProps) {
                   <div className="w-full max-w-5xl mx-auto px-6 sm:px-12 pt-8 pb-4 lg:py-12 flex flex-col gap-6">
                     <div className="flex flex-wrap gap-2 pt-1">
                       {hobby.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-[0.22em] uppercase bg-[#D89432]/10 border border-[#D89432]/25 text-[#D89432]"
-                        >
+                        <Badge key={tag} variant="highlighted" className="h-5">
                           {tag}
-                        </span>
+                        </Badge>
                       ))}
                     </div>
-                    <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-white leading-snug">
+                    <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight leading-snug">
                       {hobby.title}
                     </h2>
-                    <p className="text-base sm:text-lg text-white/50 leading-[1.85] whitespace-pre-wrap">
+                    <p className="text-base sm:text-lg text-muted-foreground leading-[1.85] whitespace-pre-wrap">
                       {hobby.details}
                     </p>
                   </div>
@@ -151,7 +149,7 @@ export function HobbyDetailModal({ hobby, onClose }: HobbyDetailModalProps) {
 
               {hobby.gallery.length > 0 && (
                 <div className="w-full px-2 sm:px-6 pb-12 mt-4 lg:mt-8">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#D89432] mb-6 px-2">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-primary mb-6 px-2">
                     Gallery
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-2 sm:gap-4">
