@@ -3,8 +3,7 @@
 import { motion, useScroll, useTransform, useMotionValue } from "motion/react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { SmoothScrollLink } from "@/components/ui/smooth-scroll-link";
-import { Button, Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@riselikesun/ui";
+import { Button, Navbar, NavbarBrand, NavbarContent, NavbarItem, SmoothScrollLink } from "@riselikesun/ui";
 import { Sun } from "@riselikesun/ui/icons";
 
 

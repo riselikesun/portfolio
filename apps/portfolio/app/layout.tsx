@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: "Suraj Sharma — Staff Full Stack Engineer & Team Lead. Experienced in scaling web applications to 50M+ users, building Agentic AI workflows, and modern cloud architectures.",
 };
 
-import { TooltipProvider } from "@/components/ui/tooltip";
+import { TooltipProvider } from "@riselikesun/ui";
 
 export default function RootLayout({
   children,

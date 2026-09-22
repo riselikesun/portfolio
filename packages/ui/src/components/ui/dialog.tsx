@@ -4,9 +4,9 @@ import * as React from "react"
 import { Dialog as DialogPrimitive } from "radix-ui"
 import { cva, type VariantProps } from "class-variance-authority"
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { X } from "@/components/icons"
+import { cn } from "../../lib/utils"
+import { Button } from "./button"
+import { X } from "../icons"
 
 // Tracks, in open order, the ids of dialogs currently participating in
 // back-button handling. Only the top of the stack ever touches history —
@@ -212,9 +212,9 @@ function DialogContent({
         {showCloseButton && (
           <DialogPrimitive.Close data-slot="dialog-close" asChild>
             <Button
-              variant="outline"
-              className="absolute top-4 right-4 z-50"
-              size="icon"
+              variant="ghost"
+              className="absolute top-4 right-4 z-50 bg-background/50 backdrop-blur-md rounded-full shadow-sm hover:bg-background/80"
+              size="icon-lg"
               cursor="pointer"
             >
               <X/>

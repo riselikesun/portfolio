@@ -1,5 +1,5 @@
 import { TechItem } from "@/app/types/types";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@riselikesun/ui";
 
 import { Badge, Progress } from '@riselikesun/ui';
 

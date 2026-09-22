@@ -1,7 +1,7 @@
 "use client";
 
 import { Experience } from "@/app/types/types";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@riselikesun/ui";
 import { ArrowRight } from "@riselikesun/ui/icons";
 import { TechPill } from "./tech-pill";
 import { motion, Variants } from "motion/react";

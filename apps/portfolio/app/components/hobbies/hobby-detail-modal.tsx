@@ -2,10 +2,10 @@
 
 import { useEffect } from "react";
 import { BlobImage } from "@/components/ui/blob-image";
-import { Dialog as DialogRoot, DialogPortal, DialogClose } from "@/components/ui/dialog";
+import { Dialog as DialogRoot, DialogPortal, DialogClose } from "@riselikesun/ui";
 import { Dialog as DialogPrimitive } from "radix-ui";
 import { motion, AnimatePresence } from "motion/react";
-import { X } from "lucide-react";
+import { X } from "@riselikesun/ui/icons";
 import { useLenis } from "lenis/react";
 import type { Hobby } from "../../data/hobbies";
 import { Badge, Button } from "@riselikesun/ui";

@@ -1,11 +1,10 @@
 "use client";
 
 import { Project, TechItem } from "@/app/types/types";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@riselikesun/ui/icons";
 import { TechPill } from "./tech-pill";
 import { motion, Variants } from "motion/react";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, Link, Card, Button, CardHeader, CardContent, CardFooter, List, ListItem } from "@riselikesun/ui";
-import { CardAction } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, Link, Card, Button, CardHeader, CardContent, CardFooter, List, ListItem, CardAction } from "@riselikesun/ui";
 
 const dialogContainerVariants: Variants = {
   hidden: { opacity: 0 },

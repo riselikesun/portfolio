@@ -8,11 +8,10 @@ import {
     RefreshCw,
     Sprout,
     Hand,
-} from "@/components/icons";
+} from "@riselikesun/ui/icons";
 
 import { RevealText, RevealGroup, RevealItem } from "@/components/shared/reveal-text";
-import { Card, CardHeader } from "@riselikesun/ui";
-import { CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@riselikesun/ui";
 
 const principles = [
     { icon: FlaskConical, title: "EXPERIMENT", description: "I try new things and explore what's possible." },

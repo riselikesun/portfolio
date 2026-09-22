@@ -2,7 +2,7 @@ import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 import { ArrowUpRight } from "lucide-react"
-import { Card } from "@/components/ui/card"
+import { Card } from "./card"
 import { Slot } from "radix-ui"
 
 const metricCardVariants = cva(
@@ -38,7 +38,7 @@ export interface MetricCardProps extends React.ComponentProps<"div">, VariantPro
 const MetricCardContent = ({ icon, label, value, href, accent }: MetricCardProps) => (
   <div className="flex flex-col h-full p-5">
     {icon && (
-      <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-xl border border-border/50 bg-foreground/[0.04]">
+      <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-xl border border-border/50 bg-foreground/4">
         <div className={cn("flex items-center justify-center [&_svg]:size-5", accent || "text-foreground")}>
           {icon}
         </div>

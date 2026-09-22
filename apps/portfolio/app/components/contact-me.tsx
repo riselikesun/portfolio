@@ -1,12 +1,9 @@
 "use client";
 
-import { ArrowUpRight, CalendarDays, Mail, Linkedin, Github } from "@/components/icons"
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { MetricCard } from "@/components/ui/metric-card";
+import {  CalendarDays, Mail, Linkedin, Github } from "@riselikesun/ui/icons"
+import { CardContent, CardHeader, CardTitle, Button, Card, MetricCard } from "@riselikesun/ui";
 import config from "@/app/config";
 import { motion, Variants } from "motion/react";
-import { CardContent, CardHeader, CardTitle } from "@riselikesun/ui";
 
 const containerVariants: Variants = {
     hidden: { opacity: 0 },
