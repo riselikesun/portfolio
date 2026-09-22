@@ -16,13 +16,22 @@
 
 ## 👋 About
 
+<table>
+<tr>
+<td width="300" align="center">
+<img src="https://ql38x5yvjggsnkzr.public.blob.vercel-storage.com/intro-image.png" alt="Suraj Sharma" width="260" />
+</td>
+<td>
+
 I'm a **Staff Web Developer** with **7+ years** of experience building products used by **50 million+ people** globally. I've led cross-functional teams, shipped AI-powered platforms, and built scalable frontend architectures for companies like **Infoblox** and **QuillBot**.
 
 I learn by doing — I experiment, build, break things, fix them, and do it all over again.
 
 > *Building software that scales. performs. delights. matters.*
 
----
+</td>
+</tr>
+</table>
 
 ## 📊 At a Glance
 
