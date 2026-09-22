@@ -249,7 +249,7 @@ export function HobbiesHorizontalStrip({ hobbies }: HobbiesHorizontalStripProps)
 
   return (
     <>
-      <div ref={sectionRef} className="relative w-full overflow-hidden h-screen bg-[#070706] touch-pan-y">
+      <div ref={sectionRef} className="relative w-full overflow-hidden h-screen touch-pan-y">
         <div
           ref={stripRef}
           className="absolute top-0 left-0 h-full flex items-center will-change-transform select-none"
@@ -271,11 +271,11 @@ export function HobbiesHorizontalStrip({ hobbies }: HobbiesHorizontalStripProps)
 
         <div
           aria-hidden
-          className="absolute bottom-8 left-[max(5vw,24px)] right-[max(5vw,24px)] h-px bg-white/10"
+          className="absolute bottom-8 left-[max(5vw,24px)] right-[max(5vw,24px)] h-px bg-border"
         >
           <div
             ref={progressRef}
-            className="h-full bg-[#D89432] transition-none origin-left"
+            className="h-full bg-primary transition-none origin-left"
             style={{ width: "0%" }}
           />
         </div>

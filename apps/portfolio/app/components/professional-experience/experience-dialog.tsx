@@ -1,7 +1,7 @@
 "use client";
 
 import { Experience } from "@/app/types/types";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@riselikesun/ui";
 import { ArrowRight } from "@riselikesun/ui/icons";
 import { TechPill } from "./tech-pill";
 import { motion, Variants } from "motion/react";
@@ -43,15 +43,15 @@ export function ExperienceDialog({ exp }: ExperienceDialogProps) {
   const uniqueTech = Array.from(new Map(allTech.map(t => [t.name, t])).values());
 
   return (
-    <Dialog>
+    <Dialog closeOnBackButton>
       <DialogTrigger asChild>
-        <Button variant="ghost" className="text-primary hover:text-highlight" iconHover="right" >
+        <Button variant="outline" className="text-primary hover:text-highlight" iconHover="right" >
           View Full Details
           <ArrowRight size={14} />
         </Button>
       </DialogTrigger>
 
-      <DialogContent width="7xl" padding="xl" background="solid">
+      <DialogContent width="7xl" padding="xl">
         <motion.div variants={dialogContainerVariants} initial="hidden" animate="visible" className="flex flex-col">
           <motion.div variants={dialogItemVariants}>
             <DialogHeader>

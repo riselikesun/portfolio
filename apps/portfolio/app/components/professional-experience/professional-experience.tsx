@@ -2,6 +2,7 @@
 
 import { motion, Variants } from 'motion/react';
 import ExperienceCard from './experience-card'
+import ExperienceTimelineMobile from './experience-timeline-mobile'
 import { experiences } from '../../data/experiences'
 
 export { experiences }
@@ -39,7 +40,11 @@ export default function ProfessionalExperience() {
 						<p className="text-muted-foreground text-lg">My journey building scalable products and leading engineering teams.</p>
 					</motion.div>
 
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+					<div className="block md:hidden">
+						<ExperienceTimelineMobile experiences={sortedExps} />
+					</div>
+
+					<div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-6">
 						{sortedExps.map((exp, i) => {
 							const isFeatured = i === 0;
 							return (

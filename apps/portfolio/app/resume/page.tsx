@@ -1,6 +1,6 @@
 // app/resume/page.tsx
 import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@riselikesun/ui";
 import Link from "next/link";
 import config from "@/app/config";
 

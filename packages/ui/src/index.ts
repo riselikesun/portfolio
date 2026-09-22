@@ -19,7 +19,7 @@ export {
 export type { DialogContentProps } from "./components/ui/dialog";
 export { SmoothScrollLink } from "./components/ui/smooth-scroll-link";
 export type { SmoothScrollLinkProps } from "./components/ui/smooth-scroll-link";
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from "./components/ui/card";
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent, CardAction } from "./components/ui/card";
 export { Badge, badgeVariants } from "./components/ui/badge";
 export { Link, linkVariants, linkIconVariants } from "./components/ui/link";
 export type { LinkProps } from "./components/ui/link";
@@ -27,3 +27,6 @@ export { List, ListItem, ListIndicator, listVariants, listIndicatorVariants } fr
 export type { ListProps, ListItemProps, ListIndicatorProps } from "./components/ui/list";
 export { Progress } from './components/ui/progress'
 export { Navbar, NavbarBrand, NavbarContent, NavbarItem } from './components/ui/navbar'
+export { MetricCard } from './components/ui/metric-card';
+export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './components/ui/tooltip';
+export { Timeline, TimelineItem, TimelineDot, TimelineContent } from './components/ui/timeline';

@@ -1,7 +1,7 @@
 "use client";
 
 import { TechItem } from "@/app/types/types";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@riselikesun/ui";
 import { TechPill } from "./tech-pill";
 import { Badge } from "@riselikesun/ui";
 
@@ -12,7 +12,7 @@ interface TechStackDialogProps {
 
 export function TechStackDialog({ tech, hiddenCount }: TechStackDialogProps) {
   return (
-    <Dialog>
+    <Dialog closeOnBackButton>
       <DialogTrigger asChild>
         <Badge variant="glass">{`+${hiddenCount} more`}</Badge>
       </DialogTrigger>

@@ -3,6 +3,7 @@
 import { BlobImage } from "@/components/ui/blob-image";
 import { motion } from "motion/react";
 import type { Hobby } from "../../data/hobbies";
+import { Badge } from "@riselikesun/ui";
 
 interface StripCardProps {
   hobby: Hobby;
@@ -78,30 +79,31 @@ export default function StripCard({ hobby, index, onClick }: StripCardProps) {
           <div className="relative z-10 flex flex-col justify-end h-full p-6 pointer-events-none">
             <div className="flex flex-wrap gap-1.5 mb-3">
               {hobby.tags.map((tag) => (
-                <span
+                <Badge
                   key={tag}
-                  className="inline-block px-2 py-0.5 rounded-full text-[9px] font-bold tracking-[0.22em] uppercase bg-[#D89432]/10 border border-[#D89432]/20 text-[#D89432]"
+                  variant="highlighted"
+                  className="h-5"
                 >
                   {tag}
-                </span>
+                </Badge>
               ))}
             </div>
 
-            <h3 className="text-xl font-semibold tracking-tight text-white leading-snug">
+            <h3 className="text-xl font-semibold tracking-tight leading-snug">
               {hobby.title}
             </h3>
 
             <div className="overflow-hidden mt-1">
-              <p className="text-sm text-white/45 leading-relaxed max-w-[260px] translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-[400ms] ease-out">
+              <p className="text-sm text-muted-foreground leading-relaxed max-w-[260px] translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-[400ms] ease-out">
                 {hobby.subtitle}
               </p>
             </div>
 
             <div className="mt-3 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="text-[#D89432]">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="text-primary">
                 <path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              <span className="text-[9px] font-semibold tracking-[0.2em] uppercase text-[#D89432]">
+              <span className="text-[9px] font-semibold tracking-[0.2em] uppercase text-primary">
                 Tap to explore
               </span>
             </div>

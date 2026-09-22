@@ -1,6 +1,6 @@
 // app/not-found.tsx
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "@riselikesun/ui";
 import { AppNavbar } from "./components";
 
 
