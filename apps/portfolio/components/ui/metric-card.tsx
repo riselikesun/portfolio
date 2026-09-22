@@ -71,7 +71,7 @@ const MetricCard = React.forwardRef<HTMLDivElement, MetricCardProps>(
           rel={!asChild && isExternal ? "noreferrer noopener" : undefined}
           className={cn("block focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 rounded-[20px]", className)}
         >
-          <Card ref={ref} padding="none" className={cn(metricCardVariants({ variant }), "h-full")} {...props}>
+          <Card ref={ref} variant="image" padding="none" className={cn(metricCardVariants({ variant }), "h-full")} {...props}>
             <MetricCardContent icon={icon} label={label} value={value} href={href} accent={accent} />
           </Card>
         </Comp>
@@ -81,7 +81,7 @@ const MetricCard = React.forwardRef<HTMLDivElement, MetricCardProps>(
     const Comp = asChild ? Slot.Root : "div";
     return (
       <Comp className={className}>
-        <Card ref={ref} padding="none" className={cn(metricCardVariants({ variant }), "h-full")} {...props}>
+        <Card ref={ref} variant="image" padding="none" className={cn(metricCardVariants({ variant }), "h-full")} {...props}>
            <MetricCardContent icon={icon} label={label} value={value} href={href} accent={accent} />
         </Card>
       </Comp>
