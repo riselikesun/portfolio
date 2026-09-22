@@ -29,3 +29,4 @@ export { Progress } from './components/ui/progress'
 export { Navbar, NavbarBrand, NavbarContent, NavbarItem } from './components/ui/navbar'
 export { MetricCard } from './components/ui/metric-card';
 export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './components/ui/tooltip';
+export { Timeline, TimelineItem, TimelineDot, TimelineContent } from './components/ui/timeline';

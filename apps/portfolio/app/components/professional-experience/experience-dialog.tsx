@@ -45,7 +45,7 @@ export function ExperienceDialog({ exp }: ExperienceDialogProps) {
   return (
     <Dialog closeOnBackButton>
       <DialogTrigger asChild>
-        <Button variant="ghost" className="text-primary hover:text-highlight" iconHover="right" >
+        <Button variant="outline" className="text-primary hover:text-highlight" iconHover="right" >
           View Full Details
           <ArrowRight size={14} />
         </Button>
