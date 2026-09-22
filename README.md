@@ -14,14 +14,14 @@
 
 ---
 
-## 👋 About
-
 <table>
 <tr>
-<td width="300" align="center">
+<td width="300" align="center" valign="top">
 <img src="https://ql38x5yvjggsnkzr.public.blob.vercel-storage.com/intro-image.png" alt="Suraj Sharma" width="260" />
 </td>
-<td>
+<td valign="top">
+
+## 👋 About
 
 I'm a **Staff Web Developer** with **7+ years** of experience building products used by **50 million+ people** globally. I've led cross-functional teams, shipped AI-powered platforms, and built scalable frontend architectures for companies like **Infoblox** and **QuillBot**.
 
@@ -29,18 +29,15 @@ I learn by doing — I experiment, build, break things, fix them, and do it all 
 
 > *Building software that scales. performs. delights. matters.*
 
+### 📊 At a Glance
+- 💼 **Experience:** 7+ Years
+- 🌍 **Users Impacted:** 50M+
+- 🚀 **Projects Delivered:** 15+
+- 📍 **Location:** India (Remote)
+
 </td>
 </tr>
 </table>
-
-## 📊 At a Glance
-
-| | |
-|---|---|
-| **Experience** | 7+ Years |
-| **Users Impacted** | 50M+ |
-| **Projects Delivered** | 15+ |
-| **Location** | India (Remote) |
 
 ---
 
@@ -166,50 +163,30 @@ Consolidated 100+ disparate, isolated tools into a single unified platform for o
 ## 🛠 Technical Skills
 
 ### Languages & Frameworks
-
-```
-Frontend       React · Next.js · Vue.js · TypeScript · JavaScript · HTML5 · CSS · Tailwind CSS
-Backend        Node.js · Express.js · Python · FastAPI · Flask · PHP · C# · .NET Core · GoLang
-Styling        Tailwind CSS · SCSS · Material UI · shadcn/ui · Radix UI
-State          Redux · Zustand
-Animation      GSAP · Framer Motion
-```
+- **Frontend:** React · Next.js · Vue.js · TypeScript · JavaScript · HTML5 · CSS · Tailwind CSS
+- **Backend:** Node.js · Express.js · Python · FastAPI · Flask · PHP · C# · .NET Core · GoLang
+- **Styling:** Tailwind CSS · SCSS · Material UI · shadcn/ui · Radix UI
+- **State:** Redux · Zustand
+- **Animation:** GSAP · Framer Motion
 
 ### AI & Machine Learning
-
-```
-Agentic AI · LangChain · LangGraph · RAG · OpenAI APIs · LLM Integration · Pinecone · VectorDB · MCP
-```
+- **Agentic AI:** LangChain · LangGraph · RAG · OpenAI APIs · LLM Integration · Pinecone · VectorDB · MCP
 
 ### Cloud & DevOps
-
-```
-AWS            EC2 · ECS · S3 · Lambda · CloudFormation · Auto Scaling
-Azure          Cloud Infrastructure · Deployment
-GCP            Compute · Storage
-DevOps         Docker · Kubernetes · CI/CD · Jenkins · Octopus Deploy · CloudFlare
-IaC            CloudFormation · Terraform
-```
+- **AWS:** EC2 · ECS · S3 · Lambda · CloudFormation · Auto Scaling
+- **Azure:** Cloud Infrastructure · Deployment
+- **GCP:** Compute · Storage
+- **DevOps:** Docker · Kubernetes · CI/CD · Jenkins · Octopus Deploy · CloudFlare
+- **IaC:** CloudFormation · Terraform
 
 ### Databases
-
-```
-MySQL · PostgreSQL · MongoDB · Redis · SQL · Pinecone (Vector)
-```
+- MySQL · PostgreSQL · MongoDB · Redis · SQL · Pinecone (Vector)
 
 ### Observability & Analytics
-
-```
-Datadog · New Relic · Amplitude · Google Analytics
-```
+- Datadog · New Relic · Amplitude · Google Analytics
 
 ### Engineering Practices
-
-```
-System Design · Micro-frontends · Microservices · UI Design Systems · A/B Testing
-Feature Flags · TDD · Performance Optimization · Technical SEO · Web Vitals
-Agile · Code Review · Blue-Green Deployment · Cost Optimization
-```
+- System Design · Micro-frontends · Microservices · UI Design Systems · A/B Testing · Feature Flags · TDD · Performance Optimization · Technical SEO · Web Vitals · Agile · Code Review · Blue-Green Deployment · Cost Optimization
 
 ---
 
