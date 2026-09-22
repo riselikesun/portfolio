@@ -12,7 +12,7 @@ interface TechStackDialogProps {
 
 export function TechStackDialog({ tech, hiddenCount }: TechStackDialogProps) {
   return (
-    <Dialog>
+    <Dialog closeOnBackButton>
       <DialogTrigger asChild>
         <Badge variant="glass">{`+${hiddenCount} more`}</Badge>
       </DialogTrigger>

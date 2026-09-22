@@ -118,7 +118,6 @@ export default function ContactMe() {
                     whileInView="visible"
                     viewport={{ once: true, margin: "-50px" }}
                     variants={itemVariants}
-                    // className="mt-16 rounded-3xl border border-amber-300/20 bg-gradient-to-br from-amber-300/8 via-slate-900 to-slate-900 p-8 md:p-10"
                 >
                     <Card variant="image" className="border border-primary/20 bg-gradient-to-br from-amber-300/8 via-slate-900 to-slate-900">
                         <CardHeader>

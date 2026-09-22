@@ -8,10 +8,90 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { X } from "@/components/icons"
 
+// Tracks, in open order, the ids of dialogs currently participating in
+// back-button handling. Only the top of the stack ever touches history —
+// this keeps nested/stacked dialogs (e.g. a confirm dialog over a form
+// dialog) from stepping on each other's popstate events.
+let dialogHistoryStack: string[] = []
+
 function Dialog({
+  open: openProp,
+  defaultOpen,
+  onOpenChange,
+  closeOnBackButton = false,
   ...props
-}: React.ComponentProps<typeof DialogPrimitive.Root>) {
-  return <DialogPrimitive.Root data-slot="dialog" {...props} />
+}: React.ComponentProps<typeof DialogPrimitive.Root> & {
+  /**
+   * When true, pressing the device/browser back button closes the dialog
+   * instead of navigating away. Opt-in: off by default so this component
+   * doesn't surprise apps that manage their own history/routing.
+   */
+  closeOnBackButton?: boolean
+}) {
+  const [internalOpen, setInternalOpen] = React.useState(defaultOpen || false)
+  const isControlled = openProp !== undefined
+  const open = isControlled ? openProp : internalOpen
+
+  const id = React.useId()
+  // True while we're closing *because* a popstate fired (real back press).
+  // Lets the cleanup below tell "user pressed back" apart from "dialog
+  // closed some other way" so it doesn't double-consume history entries.
+  const isPoppingRef = React.useRef(false)
+
+  const handleOpenChange = React.useCallback(
+    (newOpen: boolean) => {
+      if (!isControlled) {
+        setInternalOpen(newOpen)
+      }
+      onOpenChange?.(newOpen)
+    },
+    [isControlled, onOpenChange]
+  )
+
+  React.useEffect(() => {
+    if (!closeOnBackButton || !open) return
+
+    dialogHistoryStack.push(id)
+    // No url argument -> the address bar / URL never changes. This entry
+    // exists purely so the back button has something to intercept.
+    window.history.pushState({ __dialog: id }, "")
+
+    const handlePopState = () => {
+      // Only the top-most dialog we pushed should respond to a given
+      // back press; deeper dialogs stay open until it's their turn.
+      if (dialogHistoryStack[dialogHistoryStack.length - 1] !== id) return
+      dialogHistoryStack.pop()
+      isPoppingRef.current = true
+      handleOpenChange(false)
+    }
+
+    window.addEventListener("popstate", handlePopState)
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState)
+
+      const idx = dialogHistoryStack.lastIndexOf(id)
+      if (idx !== -1) dialogHistoryStack.splice(idx, 1)
+
+      // Closed some way other than the back button (X, Escape, outside
+      // click, programmatic close) while our entry was still the top of
+      // the stack: consume it silently so it doesn't linger as a dead
+      // no-op back-press later.
+      if (!isPoppingRef.current && idx === dialogHistoryStack.length) {
+        window.history.back()
+      }
+      isPoppingRef.current = false
+    }
+  }, [open, closeOnBackButton, handleOpenChange, id])
+
+  return (
+    <DialogPrimitive.Root
+      open={open}
+      onOpenChange={handleOpenChange}
+      data-slot="dialog"
+      {...props}
+    />
+  )
 }
 
 function DialogTrigger({
@@ -49,7 +129,7 @@ function DialogOverlay({
 }
 
 const dialogContentVariants = cva(
-  "fixed max-h-[90vh] overflow-y-auto top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-6 rounded-[24px] duration-200 outline-none data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 shadow-2xl",
+  "fixed max-h-[90vh] top-1/2 left-1/2 z-50 w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 rounded-[24px] duration-200 outline-none data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 shadow-2xl",
   {
     variants: {
       background: {
@@ -91,6 +171,20 @@ const dialogContentVariants = cva(
   }
 )
 
+// Single source of truth for the inner scroll container's padding, so it
+// can't drift out of sync with dialogContentVariants' own `padding` variant.
+const dialogBodyPaddingClasses: Record<
+  NonNullable<VariantProps<typeof dialogContentVariants>["padding"]>,
+  string
+> = {
+  none: "p-0",
+  sm: "p-4",
+  default: "p-6",
+  md: "p-6 sm:p-8",
+  lg: "p-6 sm:p-10 md:p-12 lg:p-16",
+  xl: "p-6 sm:p-10 md:p-12 lg:p-16",
+}
+
 export interface DialogContentProps
   extends React.ComponentProps<typeof DialogPrimitive.Content>,
     VariantProps<typeof dialogContentVariants> {
@@ -112,16 +206,15 @@ function DialogContent({
       <DialogPrimitive.Content
         data-slot="dialog-content"
         data-lenis-prevent="true"
-        className={cn(dialogContentVariants({ background, padding, width, className }))}
+        className={cn(dialogContentVariants({ background, padding: "none", width, className }), "overflow-hidden flex flex-col")}
         {...props}
       >
-        {children}
         {showCloseButton && (
           <DialogPrimitive.Close data-slot="dialog-close" asChild>
             <Button
               variant="ghost"
-              className="absolute top-4 right-4"
-              size="icon-sm"
+              className="absolute top-4 right-4 z-50 bg-background/50 backdrop-blur-md rounded-full shadow-sm hover:bg-background/80"
+              size="icon-lg"
               cursor="pointer"
             >
               <X/>
@@ -129,6 +222,9 @@ function DialogContent({
             </Button>
           </DialogPrimitive.Close>
         )}
+        <div className={cn("flex-1 overflow-y-auto grid gap-6", dialogBodyPaddingClasses[padding ?? "default"])}>
+          {children}
+        </div>
       </DialogPrimitive.Content>
     </DialogPortal>
   )

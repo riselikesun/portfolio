@@ -46,7 +46,7 @@ export function ProjectDialog({ project, companyTech = [], isFeatured = false }:
   };
 
   return (
-    <Dialog>
+    <Dialog closeOnBackButton>
       <DialogTrigger asChild>
         <Card
           size="sm"

@@ -43,7 +43,7 @@ export function ExperienceDialog({ exp }: ExperienceDialogProps) {
   const uniqueTech = Array.from(new Map(allTech.map(t => [t.name, t])).values());
 
   return (
-    <Dialog>
+    <Dialog closeOnBackButton>
       <DialogTrigger asChild>
         <Button variant="ghost" className="text-primary hover:text-highlight" iconHover="right" >
           View Full Details
@@ -51,7 +51,7 @@ export function ExperienceDialog({ exp }: ExperienceDialogProps) {
         </Button>
       </DialogTrigger>
 
-      <DialogContent width="7xl" padding="xl" background="solid">
+      <DialogContent width="7xl" padding="xl">
         <motion.div variants={dialogContainerVariants} initial="hidden" animate="visible" className="flex flex-col">
           <motion.div variants={dialogItemVariants}>
             <DialogHeader>

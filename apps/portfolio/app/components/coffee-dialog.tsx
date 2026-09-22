@@ -13,7 +13,7 @@ import config from "../config";
 
 export function CoffeeDialog() {
   return (
-    <Dialog>
+    <Dialog closeOnBackButton>
       <DialogTrigger asChild>
         <Button cursor="pointer">
           ☕ Let's Grab a Coffee
