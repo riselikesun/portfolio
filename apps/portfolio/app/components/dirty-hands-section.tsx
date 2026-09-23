@@ -12,6 +12,7 @@ import {
 
 import { RevealText, RevealGroup, RevealItem } from "@/components/shared/reveal-text";
 import { Card, CardHeader, CardContent } from "@riselikesun/ui";
+import { Container } from "@/components/shared/container";
 
 const principles = [
     { icon: FlaskConical, title: "EXPERIMENT", description: "I try new things and explore what's possible." },
@@ -29,7 +30,8 @@ const highlights = [
 
 export default function DirtyHandsSection() {
     return (
-        <section className="relative overflow-hidden bg-[#070706]  w-full px-5 lg:px-12 sm:px-8 py-24 lg:py-32 z-0">
+        <Container className="relative overflow-hidden z-0 px-4 md:px-6" background="charcoal" fullWidth>
+        {/* <section className="relative overflow-hidden bg-[#070706]  w-full px-5 lg:px-12 sm:px-8 py-24 lg:py-32 z-0"> */}
             {/* Todo: ⚠️ hardcoded #070706/#F7F1E7 instead of --void/--fg tokens */}
 
 
@@ -131,6 +133,6 @@ export default function DirtyHandsSection() {
                 </RevealText>
             </div>
 
-        </section>
+        </Container>
     );
 }

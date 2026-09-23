@@ -4,6 +4,7 @@ import { motion, Variants } from 'motion/react';
 import ExperienceCard from './experience-card'
 import ExperienceTimelineMobile from './experience-timeline-mobile'
 import { experiences } from '../../data/experiences'
+import { Container } from '@/components/shared/container';
 
 export { experiences }
 
@@ -26,43 +27,41 @@ export default function ProfessionalExperience() {
 	const sortedExps = [...experiences].sort((a, b) => (a.priority ?? 99) - (b.priority ?? 99));
 
 	return (
-		<section id="professional-experience" className="py-16 px-4 sm:px-8 w-full my-12">
-			<div className="max-w-7xl mx-auto">
-				<div className="space-y-10">
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true, margin: "-100px" }}
-						transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-						className="space-y-2"
-					>
-						<h2 className="text-3xl md:text-4xl font-bold tracking-tight text-secondary-foreground">Professional Experience</h2>
-						<p className="text-muted-foreground text-lg">My journey building scalable products and leading engineering teams.</p>
-					</motion.div>
+		<Container id="professional-experience">
+			<div className="space-y-10">
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true, margin: "-100px" }}
+					transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+					className="space-y-2"
+				>
+					<h2 className="text-3xl md:text-4xl font-bold tracking-tight text-secondary-foreground">Professional Experience</h2>
+					<p className="text-muted-foreground text-lg">My journey building scalable products and leading engineering teams.</p>
+				</motion.div>
 
-					<div className="block md:hidden">
-						<ExperienceTimelineMobile experiences={sortedExps} />
-					</div>
+				<div className="block md:hidden">
+					<ExperienceTimelineMobile experiences={sortedExps} />
+				</div>
 
-					<div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-6">
-						{sortedExps.map((exp, i) => {
-							const isFeatured = i === 0;
-							return (
-								<motion.div
-									variants={itemVariants}
-									initial="hidden"
-									whileInView="visible"
-									viewport={{ once: true, margin: "-50px" }}
-									key={i}
-									className={isFeatured ? "md:col-span-2 h-full" : "col-span-1 h-full"}
-								>
-									<ExperienceCard exp={exp} isFeatured={isFeatured} />
-								</motion.div>
-							);
-						})}
-					</div>
+				<div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-6">
+					{sortedExps.map((exp, i) => {
+						const isFeatured = i === 0;
+						return (
+							<motion.div
+								variants={itemVariants}
+								initial="hidden"
+								whileInView="visible"
+								viewport={{ once: true, margin: "-50px" }}
+								key={i}
+								className={isFeatured ? "md:col-span-2 h-full" : "col-span-1 h-full"}
+							>
+								<ExperienceCard exp={exp} isFeatured={isFeatured} />
+							</motion.div>
+						);
+					})}
 				</div>
 			</div>
-		</section>
+		</Container>
 	)
 }

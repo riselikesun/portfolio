@@ -5,6 +5,7 @@ import { BlobImage } from "@/components/ui/blob-image";
 import { SmoothScrollLink } from "@riselikesun/ui";
 import { Button, Link } from "@riselikesun/ui";
 import { ArrowUpRight } from "@riselikesun/ui/icons";
+import { Container } from "@/components/shared/container";
 
 
 const containerVariants: Variants = {
@@ -35,11 +36,7 @@ const stats = [
 
 export default function IntroSection() {
   return (
-    <section
-      id="intro"
-      aria-label="About Suraj Sharma — Best Full Stack Engineer in India"
-      className="w-full py-16 md:py-20 bg-[#050505] overflow-hidden flex items-center relative"
-    >
+    <Container fullWidth id="intro" aria-label="About Suraj Sharma — Best Full Stack Engineer in India" background="black" className="relative">
       {/* Full-bleed ambient glow — anchored to left side behind the photo */}
       <div
         aria-hidden
@@ -85,29 +82,29 @@ export default function IntroSection() {
           <motion.div variants={itemVariants} className="text-xs font-semibold tracking-[0.35em] uppercase text-primary">
             Full Stack Engineer · Team Lead · India
           </motion.div>
-         <motion.h2
+          <motion.h2
             variants={itemVariants}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-extrabold leading-[1.05] tracking-tight text-default"
           >
-              The Engineer Behind{" "}
-              <span className="text-primary">
-                Products That Scale.
-              </span>
-            </motion.h2>
-          <motion.div variants={itemVariants} className="max-w-lg mx-auto lg:mx-0 text-base md:text-lg text-white/55 leading-relaxed">
-            I&apos;m{" "}<strong className="text-white font-semibold">Suraj Sharma,</strong>
+            The Engineer Behind{" "}
+            <span className="text-primary">
+              Products That Scale.
+            </span>
+          </motion.h2>
+          <motion.div variants={itemVariants} className="max-w-lg mx-auto lg:mx-0 text-base md:text-lg text-muted-foreground leading-relaxed">
+            I&apos;m{" "}<strong className="text-accent-foreground font-semibold">Suraj Sharma,</strong>
             {" "} a Staff Web Developer and one of India&apos;s most sought-after
             full stack engineers. I&apos;ve shipped products used by{" "}
-            <strong className="text-white font-semibold">50 million+ people</strong>{" "}
+            <strong className="text-accent-foreground font-semibold">50 million+ people</strong>{" "}
             globally, led cross-functional teams, and built AI-powered platforms
             that redefine what software can do. From scaling Infoblox&apos;s
             marketing tech to engineering{" "}
-              <Link
-                variant="underline"
-                href="https://quillbot.com/paraphrasing-tool"
-              >
-                QuillBot
-              </Link>&apos;s core writing product, I build things that last.
+            <Link
+              variant="underline"
+              href="https://quillbot.com/paraphrasing-tool"
+            >
+              QuillBot
+            </Link>&apos;s core writing product, I build things that last.
           </motion.div>
 
           {/* Stats row */}
@@ -147,6 +144,6 @@ export default function IntroSection() {
         </motion.div>
 
       </div>
-    </section>
+    </Container>
   );
 }

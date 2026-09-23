@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { HobbiesHorizontalStrip } from "./hobbies-horizontal-strip";
 import { HOBBIES } from "../../data/hobbies";
+import { Container } from "@/components/shared/container";
 
 const sectionVariants = {
   hidden: {},
@@ -21,17 +22,17 @@ const headingItemVariants = {
 
 export default function Hobbies() {
   return (
-    <section
+    <Container
       id="hobbies"
       aria-label="Hobbies and personal projects"
-      className="w-full"
+      fullWidth
     >
       <motion.div
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        className="px-5 sm:px-8 lg:px-12 pt-28 pb-0 max-w-7xl mx-auto"
+        className="px-5 sm:px-8 lg:px-12 pb-0 max-w-7xl mx-auto"
       >
         {/* Eyebrow */}
         <motion.div
@@ -57,7 +58,7 @@ export default function Hobbies() {
         {/* Sub-copy */}
         <motion.p
           variants={headingItemVariants}
-          className="mt-8 max-w-xl text-base leading-7 text-white/40 sm:text-lg"
+          className="mt-8 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg"
         >
           Engineering doesn&apos;t stop when I close VS Code. Whether it&apos;s a 3D-printed
           airframe, a trail summit, or a sunrise from a cliff edge — the process
@@ -66,6 +67,6 @@ export default function Hobbies() {
       </motion.div>
 
       <HobbiesHorizontalStrip hobbies={HOBBIES} />
-    </section>
+    </Container>
   );
 }

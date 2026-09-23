@@ -4,6 +4,7 @@ import {  CalendarDays, Mail, Linkedin, Github } from "@riselikesun/ui/icons"
 import { CardContent, CardHeader, CardTitle, Button, Card, MetricCard } from "@riselikesun/ui";
 import config from "@/app/config";
 import { motion, Variants } from "motion/react";
+import { Container } from "@/components/shared/container";
 
 const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -55,8 +56,8 @@ const contactMethods = [
 
 export default function ContactMe() {
     return (
-        <section id="contact" className="w-full bg-[#050816] px-6 py-20 md:px-10 md:py-28">
-            <div className="mx-auto flex max-w-7xl flex-col gap-16">
+        <Container id="contact" background="navy">
+            <div className="flex flex-col gap-16">
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
@@ -139,6 +140,6 @@ export default function ContactMe() {
                     </Card>
                 </motion.div>
             </div>
-        </section>
+        </Container>
     );
 }
