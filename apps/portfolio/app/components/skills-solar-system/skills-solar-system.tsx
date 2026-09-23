@@ -8,6 +8,7 @@ import { motion, Variants } from "motion/react";
 
 import { skills } from "./skills";
 import SkillPlanet from "./skill-planet";
+import { Container } from "@/components/shared/container";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -326,11 +327,15 @@ export default function SkillsSolarSystem() {
 
   //TODO remove hardcoded colors
   return (
-    <section
+    <Container
+      fullWidth
+      noPadding
       ref={sectionRef}
       aria-labelledby="skills-heading"
-      className="relative min-h-[100vh] w-full overflow-hidden bg-[#050505] z-0">
-      {/* Heading */}
+      background="dark"
+      className="relative z-0 min-h-screen overflow-hidden"
+
+    >
       <motion.div
         variants={headingVariants}
         initial="hidden"
@@ -415,6 +420,6 @@ export default function SkillsSolarSystem() {
           />
         ))}
       </div>
-    </section>
+    </Container>
   );
 }
