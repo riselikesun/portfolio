@@ -79,7 +79,7 @@ export default function ContactMe() {
 
                     <motion.div variants={itemVariants} className="flex flex-col gap-3 sm:flex-row lg:justify-end">
                         <Button asChild size="lg">
-                            <a href={config.calendarURL} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-2">
+                            <a href={config.calendarURL} target="_blank" rel="noreferrer noopener" title="Book a coffee chat" className="inline-flex items-center gap-2">
                                 <CalendarDays className="h-4 w-4" />
                                 Book a coffee chat
                             </a>
@@ -106,7 +106,7 @@ export default function ContactMe() {
                             className="cursor-pointer"
                             
                         >
-                            <motion.a variants={itemVariants} />
+                            <motion.a variants={itemVariants} title={`Contact via ${label}`} />
                         </MetricCard>
                     ))}
                 </motion.div>

@@ -55,6 +55,7 @@ export function ProjectDialog({ project, companyTech = [], isFeatured = false }:
             {project.projectWebsite ? (
               <Link showExternalIcon href={project.projectWebsite} target="_blank"
                 className="card-header-link"
+                title={`Visit ${project.name} website`}
                 rel="noopener noreferrer"
                 onClick={handleLinkClick} aria-label={`Visit ${project.name} website`}><h4>{project.name}</h4></Link>
             ) : (
@@ -99,6 +100,7 @@ export function ProjectDialog({ project, companyTech = [], isFeatured = false }:
                         href={project.projectWebsite}
                         target="_blank"
                         rel="noopener noreferrer"
+                        title={`Visit ${project.name} live project`}
                       >
                         Live Project
                       </Link>
@@ -112,6 +114,7 @@ export function ProjectDialog({ project, companyTech = [], isFeatured = false }:
                         <Link
                           href={project.clientWebsite}
                           variant="highlighted"
+                          title={`Visit ${project.client} website`}
                           showExternalIcon
                         >
                           {project.client}

@@ -11,10 +11,10 @@ export default function Footer() {
                     <a href={config.linkedin} target="_blank" rel="noopener noreferrer" className="hover:underline" aria-label="LinkedIn">LinkedIn</a>
                     <a href="/privacy" className="hover:underline" aria-label="Privacy Policy">Privacy</a>
                 </div> */}
-                <p className="text-center space-x-4 p-4 text-slate-300">
+                <p className="text-center space-x-4 p-4 text-muted-foreground">
                     <span>© {new Date().getFullYear()}</span>
                     <span>·</span>
-                    <a href={config.siteURL} target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:underline">{config.domainName}</a>
+                    <a href={config.siteURL} target="_blank" rel="noopener noreferrer" title={`Visit ${config.domainName}`} className="hover:underline">{config.domainName}</a>
                     <span>·</span>
                     <span>All rights reserved</span>
                 </p>

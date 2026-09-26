@@ -102,6 +102,7 @@ export default function IntroSection() {
             <Link
               variant="underline"
               href="https://quillbot.com/paraphrasing-tool"
+              title="QuillBot Paraphrasing Tool"
             >
               QuillBot
             </Link>&apos;s core writing product, I build things that last.
@@ -130,13 +131,13 @@ export default function IntroSection() {
             className="flex flex-wrap gap-4 justify-center lg:justify-start pt-2"
           >
             <Button asChild cursor="pointer" iconHover="up-right">
-              <SmoothScrollLink href="#contact">
+              <SmoothScrollLink href="#contact" title="Let's work together">
                 Let&apos;s Work Together
                 <ArrowUpRight strokeWidth={2.5} />
               </SmoothScrollLink>
             </Button>
             <Button asChild variant="secondary" cursor="pointer">
-              <SmoothScrollLink href="#professional-experience">
+              <SmoothScrollLink href="#professional-experience" title="View my professional experience">
                 View My Work
               </SmoothScrollLink>
             </Button>

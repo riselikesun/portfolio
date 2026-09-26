@@ -113,18 +113,19 @@ const HomeAppBar = () => {
                         </div>
                     </NavbarBrand>
                     <NavbarContent justify="center" className="hidden md:flex">
-                        <SmoothScrollLink href="#intro"><NavbarItem>About</NavbarItem></SmoothScrollLink>
-                        <SmoothScrollLink href="#professional-experience"><NavbarItem>Work</NavbarItem></SmoothScrollLink>
-                        <SmoothScrollLink href="#hobbies"><NavbarItem>Beyond Code</NavbarItem></SmoothScrollLink>
+                        <SmoothScrollLink href="#intro" title="About Me"><NavbarItem>About</NavbarItem></SmoothScrollLink>
+                        <SmoothScrollLink href="#professional-experience" title="Professional Experience"><NavbarItem>Work</NavbarItem></SmoothScrollLink>
+                        <SmoothScrollLink href="#hobbies" title="Beyond Code"><NavbarItem>Beyond Code</NavbarItem></SmoothScrollLink>
                     </NavbarContent>
                     <NavbarContent justify="end">
                         <NavbarItem className="hidden md:flex">
-                            <Link href="/resume" target="_blank" rel="noopener noreferrer hidden sm:block text-xs font-medium">
+                            <Link href="/resume" target="_blank" rel="noopener noreferrer hidden sm:block text-xs font-medium" title="View Suraj Sharma's Resume">
                                 Resume
                             </Link>
                         </NavbarItem>
                         <SmoothScrollLink
                             href="#contact"
+                            title="Contact Me"
                         >
                             <Button variant="filled" size='xs'>Say hi</Button>
                         </SmoothScrollLink>
@@ -139,7 +140,7 @@ const HomeAppBar = () => {
                     <motion.div style={{ rotate }} className="text-primary">
                         <Sun className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.8} />
                     </motion.div>
-                    <SmoothScrollLink href="#top" className="font-serif text-sm sm:text-lg tracking-widest text-default hover:opacity-80 transition-opacity">
+                    <SmoothScrollLink href="#top" title="Scroll to top" className="font-serif text-sm sm:text-lg tracking-widest text-default hover:opacity-80 transition-opacity">
                         RiseLikeSun
                     </SmoothScrollLink>
                 </motion.div>

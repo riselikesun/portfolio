@@ -129,7 +129,7 @@ export default function HeroSection() {
             </div>
             <div>
               <motion.div variants={item}>
-                <SmoothScrollLink href="#intro" className="cursor-pointer group">
+                <SmoothScrollLink href="#intro" title="Scroll to About Section" className="cursor-pointer group">
                   <p className="text-muted-foreground">
                     Scroll to rise
                   </p>
