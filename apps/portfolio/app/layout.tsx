@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     siteName: "Suraj Sharma Portfolio",
     images: [
       {
-        url: `${config.blobBaseUrl}/og-image.png`,
+        url: `${config.blobBaseUrl}/og-image.webp`,
         width: 1200,
         height: 630,
         alt: "Suraj Sharma Portfolio",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Hey! I'm Suraj Sharma 👋",
     description: "I'm a Staff Full Stack Engineer. I love building scalable products and tinkering with AI. Let's grab a virtual coffee and chat about tech!",
-    images: [`${config.blobBaseUrl}/og-image.png`],
+    images: [`${config.blobBaseUrl}/og-image.webp`],
     creator: "@riselikesun",
   },
 };
