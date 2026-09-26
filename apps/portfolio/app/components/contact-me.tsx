@@ -1,7 +1,7 @@
 "use client";
 
 import {  CalendarDays, Mail, Linkedin, Github } from "@riselikesun/ui/icons"
-import { CardContent, CardHeader, CardTitle, Button, Card, MetricCard } from "@riselikesun/ui";
+import { CardContent, CardHeader, CardTitle, Button, Card, MetricCard, Link } from "@riselikesun/ui";
 import config from "@/app/config";
 import { motion, Variants } from "motion/react";
 import { Container } from "@/components/shared/container";
@@ -95,19 +95,17 @@ export default function ContactMe() {
                     className="grid gap-5 md:grid-cols-3"
                 >
                     {contactMethods.map(({ label, value, href, icon: Icon, accent }) => (
+                        <a key={label} href={href} target="_blank" rel="noreferrer noopener" title={label}>
                         <MetricCard
-                            key={label}
-                            asChild
-                            href={href}
+                            showExternalIcon
                             icon={<Icon />}
                             label={label}
                             value={value}
                             accent={accent}
-                            className="cursor-pointer"
-                            
                         >
                             <motion.a variants={itemVariants} title={`Contact via ${label}`} />
                         </MetricCard>
+                        </a>
                     ))}
                 </motion.div>
 
