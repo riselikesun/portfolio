@@ -27,8 +27,7 @@ export default function ProfessionalExperience() {
 	const sortedExps = [...experiences].sort((a, b) => (a.priority ?? 99) - (b.priority ?? 99));
 
 	return (
-		<Container id="professional-experience">
-			<div className="space-y-10">
+		<Container id="professional-experience" background='dark' innerClassName='flex flex-col gap-8'>
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
@@ -61,7 +60,6 @@ export default function ProfessionalExperience() {
 						);
 					})}
 				</div>
-			</div>
 		</Container>
 	)
 }

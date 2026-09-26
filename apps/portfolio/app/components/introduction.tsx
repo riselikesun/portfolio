@@ -47,7 +47,7 @@ export default function IntroSection() {
 
         {/* ── Left: Portrait ── */}
         <motion.div
-          className="relative flex justify-center lg:justify-end"
+          className="relative justify-center lg:justify-end hidden lg:flex "
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.35 }}
@@ -59,7 +59,8 @@ export default function IntroSection() {
             className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-32 bg-primary/20 blur-3xl rounded-full"
           />
 
-          <div className="relative w-full h-[36rem] sm:h-[42rem] md:h-[52rem] lg:h-[60vh] xl:h-[70vh] max-h-[720px] z-10">
+          <div className="relative w-full h-144 sm:h-168 md:h-208 lg:h-150 xl:h-175 max-h-180 z-10">
+            {/* Desktop Image */}
             <BlobImage
               src="/intro-image.png"
               alt="Suraj Sharma — Full Stack Engineer India"
@@ -91,6 +92,30 @@ export default function IntroSection() {
               Products That Scale.
             </span>
           </motion.h2>
+          <motion.div
+          className="relative flex justify-center lg:hidden"
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
+          {/* Glow disc behind image */}
+          <div
+            aria-hidden
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-32 bg-primary/20 blur-3xl rounded-full"
+          />
+
+          <div className="relative w-full h-82 max-h-180 z-10">
+            <BlobImage
+              src="/intro-image-mobile.png"
+              alt="Suraj Sharma — Full Stack Engineer India"
+              fill
+              loading="eager"
+              className="object-contain drop-shadow-[0_0_60px_rgba(216,148,50,0.15)]"
+              sizes="(max-width: 768px) 80vw, 40vw"
+            />
+          </div>
+        </motion.div>
           <motion.div variants={itemVariants} className="max-w-lg mx-auto lg:mx-0 text-base md:text-lg text-muted-foreground leading-relaxed">
             I&apos;m{" "}<strong className="text-accent-foreground font-semibold">Suraj Sharma,</strong>
             {" "} a Staff Web Developer and one of India&apos;s most sought-after
