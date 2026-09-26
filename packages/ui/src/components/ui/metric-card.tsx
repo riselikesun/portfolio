@@ -27,62 +27,47 @@ export interface MetricCardProps extends React.ComponentProps<"div">, VariantPro
   label: string;
   /** The primary value to display. */
   value: string;
-  /** Optional URL. If provided, the card becomes a clickable link. */
-  href?: string;
+  /** If true, displays an external link arrow icon next to the value. */
+  showExternalIcon?: boolean;
   /** Optional Tailwind text color class for the icon (e.g. `text-sky-300`). */
-  accent?: string; 
+  accent?: string;
   /** If true, merges the component onto its immediate child via Radix Slot. */
   asChild?: boolean;
 }
 
-const MetricCardContent = ({ icon, label, value, href, accent }: MetricCardProps) => (
-  <div className="flex flex-col h-full p-5">
-    {icon && (
-      <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-xl border border-border/50 bg-foreground/4">
-        <div className={cn("flex items-center justify-center [&_svg]:size-5", accent || "text-foreground")}>
-          {icon}
-        </div>
-      </div>
-    )}
-    <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">{label}</p>
-    <div className="mt-4 flex items-center justify-between gap-3">
-      <span className="text-lg font-medium text-foreground">{value}</span>
-      {href && (
-        <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
-      )}
-    </div>
-  </div>
-)
 
 /**
  * Display component for numeric or text metrics.
- * Supports link variants and an optional icon.
+ * Acts as a wrapper and can be rendered as a custom element or link using the `asChild` prop.
  */
-const MetricCard = React.forwardRef<HTMLDivElement, MetricCardProps>(
-  ({ className, variant, icon, label, value, href, accent, asChild = false, ...props }, ref) => {
-    
-    if (href) {
-      const isExternal = href.startsWith("http");
-      const Comp = asChild ? Slot.Root : "a";
-      return (
-        <Comp 
-          href={!asChild ? href : undefined}
-          target={!asChild && isExternal ? "_blank" : undefined}
-          rel={!asChild && isExternal ? "noreferrer noopener" : undefined}
-          className={cn("block focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 rounded-[20px]", className)}
-        >
-          <Card ref={ref} padding="none" className={cn(metricCardVariants({ variant }), "h-full")} {...props}>
-            <MetricCardContent icon={icon} label={label} value={value} href={href} accent={accent} />
-          </Card>
-        </Comp>
-      )
-    }
-
+const MetricCard = React.forwardRef<HTMLDivElement, MetricCardProps & { showExternalIcon?: boolean }>(
+  ({ className, variant, icon, label, value, accent, showExternalIcon, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot.Root : "div";
+
     return (
-      <Comp className={className}>
-        <Card ref={ref} padding="none" className={cn(metricCardVariants({ variant }), "h-full")} {...props}>
-           <MetricCardContent icon={icon} label={label} value={value} href={href} accent={accent} />
+      <Comp
+        className={cn("block focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 rounded-[20px]", className)}
+        {...props}
+      >
+        <Card ref={ref} padding="none" className={cn(metricCardVariants({ variant }), "h-full")}>
+          <div className="flex flex-col h-full p-5">
+            <div className="flex flex-row items-center gap-3 sm:flex-col sm:items-start sm:gap-6">
+              {icon && (
+                <div className="shrink-0 flex h-11 w-11 items-center justify-center rounded-xl border border-border/50 bg-foreground/4">
+                  <div className={cn("flex items-center justify-center [&_svg]:size-5", accent || "text-foreground")}>
+                    {icon}
+                  </div>
+                </div>
+              )}
+              <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">{label}</p>
+            </div>
+            <div className="mt-4 flex items-center justify-between gap-3">
+              <span className="text-lg font-medium text-foreground">{value}</span>
+              {showExternalIcon && (
+                <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
+              )}
+            </div>
+          </div>
         </Card>
       </Comp>
     )
