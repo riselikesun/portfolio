@@ -25,7 +25,7 @@ export default function StripCard({ hobby, index, onClick }: StripCardProps) {
 
   return (
     <div
-      className={`hobby-strip-card flex-shrink-0 opacity-0 translate-x-[50px] ${cardHeight} `}
+      className={`hobby-strip-card shrink-0 md:opacity-0 md:translate-x-12.5 snap-center ${cardHeight} `}
       style={{ width: "clamp(280px, 28vw, 450px)" }}
     >
       <motion.article
@@ -68,7 +68,7 @@ export default function StripCard({ hobby, index, onClick }: StripCardProps) {
 
           <div
             aria-hidden
-            className="absolute inset-0 bg-gradient-to-t from-[#070706] via-[#070706]/60 to-transparent pointer-events-none w-[120%] h-[120%] ml-[-10%] mt-[-10%]"
+            className="absolute inset-0 bg-linear-to-t from-[#070706] via-[#070706]/60 to-transparent pointer-events-none w-[120%] h-[120%] ml-[-10%] mt-[-10%]"
           />
 
           <div
@@ -94,7 +94,7 @@ export default function StripCard({ hobby, index, onClick }: StripCardProps) {
             </h3>
 
             <div className="overflow-hidden mt-1">
-              <p className="text-sm text-muted-foreground leading-relaxed max-w-[260px] translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-[400ms] ease-out">
+              <p className="text-sm text-muted-foreground leading-relaxed max-w-65 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-400 ease-out">
                 {hobby.subtitle}
               </p>
             </div>

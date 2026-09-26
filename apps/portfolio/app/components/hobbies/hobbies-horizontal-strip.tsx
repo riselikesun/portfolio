@@ -29,7 +29,9 @@ export function HobbiesHorizontalStrip({ hobbies }: HobbiesHorizontalStripProps)
   useEffect(() => {
     if (!sectionRef.current || !stripRef.current) return;
 
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 768px)", () => {
       const strip = stripRef.current!;
 
       const getScrollDistance = () => {
@@ -74,9 +76,13 @@ export function HobbiesHorizontalStrip({ hobbies }: HobbiesHorizontalStripProps)
           toggleActions: "play none none none",
         },
       });
+      
+      return () => {
+        stRef.current = null;
+      };
     }, sectionRef);
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, [hobbies.length]);
 
   useEffect(() => {
@@ -249,10 +255,10 @@ export function HobbiesHorizontalStrip({ hobbies }: HobbiesHorizontalStripProps)
 
   return (
     <>
-      <div ref={sectionRef} className="relative w-full overflow-hidden h-screen touch-pan-y">
+      <div ref={sectionRef} className="relative w-full min-h-screen py-12 md:py-0 md:overflow-hidden md:h-screen md:touch-pan-y">
         <div
           ref={stripRef}
-          className="absolute top-0 left-0 h-full flex items-center will-change-transform select-none"
+          className="flex items-center h-full select-none md:absolute top-0 left-0 md:will-change-transform overflow-x-auto overflow-y-hidden snap-x snap-mandatory md:overflow-visible scroll-smooth pb-8 md:pb-0 [&::-webkit-scrollbar]:hidden"
           style={{
             paddingLeft: "calc(max(5vw, 24px))",
             paddingRight: "calc(max(5vw, 24px))",
