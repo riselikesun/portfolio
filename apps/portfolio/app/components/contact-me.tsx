@@ -57,13 +57,13 @@ const contactMethods = [
 export default function ContactMe() {
     return (
         <Container id="contact" background="navy">
-            <div className="flex flex-col gap-16">
+            <div className="flex flex-col gap-8 md:gap-16">
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-50px" }}
-                    className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end"
+                    className="grid gap-8 md:gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end"
                 >
                     <motion.div variants={itemVariants}>
                         <p className="mb-4 text-xs font-medium uppercase tracking-[0.28em] text-primary">
@@ -72,7 +72,7 @@ export default function ContactMe() {
                         <h2 className="max-w-xl text-4xl font-semibold tracking-tight leading-snug md:text-6xl">
                             Contact me.
                         </h2>
-                        <p className="mt-6 max-w-xl text-base leading-7 text-muted-foreground md:text-lg">
+                        <p className=" max-w-xl text-base leading-7 text-muted-foreground md:text-lg">
                             I&apos;m available for product engineering, thoughtful product design partnerships, and opportunities where strong execution matters.
                         </p>
                     </motion.div>

@@ -40,7 +40,7 @@ export const Container = forwardRef<HTMLElement, ContainerProps>(
         ref={ref}
         className={cn(
           "w-full",
-          !noPadding && "py-8 sm:py-16 md:py-24", // Default padding
+          !noPadding && "py-10 sm:py-16 md:py-24", // Default padding
           !noPadding && !fullWidth && "px-4 md:px-6",
           backgroundVariants[background],
           className

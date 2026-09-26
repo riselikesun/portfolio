@@ -31,7 +31,7 @@ const highlights = [
 export default function DirtyHandsSection() {
     return (
         <Container className="relative overflow-hidden z-0 px-4 md:px-6" background="charcoal" fullWidth>
-        {/* <section className="relative overflow-hidden bg-[#070706]  w-full px-5 lg:px-12 sm:px-8 py-24 lg:py-32 z-0"> */}
+            {/* <section className="relative overflow-hidden bg-[#070706]  w-full px-5 lg:px-12 sm:px-8 py-24 lg:py-32 z-0"> */}
             {/* Todo: ⚠️ hardcoded #070706/#F7F1E7 instead of --void/--fg tokens */}
 
 
@@ -66,23 +66,23 @@ export default function DirtyHandsSection() {
                 </RevealText>
             </div>
 
-            <div className="md:absolute flex justify-center w-full right-0 md:right-[-250px] top-24 lg:top-32 z-10">
+            <div className="md:absolute flex justify-center w-full right-0 md:-right-62.5 top-24 lg:top-32 z-10">
                 <RevealText variant="large" className="max-w-7xl w-full">
-                    <div className="relative aspect-[1/1] w-full">
+                    <div className="relative aspect-square w-full">
                         <BlobImage
                             src="/dirty-hands.jpeg"
                             alt="Working the soil in the garden"
                             fill
                             sizes="(max-width: 768px) 100vw, 50vw"
-                            className="object-cover rounded-2xl md:rounded-[40px] opacity-70 border border-border"
+                            className="object-cover rounded-2xl md:rounded-[40px] md:opacity-70 border border-border"
                         />
-                        <div className="absolute shadow-[inset_0px_0px_24px_36px_#070706] inset-0 md:bg-[linear-gradient(100deg,#00000000_0%,#0000_81%,#070706_83%)]" />
+                        <div className="absolute md:shadow-[inset_0px_0px_24px_36px_#070706] inset-0 md:bg-[linear-gradient(100deg,#00000000_0%,#0000_81%,#070706_83%)]" />
                     </div>
                 </RevealText>
             </div>
 
-            <div className="relative mx-auto max-w-7xl bg-[linear-gradient(90deg,#070706_23%,transparent_100%)] z-50">
-                <RevealGroup className="pt-5 grid gap-5 md:grid-cols-3">
+            <div className="relative mx-auto max-w-7xl bg-[linear-gradient(90deg,#070706_23%,transparent_100%)] z-50 mt-6 md:mt-0">
+                <RevealGroup className="grid gap-5 md:grid-cols-3">
                     {highlights.map((item) => {
                         const Icon = item.icon;
                         return (
@@ -91,17 +91,22 @@ export default function DirtyHandsSection() {
                             >
                                 <Card variant="blurred" className="group" >
                                     <CardHeader>
-                                        <Icon
-                                            size={24}
-                                            strokeWidth={1.5}
-                                            className="text-primary transition-transform duration-500 group-hover:rotate-[-8deg]"
-                                        />
+                                        <div className="flex items-center gap-4">
+                                            <Icon
+                                                size={24}
+                                                strokeWidth={1.5}
+                                                className="text-primary transition-transform duration-500 group-hover:rotate-[-8deg]"
+                                            />
+                                            <h3 className="block md:hidden text-xs font-medium tracking-[0.25em] text-primary">
+                                                {item.title}
+                                            </h3>
+                                        </div>
                                     </CardHeader>
                                     <CardContent>
-                                        <h3 className="text-xs font-medium tracking-[0.25em] text-primary">
+                                        <h3 className="hidden md:block text-xs font-medium tracking-[0.25em] text-primary">
                                             {item.title}
                                         </h3>
-                                        <p className="mt-3 max-w-xs text-sm leading-6 text-muted-foreground">
+                                        <p className="md:mt-3 max-w-xs text-sm leading-6 text-muted-foreground">
                                             {item.description}
                                         </p>
                                     </CardContent>
@@ -111,13 +116,13 @@ export default function DirtyHandsSection() {
                     })}
                 </RevealGroup>
                 <RevealText className="mt-48 hidden md:block">
-                    <Card variant="image" padding="none" className="grid md:grid-cols-5">
+                    <Card variant="image" padding="none" className="grid gap-0 md:grid-cols-5">
                         {principles.map((item, index) => {
                             const Icon = item.icon;
                             return (
-                                <div key={item.title} className="relative p-7 sm:p-8 md:p-9">
+                                <div key={item.title} className="relative p-5 lg:p-9">
                                     {index > 0 && (
-                                        <div className="absolute left-0 top-1/2 hidden h-2/3 w-px -translate-y-1/2 bg-white/[0.08] md:block" />
+                                        <div className="absolute left-0 top-1/2 hidden h-2/3 w-px -translate-y-1/2 bg-white/8 md:block" />
                                     )}
                                     <Icon size={30} strokeWidth={1.4} className="text-primary" />
                                     <h3 className="mt-7 text-xs font-medium tracking-[0.24em] text-primary">

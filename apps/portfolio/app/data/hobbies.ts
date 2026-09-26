@@ -12,6 +12,37 @@ export interface Hobby {
 
 export const HOBBIES: Hobby[] = [
   {
+    id: "rc-aircraft",
+    title: "Building RC Aircraft",
+    subtitle:
+      "Flying and building fixed-wing RC aircraft — Eclipson D-929 and custom airframes.",
+    image: "/hobbies/rc-aircraft/balancing-rc-plane.jpg",
+    tags: ["Aviation", "Electronics", "Control Systems"],
+    details:
+      "Fixed-wing RC aviation combines aerodynamics, electronics, and real-time control systems into one discipline. I build and fly the Eclipson D-929, a fully 3D-printed aircraft. Building it means designing servo linkages, calculating wing loading, routing control cables, and programming flight controllers. It's mechanical engineering, electrical engineering, and software all in one airframe.",
+    gallery: [
+      "/hobbies/rc-aircraft/eclipson-d-929-aeroplane.jpg",
+      // "/hobbies/rc-aircraft/drone-flying.MOV",
+      // "/hobbies/rc-aircraft/flying-rc-plane.MOV",
+      "/hobbies/rc-aircraft/holding-rc-plane.jpg",
+      "/hobbies/rc-aircraft/printed-rc-plane1.jpg",
+      "/hobbies/rc-aircraft/printed-rc-plane2.jpg",
+      "/hobbies/rc-aircraft/broken-rc-plane.jpg",
+      "/hobbies/rc-aircraft/printed-rc-plane3.jpg",
+      // "/hobbies/rc-aircraft/printing-rc-plane.MOV",
+      "/hobbies/rc-aircraft/rc-aeroplane.jpg",
+      // "/hobbies/rc-aircraft/rc-plane-crash1.MOV",
+      // "/hobbies/rc-aircraft/rc-plane-crash2.MOV",
+      // "/hobbies/rc-aircraft/rc-plane-flying-site.MOV",
+      "/hobbies/rc-aircraft/rc-plane-head.jpg",
+      "/hobbies/rc-aircraft/rc-plane-weighing.jpg",
+      "/hobbies/rc-aircraft/rc-plane1.jpg",
+      "/hobbies/rc-aircraft/rc-plane2.jpg",
+      "/hobbies/rc-aircraft/recording-rc-plane.jpg"
+    ],
+    span: 2,
+  },
+  {
     id: "3d-printing",
     title: "3D Printing",
     subtitle:
@@ -42,37 +73,6 @@ export const HOBBIES: Hobby[] = [
     span: 1,
   },
   {
-    id: "rc-aircraft",
-    title: "Building RC Aircraft",
-    subtitle:
-      "Flying and building fixed-wing RC aircraft — Eclipson D-929 and custom airframes.",
-    image: "/hobbies/rc-aircraft/balancing-rc-plane.jpg",
-    tags: ["Aviation", "Electronics", "Control Systems"],
-    details:
-      "Fixed-wing RC aviation combines aerodynamics, electronics, and real-time control systems into one discipline. I build and fly the Eclipson D-929, a fully 3D-printed aircraft. Building it means designing servo linkages, calculating wing loading, routing control cables, and programming flight controllers. It's mechanical engineering, electrical engineering, and software all in one airframe.\n\nPre-flight inspection is non-negotiable. Checking control surface travel, CG balance, battery voltage, and receiver bind is identical to a production deployment checklist: skip one step and something unexpected happens at the worst possible moment. This habit of systematic verification carries directly into how I review code and ship software.\n\nEvery flight is a data point, teaching me how small changes in center-of-gravity and control tuning dramatically affect flight characteristics.",
-    gallery: [
-      "/hobbies/rc-aircraft/eclipson-d-929-aeroplane.jpg",
-      // "/hobbies/rc-aircraft/drone-flying.MOV",
-      // "/hobbies/rc-aircraft/flying-rc-plane.MOV",
-      "/hobbies/rc-aircraft/holding-rc-plane.jpg",
-      "/hobbies/rc-aircraft/printed-rc-plane1.jpg",
-      "/hobbies/rc-aircraft/printed-rc-plane2.jpg",
-      "/hobbies/rc-aircraft/broken-rc-plane.jpg",
-      "/hobbies/rc-aircraft/printed-rc-plane3.jpg",
-      // "/hobbies/rc-aircraft/printing-rc-plane.MOV",
-      "/hobbies/rc-aircraft/rc-aeroplane.jpg",
-      // "/hobbies/rc-aircraft/rc-plane-crash1.MOV",
-      // "/hobbies/rc-aircraft/rc-plane-crash2.MOV",
-      // "/hobbies/rc-aircraft/rc-plane-flying-site.MOV",
-      "/hobbies/rc-aircraft/rc-plane-head.jpg",
-      "/hobbies/rc-aircraft/rc-plane-weighing.jpg",
-      "/hobbies/rc-aircraft/rc-plane1.jpg",
-      "/hobbies/rc-aircraft/rc-plane2.jpg",
-      "/hobbies/rc-aircraft/recording-rc-plane.jpg"
-    ],
-    span: 2,
-  },
-  {
     id: "mountain-hiking",
     title: "Mountain Hiking",
     subtitle:
@@ -80,7 +80,7 @@ export const HOBBIES: Hobby[] = [
     image: "/hobbies/mountain-hiking/mountain-hiking.jpg",
     tags: ["Adventure", "Endurance", "Nature"],
     details:
-      "Mountain hiking resets perspective. There's no substitute for physical difficulty, carrying weight uphill for hours, reading terrain, managing energy. The mental clarity that arrives at elevation is real. I plan multi-day routes, track elevation profiles, and have learned that the best views only come after the hardest climbs. That's true everywhere.\n\nSome of the clearest thinking happens at height, with wind and nothing between you and the horizon. Sitting on cliff edges after a long hike is a deliberate practice, no screens, no notifications, just the kind of quiet that makes big problems feel small and small problems disappear entirely. Every engineering sprint needs this counterweight.",
+      "Mountain hiking resets perspective. There's no substitute for physical difficulty, carrying weight uphill for hours, reading terrain, managing energy. The mental clarity that arrives at elevation is real. I plan multi-day routes, track elevation profiles, and have learned that the best views only come after the hardest climbs.",
     gallery: [
       "/hobbies/mountain-hiking/hiking-relax.jpg",
       "/hobbies/mountain-hiking/hiking-phalut.jpg",
