@@ -69,6 +69,7 @@ export default function ExperienceCard({ exp, isFeatured = false }: ExperienceCa
               {exp.company.website ? (
                 <Link
                   href={exp.company.website}
+                  title={`Visit ${exp.company.name} website`}
                   variant="highlighted"
                   showExternalIcon="hover"
                 >

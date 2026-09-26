@@ -16,7 +16,7 @@ export default function ResumePage() {
         <>
             <main className="flex flex-col h-screen">
                 <div className="flex items-center justify-between px-6 py-4 border-b border-line-light">
-                    <Link href="/" className="text-base font-bold text-fg">
+                    <Link href="/" title="Rise Like Sun - Back to Portfolio" className="text-base font-bold text-fg">
                         Rise Like Sun
                     </Link>
                     <span >
@@ -24,7 +24,7 @@ export default function ResumePage() {
                     </span>
 
                     <Button asChild size="sm">
-                        <a href={PDF_PATH} download="Suraj_Sharma_Resume.pdf">
+                        <a href={PDF_PATH} title="Download Resume PDF" download="Suraj_Sharma_Resume.pdf">
                             ⤓ Download PDF
                         </a>
                     </Button>

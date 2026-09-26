@@ -17,7 +17,7 @@ export default function AppNavbar() {
       <Navbar variant="floating" width="sm">
         <NavbarBrand >
 
-          <Link href="/" className="flex items-center gap-2 font-serif text-sm sm:text-lg tracking-widest font-normal text-default hover:opacity-80 transition-opacity">
+          <Link href="/" title="Rise Like Sun - Home" className="flex items-center gap-2 font-serif text-sm sm:text-lg tracking-widest font-normal text-default hover:opacity-80 transition-opacity">
             <div className="text-primary">
               <Sun className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.8} />
             </div>
@@ -29,6 +29,7 @@ export default function AppNavbar() {
             <Link
               key={link.label}
               href={link.href}
+              title={`Navigate to ${link.label}`}
               className="text-sm font-mono tracking-wide text-fg-dim hover:text-fg transition-colors duration-200"
             >
               {link.label}

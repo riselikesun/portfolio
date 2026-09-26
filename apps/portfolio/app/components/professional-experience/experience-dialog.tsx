@@ -68,6 +68,7 @@ export function ExperienceDialog({ exp }: ExperienceDialogProps) {
                         href={exp.company.website}
                         target="_blank"
                         rel="noopener noreferrer"
+                        title={`Visit ${exp.company.name} website`}
                       >
                         {exp.company.name}
                       </Link>
@@ -121,6 +122,7 @@ export function ExperienceDialog({ exp }: ExperienceDialogProps) {
                               rel="noopener noreferrer"
                               showExternalIcon
                               variant="highlighted"
+                              title={`Visit ${proj.name} live project`}
                             >
                               {proj.name}
                             </Link>
@@ -141,6 +143,7 @@ export function ExperienceDialog({ exp }: ExperienceDialogProps) {
                                 showExternalIcon
                                 variant="highlighted"
                                 size="xs"
+                                title={`Visit ${proj.client} website`}
                               >
                                 {proj.client}
                               </Link>
