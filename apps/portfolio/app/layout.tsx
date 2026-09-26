@@ -43,8 +43,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Suraj Sharma | Software engineer",
-    description: "Suraj Sharma — Staff Full Stack Engineer & Team Lead. Experienced in scaling web applications to 50M+ users, building Agentic AI workflows, and modern cloud architectures.",
+    title: "Hey! I'm Suraj Sharma 👋",
+    description: "I'm a Staff Full Stack Engineer. I love building scalable products and tinkering with AI. Let's grab a virtual coffee and chat about tech!",
     url: config.siteURL,
     siteName: "Suraj Sharma Portfolio",
     images: [
@@ -60,8 +60,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Suraj Sharma | Software engineer",
-    description: "Suraj Sharma — Staff Full Stack Engineer & Team Lead. Experienced in scaling web applications to 50M+ users, building Agentic AI workflows, and modern cloud architectures.",
+    title: "Hey! I'm Suraj Sharma 👋",
+    description: "I'm a Staff Full Stack Engineer. I love building scalable products and tinkering with AI. Let's grab a virtual coffee and chat about tech!",
     images: [`${config.blobBaseUrl}/og-image.png`],
     creator: "@riselikesun",
   },
